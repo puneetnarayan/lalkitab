@@ -115,13 +115,13 @@
         typeof window.zonedLocalToUtc !== 'function') {
       throw new Error('Calculation modules failed to load. Please reload the app.');
     }
-    const date = form.birthDate.value;
-    const time = form.birthTime.value;
+    const date = form.elements.namedItem('birthDate').value;
+    const time = form.elements.namedItem('birthTime').value;
     const [year, month, day] = date.split('-').map(Number);
     const [hour, minute] = time.split(':').map(Number);
-    const utc = window.zonedLocalToUtc(year, month, day, hour, minute, form.timezone.value);
-    const latitude = Number(form.latitude.value);
-    const longitude = Number(form.longitude.value);
+    const utc = window.zonedLocalToUtc(year, month, day, hour, minute, form.elements.namedItem('timezone').value);
+    const latitude = Number(form.elements.namedItem('latitude').value);
+    const longitude = Number(form.elements.namedItem('longitude').value);
     const longitudes = window.computePlanetLongitudes(utc);
     const ascendantLongitude = window.computeAscendant(utc, latitude, longitude);
     const inventory = window.LalKitabChart.buildPlanetInventory(longitudes, {
@@ -129,7 +129,7 @@
     });
     const ascSign = window.LalKitabChart.signFromLongitude(ascendantLongitude);
     state.profile = {
-      native: form.native.value.trim(), date, time, place: form.place.value.trim(),
+      native: form.elements.namedItem('native').value.trim(), date, time, place: form.elements.namedItem('place').value.trim(),
       timezone: form.timezone.value, latitude, longitude
     };
     state.inventory = inventory;
