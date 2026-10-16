@@ -99,3 +99,8 @@ Do not let an unverified rule drive an assertive prediction. The app should show
 - Use JSON data for rules and JS for deterministic evaluation.
 - Start with rule metadata and a chart inventory; do not fabricate a large prediction database from scraped snippets.
 - No deployment to Vercel without explicit user consent.
+
+
+## Source access note (16 Oct 2026)
+
+A study-group website provides an online reading copy labelled as the 1952 text and describes the five-book corpus. This is a lead for human source review, not permission to bulk-copy or treat every transcription as authoritative: [AstroStudents 1952 reading page](https://astrostudents.ueuo.com/1952/index.html). Commercially published transcriptions/translations are also available from publishers. Before any rule is activated, the researcher must record the exact edition/printing, the printed page or numbered section, and whether the wording was checked directly against the source. If a page image is illegible or the edition cannot be confirmed, keep the rule pending. No rule is being populated from unsourced web summaries.
