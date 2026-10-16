@@ -51,11 +51,13 @@ jobs:
           test "$(stat -c %s target/ephemeris/wasm/swisseph.wasm)" -eq 561871 || { echo "::error::Unexpected swisseph.wasm size; verify LFS checkout and source version"; exit 1; }
           test "$(stat -c %s target/ephemeris/wasm/swisseph.data)" -eq 2151204 || { echo "::error::Unexpected swisseph.data size; verify LFS checkout and source version"; exit 1; }
 
-          echo "Asset SHA-1 hashes:"
-          sha1sum target/ephemeris/wasm/swisseph.js target/ephemeris/wasm/swisseph.wasm target/ephemeris/wasm/swisseph.data
-          test "$(sha1sum target/ephemeris/wasm/swisseph.js | cut -d ' ' -f1)" = "f7d36e518e9f3743f1ea27b19a0aa1d7c75af225" || { echo "::error::swisseph.js SHA-1 mismatch"; exit 1; }
-          test "$(sha1sum target/ephemeris/wasm/swisseph.wasm | cut -d ' ' -f1)" = "a58d1b88947685562b367e56607c3b8002409a00" || { echo "::error::swisseph.wasm SHA-1 mismatch"; exit 1; }
-          test "$(sha1sum target/ephemeris/wasm/swisseph.data | cut -d ' ' -f1)" = "03850e4899bd8e621869786ded88b515d39a8d9c" || { echo "::error::swisseph.data SHA-1 mismatch"; exit 1; }
+          echo "Git blob SHA-1 hashes:"
+          git -C upstream hash-object ephemeris/wasm/swisseph.js
+          git -C upstream hash-object ephemeris/wasm/swisseph.wasm
+          git -C upstream hash-object ephemeris/wasm/swisseph.data
+          test "$(git -C upstream hash-object ephemeris/wasm/swisseph.js)" = "f7d36e518e9f3743f1ea27b19a0aa1d7c75af225" || { echo "::error::swisseph.js Git blob hash mismatch"; exit 1; }
+          test "$(git -C upstream hash-object ephemeris/wasm/swisseph.wasm)" = "a58d1b88947685562b367e56607c3b8002409a00" || { echo "::error::swisseph.wasm Git blob hash mismatch"; exit 1; }
+          test "$(git -C upstream hash-object ephemeris/wasm/swisseph.data)" = "03850e4899bd8e621869786ded88b515d39a8d9c" || { echo "::error::swisseph.data Git blob hash mismatch"; exit 1; }
 
       - name: Commit assets to Lal Kitab branch
         shell: bash
