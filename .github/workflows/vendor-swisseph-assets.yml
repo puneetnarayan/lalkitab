@@ -14,12 +14,24 @@ jobs:
   vendor-assets:
     runs-on: ubuntu-latest
     steps:
+      - name: Verify source repository token is configured
+        shell: bash
+        env:
+          SOURCE_REPO_TOKEN: ${{ secrets.PARASHARI_REPO_TOKEN }}
+        run: |
+          set -euo pipefail
+          if [ -z "$SOURCE_REPO_TOKEN" ]; then
+            echo "::error::Add a read-only PAT as the repository Actions secret PARASHARI_REPO_TOKEN so this workflow can read the private Parashari-Astrology- repository."
+            exit 1
+          fi
+
       - name: Check out upstream ephemeris assets
         uses: actions/checkout@v4
         with:
           repository: puneetnarayan/Parashari-Astrology-
           ref: main
           path: upstream
+          token: ${{ secrets.PARASHARI_REPO_TOKEN }}
           persist-credentials: false
 
       - name: Check out Lal Kitab branch
