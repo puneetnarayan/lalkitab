@@ -1,0 +1,5 @@
+{
+  "schemaVersion": 1,
+  "description": "Only source-verified rules belong here. Empty by design until a primary edition and pinpoint references are checked.",
+  "rules": []
+}

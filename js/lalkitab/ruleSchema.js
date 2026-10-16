@@ -50,7 +50,7 @@
     return validateRule(rule).length === 0 &&
       rule.status === 'active' &&
       (rule.confidence === 'verified' || rule.confidence === 'cross-checked') &&
-      rule.source.evidenceType !== 'unverified-web-summary';
+      (rule.source.evidenceType === 'primary-text' || rule.source.evidenceType === 'licensed-translation');
   }
 
   const api = { CONFIDENCE, EVIDENCE_TYPES, RULE_STATUSES, validateRule, isEligibleForInterpretation };
