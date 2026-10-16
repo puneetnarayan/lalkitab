@@ -108,7 +108,8 @@
       '<div class="empty"><div class="symbol">✧</div><h3>Ready to prepare a chart</h3><p>Enter date, time, place, timezone and coordinates. This version calculates a planetary inventory but intentionally does not invent Lal Kitab interpretations.</p></div>');
   }
 
-  function calculate(form) {
+  async function calculate(form) {
+    if (window.SWISSEPH_INIT_PROMISE) await window.SWISSEPH_INIT_PROMISE;
     if (typeof window.computePlanetLongitudes !== 'function' ||
         typeof window.computeAscendant !== 'function' ||
         typeof window.zonedLocalToUtc !== 'function') {
@@ -145,10 +146,11 @@
   }
 
   const form = $('birthForm');
-  form.addEventListener('submit', event => {
+  form.addEventListener('submit', async event => {
+    event.preventDefault();
     try {
-      calculate(form);
-      $('message').textContent = 'Planetary inventory calculated. House mapping is provisional; source-verified interpretations are not enabled.';
+      await calculate(form);
+      $('message').textContent = 'Planetary inventory calculated using ' + state.chart.engine + '. House mapping is provisional; source-verified interpretations are not enabled.';
       if ($('birthSummary')) $('birthSummary').textContent = state.profile.date + ' ' + state.profile.time;
       state.activeTab = document.querySelector('[data-tab][aria-selected="true"]')?.dataset.tab || 'overview';
       renderActiveTab();
