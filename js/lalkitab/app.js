@@ -6,7 +6,12 @@
     .then(response => { if (!response.ok) throw new Error('Rule registry unavailable'); return response.json(); })
     .then(data => { window.LAL_KITAB_RULES = data; })
     .catch(() => { window.LAL_KITAB_RULES = { rules: [] }; });
-  const state = { profile: null, chart: null, inventory: null, activeTab: 'overview', findings: [] };
+  window.LAL_KITAB_CANDIDATES = { rules: [] };
+  fetch('data/lalkitab-rule-candidates.json')
+    .then(response => { if (!response.ok) throw new Error('Candidates unavailable'); return response.json(); })
+    .then(data => { window.LAL_KITAB_CANDIDATES = data; })
+    .catch(() => { window.LAL_KITAB_CANDIDATES = { rules: [] }; });
+  const state = { derivation: null, profile: null, chart: null, inventory: null, activeTab: 'overview', findings: [] };
   window.LAL_KITAB_APP_STATE = state;
 
   const signs = window.LalKitabChart.SIGNS;
@@ -42,14 +47,40 @@
       '<p class="hint">The astronomy fallback uses the source app’s Lahiri-ayanamsa / mean-node approach. This first integration is not yet benchmark-validated against Swiss Ephemeris WASM; review boundary cases.</p>';
   }
 
+  const OUTCOME = {
+    'condition-met': 'Condition met',
+    'condition-not-met': 'Condition not met',
+    informational: 'Placement read-out'
+  };
+
+  function detailHtml(r) {
+    if (!r.detail) return '';
+    if (r.module === 'pakka-ghar') {
+      return table(['Planet','In house','Table lists','In permanent house?'],
+        r.detail.map(d => [d.planet, d.house, d.pakkaHouses.join(', '), d.inPakkaGhar ? 'Yes' : 'No']));
+    }
+    if (r.module === 'planet-relationships') {
+      const rows = r.detail.pairs.map(d => ['House ' + d.house, d.from + ' → ' + d.to, d.relation]);
+      return (rows.length ? table(['Where','From → to','Relation (from that row)'], rows) : '<p class="hint">No planets share a house.</p>') +
+        (r.detail.undetermined.length ? '<p class="hint">Not determinable: ' + r.detail.undetermined.map(d => esc(d.from + '→' + d.to + ' (' + d.why + ')')).join('; ') + '</p>' : '');
+    }
+    return '';
+  }
+
   function rulesView() {
-    const ruleCount = window.LAL_KITAB_RULES.rules.length;
-    return '<div class="empty"><div class="symbol">≋</div><h3>' +
-      (ruleCount ? 'Source-verified rules available' : 'No active source-verified rules yet') +
-      '</h3><p>' + (ruleCount
-        ? ruleCount + ' rules are in the data file. Only rules marked active and verified/cross-checked with pinpoint references can produce findings.'
-        : 'This is intentional. The concept catalogue is research-only. No prediction or remedy will be generated until a rule has a source edition, page/section, conditions, and review status.') +
-      '</p><p class="hint">Research catalogue concepts: Teva, Pakka Ghar, planet-in-house results, empty houses, planetary states, Rin and Varshaphal.</p></div>';
+    const verified = window.LAL_KITAB_RULES.rules.length;
+    const warn = '<div class="notice"><strong>Unverified research candidates.</strong> The results below apply rules collected from secondary web summaries. No primary Lal Kitab edition has been checked, sources disagree in places, and the house mapping is provisional. Treat them as what a reported rule would say, not as a validated reading. Verified rules available: ' + verified + '.</div>';
+    if (!state.derivation) return warn + empty('No chart yet', 'Prepare a chart to see which candidate rules can be derived.');
+    const d = state.derivation;
+    const derived = d.derived.map(r =>
+      '<div class="tile" style="margin:10px 0"><strong>' + esc(r.title) + '</strong> · <span class="status"><span class="dot"></span>' +
+      esc(OUTCOME[r.outcome] || r.outcome) + ' · unverified</span><p>' + esc(r.reason) + '</p>' + detailHtml(r) +
+      '<span class="hint">Source: ' + esc(r.source.title) + ' (' + esc(r.source.evidenceType) + '; no page reference)</span></div>').join('');
+    const cannot = d.cannotDerive.map(r =>
+      '<div class="tile" style="margin:10px 0"><strong>' + esc(r.title) + '</strong><p>Cannot be derived: ' + esc(r.reason) + '</p></div>').join('');
+    return warn + '<h3>Derived from your chart (' + d.derived.length + ')</h3>' + (derived || '<p class="hint">None.</p>') +
+      '<h3>Cannot be derived (' + d.cannotDerive.length + ')</h3>' + (cannot || '<p class="hint">None.</p>') +
+      '<h3>Remedies</h3><p class="hint">' + esc(d.remedies) + '</p>';
   }
 
   function remediesView() {
@@ -67,7 +98,7 @@
       ['Coordinates',state.profile.latitude + ', ' + state.profile.longitude],
       ['UTC instant',state.chart.utc.toISOString()],['Ascendant',state.chart.ascendant.sign + ' · ' + fmt(state.chart.ascendant.longitude)],
       ['Astronomy engine',state.chart.engine],['House mapping',state.chart.mappingPolicy]
-    ]) + '<h3>Placements</h3>' + placements() + '<p class="hint">Interpretations: ' + (state.findings || []).length + ' eligible source-backed findings. This report is generated from a traditional astrology framework and is not a scientific or medical assessment.</p><div class="btnrow"><button class="btn" type="button" id="printReport">Print / Save as PDF</button></div>';
+    ]) + '<h3>Placements</h3>' + placements() + '<h3>Candidate rules (unverified)</h3><p class="hint">Derived: ' + (state.derivation ? state.derivation.derived.map(r => esc(r.title) + ' – ' + esc(OUTCOME[r.outcome] || r.outcome)).join('; ') : 'none') + '. Cannot be derived: ' + (state.derivation ? state.derivation.cannotDerive.map(r => esc(r.title)).join('; ') : 'none') + '. These come from unverified secondary summaries.</p><p class="hint">Interpretations: ' + (state.findings || []).length + ' eligible source-backed findings. This report is generated from a traditional astrology framework and is not a scientific or medical assessment.</p><div class="btnrow"><button class="btn" type="button" id="printReport">Print / Save as PDF</button></div>';
   }
 
   function renderActiveTab() {
@@ -142,6 +173,7 @@
       planet: p.planet, house: p.house, sign: p.sign,
       housePlanets: inventory.filter(other => other.house === p.house && other.status === 'calculated').map(other => other.planet)
     }));
+    state.derivation = window.LalKitabDerivation.deriveCandidates(window.LAL_KITAB_CANDIDATES.rules, inventory);
     state.findings = window.LalKitabRuleEngine.evaluate(window.LAL_KITAB_RULES.rules, contexts);
   }
 
@@ -167,6 +199,7 @@
   form.addEventListener('reset', () => {
     state.profile = state.chart = state.inventory = null;
     state.findings = [];
+    state.derivation = null;
     state.activeTab = 'overview';
     setTimeout(renderActiveTab, 0);
   });
