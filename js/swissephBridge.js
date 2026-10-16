@@ -1,5 +1,4 @@
-(// eslint-disable-next-line
-async function () {
+window.SWISSEPH_INIT_PROMISE = (async function () {
   'use strict';
   window.SWISSEPH_READY = false;
   window.SWISSEPH_LOAD_ERROR = null;
