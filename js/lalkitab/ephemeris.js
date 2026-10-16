@@ -1,19 +1,19 @@
-// Local (offline) ephemeris. Ported/adapted from the sibling KP app's
+// Local (offline) fallback ephemeris. Adapted from the user's Parashari-Astrology source app's
 // ephemeris.js — the underlying astronomy math (sidereal longitudes, mean
 // lunar node, Lahiri ayanamsa) is identical for any Vedic technique.
-// Swiss Ephemeris WASM (swissephBridge.js) is the primary engine; this
-// file's astronomy-engine calculation is only the automatic fallback.
+// Swiss Ephemeris WASM (swissephBridge.js) is the preferred engine; this
+// file's astronomy-engine calculation is only the fallback when WASM is unavailable.
 
 const EPHEMERIS_LOGIC_TEXT = [
   ['Ephemeris — Logic and Sequence'],
   [''],
-  ['0. PRIMARY ENGINE: the real Swiss Ephemeris, compiled to WebAssembly (js/swissephBridge.js), is used whenever it has finished loading (window.SWISSEPH_READY). It typically finishes loading within a fraction of a second of the page opening. Only if it is still loading, or failed to load at all, does this file\'s own astronomy-engine-based calculation below run instead, as an automatic, seamless fallback.'],
+  ['0. PRIMARY ENGINE: Swiss Ephemeris WebAssembly (js/swissephBridge.js) is used after its local .wasm and .data files initialize (window.SWISSEPH_READY). If initialization fails, this astronomy-engine calculation runs as the fallback. The app reports which engine was used.'],
   ['1. [Fallback engine] Astronomy-engine computes each planet\'s TROPICAL geocentric ecliptic longitude (0-360°) for the given date/time, entirely offline from its built-in analytic/VSOP87 models — no network call is made.'],
   ['2. Parashari (classical Vedic) astrology uses the SIDEREAL zodiac, offset from the tropical zodiac by the "ayanamsa" (precession of the equinoxes). This app uses the Lahiri ayanamsa, the most common choice for Parashari practice.'],
   ['3. [Fallback engine] Sidereal longitude = Tropical longitude - Ayanamsa (wrapped to 0-360°). Swiss Ephemeris computes this natively via its own sidereal mode instead.'],
   ['4. Rahu and Ketu are not physical planets — they are the Moon\'s two orbital nodes. This app computes the MEAN ascending node (Rahu), the smoothed long-term-average node position (the standard choice in most classical Parashari software), rather than the instantaneous true node. Ketu is exactly 180° opposite it.'],
   [''],
-  ['Caveat: Ayanamsa choice (Lahiri here) is the single biggest source of disagreement between different Vedic software — if your other software uses a different ayanamsa, sign placements may shift by up to ~1°. Swiss Ephemeris here is licensed AGPL-3.0-or-later — fine for this app\'s personal, single-user, non-distributed use, but revisit before ever sharing or hosting this app for others.']
+  ['Caveat: Ayanamsa choice (Lahiri here) can change results relative to software using another setting. Review the included Swiss Ephemeris and wrapper licensing before distribution, hosting for others, or commercial use; do not infer a license exemption from this code comment.']
 ];
 
 function lahiriAyanamsaDegrees(date) {
