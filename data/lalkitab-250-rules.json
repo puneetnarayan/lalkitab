@@ -1,0 +1,3100 @@
+{
+ "schemaVersion": 1,
+ "name": "250 Rules of Lal Kitab (owner-supplied compilation)",
+ "provenance": {
+  "origin": "Supplied by the project owner as 'lal_kitab_250_rules.md' (copy in docs/LAL_KITAB_250_RULES.md)",
+  "evidenceType": "user-supplied-secondary-compilation",
+  "note": "The file itself says the rules are consolidated from several editions and secondary web sources and must be cross-verified with the original texts or authoritative translations and reviewed by a qualified Lal Kitab scholar. No page references are given. Shown in the app as an unverified compilation."
+ },
+ "pucca": {
+  "Sun": [
+   1
+  ],
+  "Moon": [
+   4
+  ],
+  "Mars": [
+   3
+  ],
+  "Mercury": [
+   7
+  ],
+  "Jupiter": [
+   5
+  ],
+  "Venus": [
+   12
+  ],
+  "Saturn": [
+   8
+  ],
+  "Rahu": [
+   12
+  ],
+  "Ketu": [
+   6
+  ]
+ },
+ "aspects": [
+  {
+   "a": 1,
+   "b": 7,
+   "percent": 100
+  },
+  {
+   "a": 4,
+   "b": 10,
+   "percent": 100
+  },
+  {
+   "a": 5,
+   "b": 9,
+   "percent": 50
+  },
+  {
+   "a": 3,
+   "b": 11,
+   "percent": 50
+  },
+  {
+   "a": 2,
+   "b": 6,
+   "percent": 25
+  },
+  {
+   "a": 8,
+   "b": 2,
+   "percent": 25
+  },
+  {
+   "a": 2,
+   "b": 12,
+   "percent": 25
+  }
+ ],
+ "artificialPlanets": [
+  {
+   "pair": [
+    "Mercury",
+    "Venus"
+   ],
+   "forms": "Artificial Sun",
+   "rule": 84
+  },
+  {
+   "pair": [
+    "Sun",
+    "Jupiter"
+   ],
+   "forms": "Artificial Moon",
+   "rule": 85
+  },
+  {
+   "pair": [
+    "Sun",
+    "Mercury"
+   ],
+   "forms": "Artificial Mars",
+   "rule": 86
+  },
+  {
+   "pair": [
+    "Jupiter",
+    "Rahu"
+   ],
+   "forms": "Artificial Mercury",
+   "rule": 87
+  },
+  {
+   "pair": [
+    "Sun",
+    "Venus"
+   ],
+   "forms": "Artificial Jupiter",
+   "rule": 88
+  },
+  {
+   "pair": [
+    "Mars",
+    "Saturn"
+   ],
+   "forms": "Artificial Rahu (exalted form)",
+   "rule": 90
+  },
+  {
+   "pair": [
+    "Sun",
+    "Saturn"
+   ],
+   "forms": "Artificial Rahu (debilitated form)",
+   "rule": 90
+  },
+  {
+   "pair": [
+    "Venus",
+    "Saturn"
+   ],
+   "forms": "Artificial Ketu (exalted form)",
+   "rule": 91
+  },
+  {
+   "pair": [
+    "Moon",
+    "Saturn"
+   ],
+   "forms": "Artificial Ketu (debilitated form)",
+   "rule": 91
+  }
+ ],
+ "inconsistencies": [
+  "Pucca Ghar (rule 3) differs from the earlier owner-supplied rulebook and from both web-sourced tables (for example Mars 3 vs 1/3/8, Jupiter 5 vs 2/5/9/12, Venus 12 vs 7, Saturn 8 vs 8/10/11, Rahu 12 in both here and elsewhere, Ketu 6).",
+  "Aspects: this file lists 2-12 at 25% and no 6-12 link; the earlier rulebook had 6->12 at 25% and 3->9. Rule 37 says 8 and 2 are mutual at 25%; rule 43 treats 8 as aspecting 2.",
+  "Rules 118 and 149 state the same Saturn-in-8th with empty 2nd house prohibition twice, and rules 125 and 231 repeat the Saturn-1/Jupiter-5 copper-coin warning.",
+  "Rule 71 defines a sleeping planet as being in a \"non-dominating house\" without defining that term; rules 77-79 add exceptions. The app treats \"not in its Pucca Ghar\" as non-dominating (assumption).",
+  "Rule 80 calls a planet \"blind\" when an enemy occupies its Pucca Ghar, while rule 21 calls an empty house \"blind\"; the earlier rulebook used different meanings again.",
+  "Rule 6 says an enemy in the Pucca Ghar destroys results of the house where the displaced planet sits; rule 80 describes the same configuration as the planet being blind.",
+  "Rule 67 says Rahu and Ketu cannot share a house, yet rule 89 uses Rahu + Ketu as an artificial Venus.",
+  "Rule 5 refers to own, exalted and debilitated houses but no table for them is supplied."
+ ],
+ "rules": [
+  {
+   "id": "LK250-001",
+   "number": 1,
+   "section": "A",
+   "sectionName": "Foundational principles",
+   "text": "Lal Kitab uses the Kal Purush Kundali (fixed zodiac chart) — the 1st house is always Aries, the 2nd is Taurus, and so on up to the 12th house being Pisces, regardless of the native's birth ascendant.",
+   "kind": "advisory"
+  },
+  {
+   "id": "LK250-002",
+   "number": 2,
+   "section": "A",
+   "sectionName": "Foundational principles",
+   "text": "Planetary effects are determined by the HOUSE a planet occupies, not the zodiac sign (rashi). The house number is the primary determinant of results.",
+   "kind": "advisory"
+  },
+  {
+   "id": "LK250-003",
+   "number": 3,
+   "section": "A",
+   "sectionName": "Foundational principles",
+   "text": "Each planet has a Pucca Ghar (permanent house) where it gives its strongest and most natural results: Sun → House 1; Moon → House 4; Mars → House 3; Mercury → House 7; Jupiter → House 5; Venus → House 12; Saturn → House 8; Rahu → House 12; Ketu → House 6;",
+   "kind": "advisory",
+   "puccaTable": true
+  },
+  {
+   "id": "LK250-004",
+   "number": 4,
+   "section": "A",
+   "sectionName": "Foundational principles",
+   "text": "A planet placed in its Pucca Ghar generally gives good results, regardless of other factors.",
+   "kind": "fn",
+   "domain": "strength",
+   "fn": "puccaGhar"
+  },
+  {
+   "id": "LK250-005",
+   "number": 5,
+   "section": "A",
+   "sectionName": "Foundational principles",
+   "text": "A planet in its own house or exalted house gives good results. A planet in an inimical or debilitated house gives bad results.",
+   "kind": "cannot",
+   "reason": "Own-sign, exaltation and debilitation tables are not supplied in this rule file."
+  },
+  {
+   "id": "LK250-006",
+   "number": 6,
+   "section": "A",
+   "sectionName": "Foundational principles",
+   "text": "If a planet is NOT in its Pucca Ghar, and its Pucca Ghar is occupied by an enemy planet, then that enemy planet will destroy the good results of the house where the displaced planet sits.",
+   "kind": "fn",
+   "domain": "strength",
+   "fn": "puccaEnemy",
+   "needs": "enemyTable"
+  },
+  {
+   "id": "LK250-007",
+   "number": 7,
+   "section": "A",
+   "sectionName": "Foundational principles",
+   "text": "The 1st house represents the ruler (king), the 7th house represents the minister, and the 11th house represents the foot of the ruler. The balance of planets across these three houses determines authority and obedience.",
+   "kind": "advisory"
+  },
+  {
+   "id": "LK250-008",
+   "number": 8,
+   "section": "A",
+   "sectionName": "Foundational principles",
+   "text": "More planets in the 7th house than the 1st house indicates the ruler (native) does not have adequate control over the minister (partnerships, spouse).",
+   "kind": "cond",
+   "when": {
+    "cmp": [
+     7,
+     ">",
+     1
+    ]
+   },
+   "domain": "partnership"
+  },
+  {
+   "id": "LK250-009",
+   "number": 9,
+   "section": "A",
+   "sectionName": "Foundational principles",
+   "text": "If planets in the 11th house are inimical to planets in the 1st house, the results of the 11th house (gains, income) will be adversely affected.",
+   "kind": "fn",
+   "domain": "wealth",
+   "fn": "eleven_vs_one",
+   "needs": "enemyTable"
+  },
+  {
+   "id": "LK250-010",
+   "number": 10,
+   "section": "A",
+   "sectionName": "Foundational principles",
+   "text": "The planets of the 8th house act as the \"eyes\" — they guide and control the planets of the 7th house (minister).",
+   "kind": "advisory"
+  },
+  {
+   "id": "LK250-011",
+   "number": 11,
+   "section": "A",
+   "sectionName": "Foundational principles",
+   "text": "If planets of the 1st and 8th houses are friendly, the planets of the 7th house are controlled well. If they are inimical, the 7th house results become unpredictable.",
+   "kind": "fn",
+   "domain": "partnership",
+   "fn": "one_eight_friend",
+   "needs": "enemyTable"
+  },
+  {
+   "id": "LK250-012",
+   "number": 12,
+   "section": "A",
+   "sectionName": "Foundational principles",
+   "text": "No zodiac sign (rashi) changes the fundamental nature of a house in Lal Kitab. House 1 is always the house of self, House 7 is always partnerships, etc.",
+   "kind": "advisory"
+  },
+  {
+   "id": "LK250-013",
+   "number": 13,
+   "section": "A",
+   "sectionName": "Foundational principles",
+   "text": "Lal Kitab uses 9 planets: Sun, Moon, Mars, Mercury, Jupiter, Venus, Saturn, Rahu, and Ketu. Uranus, Neptune, and Pluto are not considered.",
+   "kind": "advisory"
+  },
+  {
+   "id": "LK250-014",
+   "number": 14,
+   "section": "A",
+   "sectionName": "Foundational principles",
+   "text": "Rahu and Ketu are given massive importance in Lal Kitab, unlike some Vedic traditions. They have their own exaltation houses, sleeping rules, and dedicated remedies.",
+   "kind": "advisory"
+  },
+  {
+   "id": "LK250-015",
+   "number": 15,
+   "section": "A",
+   "sectionName": "Foundational principles",
+   "text": "The birth chart (Janma Teva) is the foundation, but Lal Kitab also uses the Dharmi Teva (fixed chart) and Varshphal (annual chart) for predictions.",
+   "kind": "advisory"
+  },
+  {
+   "id": "LK250-016",
+   "number": 16,
+   "section": "A",
+   "sectionName": "Foundational principles",
+   "text": "Lal Kitab does not use Navamsa (D9) or other divisional charts used in Parashari astrology.",
+   "kind": "advisory"
+  },
+  {
+   "id": "LK250-017",
+   "number": 17,
+   "section": "A",
+   "sectionName": "Foundational principles",
+   "text": "The concept of Mahadasha in Lal Kitab differs from Vimshottari Dasha of Vedic astrology. Lal Kitab uses its own planetary period system.",
+   "kind": "advisory"
+  },
+  {
+   "id": "LK250-018",
+   "number": 18,
+   "section": "A",
+   "sectionName": "Foundational principles",
+   "text": "Lal Kitab integrates palmistry (Samudrik Shastra) with chart reading — lines on the palm can confirm or supplement chart analysis.",
+   "kind": "advisory"
+  },
+  {
+   "id": "LK250-019",
+   "number": 19,
+   "section": "A",
+   "sectionName": "Foundational principles",
+   "text": "Each house is associated with specific body parts, and afflictions to that house affect the corresponding body part.",
+   "kind": "advisory"
+  },
+  {
+   "id": "LK250-020",
+   "number": 20,
+   "section": "A",
+   "sectionName": "Foundational principles",
+   "text": "The Lagna (ascendant) in Lal Kitab is always Aries (Mesh) for purposes of house analysis, regardless of the actual rising sign at birth.",
+   "kind": "advisory"
+  },
+  {
+   "id": "LK250-021",
+   "number": 21,
+   "section": "A",
+   "sectionName": "Foundational principles",
+   "text": "A house with no planet in it is considered \"blind\" (andha khana) — it does not actively produce results on its own.",
+   "kind": "fn",
+   "domain": "structure",
+   "fn": "blindHouses"
+  },
+  {
+   "id": "LK250-022",
+   "number": 22,
+   "section": "A",
+   "sectionName": "Foundational principles",
+   "text": "A blind (empty) house borrows results from the planet that owns it and the planets that aspect it.",
+   "kind": "advisory"
+  },
+  {
+   "id": "LK250-023",
+   "number": 23,
+   "section": "A",
+   "sectionName": "Foundational principles",
+   "text": "Each planet has an \"activation age\" — a specific year in the native's life when the planet's effects become pronounced.",
+   "kind": "cannot",
+   "reason": "The activation ages are not listed in this rule file."
+  },
+  {
+   "id": "LK250-024",
+   "number": 24,
+   "section": "A",
+   "sectionName": "Foundational principles",
+   "text": "Remedies (upay/totke) must be performed continuously for 43 days without a break to be effective.",
+   "kind": "advisory"
+  },
+  {
+   "id": "LK250-025",
+   "number": 25,
+   "section": "A",
+   "sectionName": "Foundational principles",
+   "text": "Remedies should be performed one at a time. Doing multiple remedies simultaneously can create conflicts and reduce effectiveness.",
+   "kind": "advisory"
+  },
+  {
+   "id": "LK250-026",
+   "number": 26,
+   "section": "A",
+   "sectionName": "Foundational principles",
+   "text": "Lal Kitab explicitly warns against wearing gemstones without specific chart-based prescription. Random gem-wearing can cause harm.",
+   "kind": "advisory"
+  },
+  {
+   "id": "LK250-027",
+   "number": 27,
+   "section": "A",
+   "sectionName": "Foundational principles",
+   "text": "The native should never announce or publicize the remedies they are performing — remedies work best when done quietly and with discipline.",
+   "kind": "advisory"
+  },
+  {
+   "id": "LK250-028",
+   "number": 28,
+   "section": "A",
+   "sectionName": "Foundational principles",
+   "text": "Lal Kitab emphasizes that planetary ill-effects are karmic debts (rin) from past lives or ancestral actions.",
+   "kind": "advisory"
+  },
+  {
+   "id": "LK250-029",
+   "number": 29,
+   "section": "A",
+   "sectionName": "Foundational principles",
+   "text": "Ancestral customs and rituals should be strictly followed — abandoning them invites misfortune according to Lal Kitab.",
+   "kind": "advisory"
+  },
+  {
+   "id": "LK250-030",
+   "number": 30,
+   "section": "A",
+   "sectionName": "Foundational principles",
+   "text": "The birth chart is considered a map of past karma, and remedies are tools to settle karmic debts, not to override destiny.",
+   "kind": "advisory"
+  },
+  {
+   "id": "LK250-031",
+   "number": 31,
+   "section": "B",
+   "sectionName": "Aspect (drishti) rules",
+   "text": "In Lal Kitab, aspects are house-to-house (not planet-to-planet as in Vedic astrology). Houses aspect other houses.",
+   "kind": "advisory"
+  },
+  {
+   "id": "LK250-032",
+   "number": 32,
+   "section": "B",
+   "sectionName": "Aspect (drishti) rules",
+   "text": "Houses 1 and 7 have full (100%) mutual aspect on each other.",
+   "kind": "advisory",
+   "aspectTable": true
+  },
+  {
+   "id": "LK250-033",
+   "number": 33,
+   "section": "B",
+   "sectionName": "Aspect (drishti) rules",
+   "text": "Houses 4 and 10 have full (100%) mutual aspect on each other.",
+   "kind": "advisory",
+   "aspectTable": true
+  },
+  {
+   "id": "LK250-034",
+   "number": 34,
+   "section": "B",
+   "sectionName": "Aspect (drishti) rules",
+   "text": "Houses 5 and 9 have partial (50%) mutual aspect on each other.",
+   "kind": "advisory",
+   "aspectTable": true
+  },
+  {
+   "id": "LK250-035",
+   "number": 35,
+   "section": "B",
+   "sectionName": "Aspect (drishti) rules",
+   "text": "Houses 3 and 11 have partial (50%) mutual aspect on each other.",
+   "kind": "advisory",
+   "aspectTable": true
+  },
+  {
+   "id": "LK250-036",
+   "number": 36,
+   "section": "B",
+   "sectionName": "Aspect (drishti) rules",
+   "text": "Houses 2 and 6 have quarter (25%) mutual aspect on each other.",
+   "kind": "advisory",
+   "aspectTable": true
+  },
+  {
+   "id": "LK250-037",
+   "number": 37,
+   "section": "B",
+   "sectionName": "Aspect (drishti) rules",
+   "text": "Houses 8 and 2 have quarter (25%) mutual aspect on each other.",
+   "kind": "advisory",
+   "aspectTable": true
+  },
+  {
+   "id": "LK250-038",
+   "number": 38,
+   "section": "B",
+   "sectionName": "Aspect (drishti) rules",
+   "text": "Houses 2 and 12 have quarter (25%) aspect on each other.",
+   "kind": "advisory",
+   "aspectTable": true
+  },
+  {
+   "id": "LK250-039",
+   "number": 39,
+   "section": "B",
+   "sectionName": "Aspect (drishti) rules",
+   "text": "Two planets that fully aspect each other come closer in influence and reinforce each other's effects.",
+   "kind": "advisory"
+  },
+  {
+   "id": "LK250-040",
+   "number": 40,
+   "section": "B",
+   "sectionName": "Aspect (drishti) rules",
+   "text": "Two planets with partial aspect divide their powers between each other.",
+   "kind": "advisory"
+  },
+  {
+   "id": "LK250-041",
+   "number": 41,
+   "section": "B",
+   "sectionName": "Aspect (drishti) rules",
+   "text": "Two planets with quarter aspect exchange only a small portion of their energies.",
+   "kind": "advisory"
+  },
+  {
+   "id": "LK250-042",
+   "number": 42,
+   "section": "B",
+   "sectionName": "Aspect (drishti) rules",
+   "text": "Unlike Vedic astrology, Lal Kitab does not assign special aspects to Mars (4th, 8th), Jupiter (5th, 9th), or Saturn (3rd, 10th). All planets follow the house-based aspect rules.",
+   "kind": "advisory"
+  },
+  {
+   "id": "LK250-043",
+   "number": 43,
+   "section": "B",
+   "sectionName": "Aspect (drishti) rules",
+   "text": "The planets of the 8th house aspect the 2nd house and thereby affect its results (financial matters, family).",
+   "kind": "fn",
+   "domain": "wealth",
+   "fn": "eight_to_two"
+  },
+  {
+   "id": "LK250-044",
+   "number": 44,
+   "section": "B",
+   "sectionName": "Aspect (drishti) rules",
+   "text": "The effects of 8th house aspects on the 2nd house are modified by the planets of the 11th house — favorably if friendly, unfavorably if inimical.",
+   "kind": "fn",
+   "domain": "wealth",
+   "fn": "eleven_modifies_2",
+   "needs": "enemyTable"
+  },
+  {
+   "id": "LK250-045",
+   "number": 45,
+   "section": "B",
+   "sectionName": "Aspect (drishti) rules",
+   "text": "The planets of the 2nd house aspect the 6th house and affect its results (enemies, debts, illness).",
+   "kind": "fn",
+   "domain": "health",
+   "fn": "two_to_six"
+  },
+  {
+   "id": "LK250-046",
+   "number": 46,
+   "section": "B",
+   "sectionName": "Aspect (drishti) rules",
+   "text": "Each planet in the 5th house from another planet will help that other planet, regardless of natural friendship or enmity.",
+   "kind": "fn",
+   "domain": "support",
+   "fn": "fifthFrom"
+  },
+  {
+   "id": "LK250-047",
+   "number": 47,
+   "section": "B",
+   "sectionName": "Aspect (drishti) rules",
+   "text": "Two planets aspecting each other according to Lal Kitab rules are considered to be in a normal functioning state.",
+   "kind": "advisory"
+  },
+  {
+   "id": "LK250-048",
+   "number": 48,
+   "section": "B",
+   "sectionName": "Aspect (drishti) rules",
+   "text": "The aspect relationship can alter the natural friendship/enmity between planets. For example, friendly planets aspecting can become even more supportive; enemies aspecting may neutralize some hostility.",
+   "kind": "advisory"
+  },
+  {
+   "id": "LK250-049",
+   "number": 49,
+   "section": "B",
+   "sectionName": "Aspect (drishti) rules",
+   "text": "There is no concept of \"negative aspect\" or \"malefic aspect\" on houses in Lal Kitab — aspects simply create connections and exchanges.",
+   "kind": "advisory"
+  },
+  {
+   "id": "LK250-050",
+   "number": 50,
+   "section": "B",
+   "sectionName": "Aspect (drishti) rules",
+   "text": "The 1st house planets aspect the 7th house planets — this is the most powerful aspect and directly determines the quality of partnerships and marriage.",
+   "kind": "fn",
+   "domain": "partnership",
+   "fn": "one_to_seven"
+  },
+  {
+   "id": "LK250-051",
+   "number": 51,
+   "section": "C",
+   "sectionName": "Planetary conjunction rules",
+   "text": "If two or more inimical planets occupy a single house, they will NOT behave as enemies within that house. Their conjunction does not affect their individual results.",
+   "kind": "fn",
+   "domain": "conjunction",
+   "fn": "inimicalTogether",
+   "needs": "enemyTable"
+  },
+  {
+   "id": "LK250-052",
+   "number": 52,
+   "section": "C",
+   "sectionName": "Planetary conjunction rules",
+   "text": "However, inimical planets in the same house still affect each other's influences to some degree — they show independent results, not combined ones.",
+   "kind": "advisory"
+  },
+  {
+   "id": "LK250-053",
+   "number": 53,
+   "section": "C",
+   "sectionName": "Planetary conjunction rules",
+   "text": "Friendly planets together in a house become extremely friendly and help each other produce good and auspicious results.",
+   "kind": "fn",
+   "domain": "conjunction",
+   "fn": "friendlyTogether",
+   "needs": "enemyTable"
+  },
+  {
+   "id": "LK250-054",
+   "number": 54,
+   "section": "C",
+   "sectionName": "Planetary conjunction rules",
+   "text": "If a female planet (Moon, Venus) is placed with Saturn in any house, and both are aspected by another planet, the aspecting planet becomes afflicted.",
+   "kind": "fn",
+   "domain": "conjunction",
+   "fn": "femaleSaturn"
+  },
+  {
+   "id": "LK250-055",
+   "number": 55,
+   "section": "C",
+   "sectionName": "Planetary conjunction rules",
+   "text": "The afflicted aspecting planet will adversely affect the persons and relatives represented by its karaka significations.",
+   "kind": "cannot",
+   "reason": "\"Afflicted\" / \"weak\" is not defined in this rule file, so this cannot be tested."
+  },
+  {
+   "id": "LK250-056",
+   "number": 56,
+   "section": "C",
+   "sectionName": "Planetary conjunction rules",
+   "text": "Sun and Moon together in a house make Moon weak (Moon loses its independent potency near the Sun, similar to Amavasya concept).",
+   "kind": "cond",
+   "when": {
+    "together": [
+     "Sun",
+     "Moon"
+    ]
+   },
+   "domain": "conjunction"
+  },
+  {
+   "id": "LK250-057",
+   "number": 57,
+   "section": "C",
+   "sectionName": "Planetary conjunction rules",
+   "text": "Sun and Saturn together create a \"blind Sun\" (Andha Surya) — the Sun's natural beneficence is blocked.",
+   "kind": "cond",
+   "when": {
+    "together": [
+     "Sun",
+     "Saturn"
+    ]
+   },
+   "domain": "conjunction"
+  },
+  {
+   "id": "LK250-058",
+   "number": 58,
+   "section": "C",
+   "sectionName": "Planetary conjunction rules",
+   "text": "Mars and Saturn together form a \"venomous\" (Zaherila) combination — this is one of the most feared conjunctions in Lal Kitab.",
+   "kind": "cond",
+   "when": {
+    "together": [
+     "Mars",
+     "Saturn"
+    ]
+   },
+   "domain": "conjunction"
+  },
+  {
+   "id": "LK250-059",
+   "number": 59,
+   "section": "C",
+   "sectionName": "Planetary conjunction rules",
+   "text": "Jupiter and Sun together, Jupiter and Mercury together, or Jupiter and Saturn together — when occupying any house jointly — carry no relevance to knowledge about father or father's property.",
+   "kind": "cond",
+   "when": {
+    "any": [
+     {
+      "together": [
+       "Jupiter",
+       "Sun"
+      ]
+     },
+     {
+      "together": [
+       "Jupiter",
+       "Mercury"
+      ]
+     },
+     {
+      "together": [
+       "Jupiter",
+       "Saturn"
+      ]
+     }
+    ]
+   },
+   "domain": "conjunction"
+  },
+  {
+   "id": "LK250-060",
+   "number": 60,
+   "section": "C",
+   "sectionName": "Planetary conjunction rules",
+   "text": "Sun as lord of the 5th, Mercury as lord of 3rd and 6th, Jupiter as lord of 9th, and Saturn as lord of 10th are karakas (significators) of father and father's property.",
+   "kind": "advisory"
+  },
+  {
+   "id": "LK250-061",
+   "number": 61,
+   "section": "C",
+   "sectionName": "Planetary conjunction rules",
+   "text": "Mercury in the 12th house causes issues related to high blood pressure (a specific Lal Kitab health rule).",
+   "kind": "cond",
+   "when": {
+    "in": [
+     "Mercury",
+     [
+      12
+     ]
+    ]
+   },
+   "domain": "health"
+  },
+  {
+   "id": "LK250-062",
+   "number": 62,
+   "section": "C",
+   "sectionName": "Planetary conjunction rules",
+   "text": "Mars in the 10th house can cause serious harm to sons — Lal Kitab warns of sons dying one after another in extreme cases.",
+   "kind": "cond",
+   "when": {
+    "in": [
+     "Mars",
+     [
+      10
+     ]
+    ]
+   },
+   "domain": "children",
+   "sensitive": true
+  },
+  {
+   "id": "LK250-063",
+   "number": 63,
+   "section": "C",
+   "sectionName": "Planetary conjunction rules",
+   "text": "Three or more planets in one house create a Graha Panchayat (planetary council) that must be analyzed as a collective unit.",
+   "kind": "cond",
+   "when": {
+    "cluster": 3
+   },
+   "domain": "conjunction"
+  },
+  {
+   "id": "LK250-064",
+   "number": 64,
+   "section": "C",
+   "sectionName": "Planetary conjunction rules",
+   "text": "When three planets occupy a single house, the middle planet (by degree or placement) acts as mediator between the other two.",
+   "kind": "cannot",
+   "reason": "The middle planet / strength comparison needs details the rule file does not define."
+  },
+  {
+   "id": "LK250-065",
+   "number": 65,
+   "section": "C",
+   "sectionName": "Planetary conjunction rules",
+   "text": "Two benefic planets conjunct amplify each other's goodness. Two malefic planets conjunct amplify each other's malefic potential (though they may not harm each other directly within the house).",
+   "kind": "cannot",
+   "reason": "\"Malefic\" is not defined in this rule file, so this cannot be tested."
+  },
+  {
+   "id": "LK250-066",
+   "number": 66,
+   "section": "C",
+   "sectionName": "Planetary conjunction rules",
+   "text": "A planet conjunct with its artificial planet equivalent gains extra strength.",
+   "kind": "cannot",
+   "reason": "The middle planet / strength comparison needs details the rule file does not define."
+  },
+  {
+   "id": "LK250-067",
+   "number": 67,
+   "section": "C",
+   "sectionName": "Planetary conjunction rules",
+   "text": "Rahu and Ketu in the same house is impossible astronomically (they are always 180° apart), but Lal Kitab has rules for when their influences combine through other configurations.",
+   "kind": "advisory"
+  },
+  {
+   "id": "LK250-068",
+   "number": 68,
+   "section": "C",
+   "sectionName": "Planetary conjunction rules",
+   "text": "When all planets are clustered within a few houses, leaving many houses blind, the native's life becomes unbalanced — overactive in some areas, completely stagnant in others.",
+   "kind": "fn",
+   "domain": "structure",
+   "fn": "clusterBlind"
+  },
+  {
+   "id": "LK250-069",
+   "number": 69,
+   "section": "C",
+   "sectionName": "Planetary conjunction rules",
+   "text": "A lone planet in a house (no conjunction, no aspect) behaves purely according to its own nature and the house's significations.",
+   "kind": "fn",
+   "domain": "structure",
+   "fn": "lonePlanet"
+  },
+  {
+   "id": "LK250-070",
+   "number": 70,
+   "section": "C",
+   "sectionName": "Planetary conjunction rules",
+   "text": "Jupiter conjunct Rahu in any house creates an artificial Mercury — this can substitute for Mercury's effects.",
+   "kind": "cond",
+   "when": {
+    "together": [
+     "Jupiter",
+     "Rahu"
+    ]
+   },
+   "domain": "artificial-planet"
+  },
+  {
+   "id": "LK250-071",
+   "number": 71,
+   "section": "D",
+   "sectionName": "Sleeping, blind and artificial planets",
+   "text": "A sleeping planet (Soya Graha) is one that sits in a non-dominating house with no aspects from other planets — it is present but functionally dormant.",
+   "kind": "fn",
+   "domain": "structure",
+   "fn": "sleeping"
+  },
+  {
+   "id": "LK250-072",
+   "number": 72,
+   "section": "D",
+   "sectionName": "Sleeping, blind and artificial planets",
+   "text": "A sleeping planet produces neither positive nor negative results until it is \"awakened.\"",
+   "kind": "advisory"
+  },
+  {
+   "id": "LK250-073",
+   "number": 73,
+   "section": "D",
+   "sectionName": "Sleeping, blind and artificial planets",
+   "text": "Sleeping planets are extremely common and are the primary reason remedies fail — people perform remedies for an inactive planet.",
+   "kind": "advisory"
+  },
+  {
+   "id": "LK250-074",
+   "number": 74,
+   "section": "D",
+   "sectionName": "Sleeping, blind and artificial planets",
+   "text": "The remedy for a sleeping planet is an \"awakening upay\" — a specific 43-day action tied to the planet's essential nature.",
+   "kind": "cannot",
+   "reason": "The 43-day awakening action for each planet is not specified."
+  },
+  {
+   "id": "LK250-075",
+   "number": 75,
+   "section": "D",
+   "sectionName": "Sleeping, blind and artificial planets",
+   "text": "Once a sleeping planet is awakened, other remedies (for affliction or rin) can be layered on top.",
+   "kind": "advisory"
+  },
+  {
+   "id": "LK250-076",
+   "number": 76,
+   "section": "D",
+   "sectionName": "Sleeping, blind and artificial planets",
+   "text": "All 9 planets exist in every chart — no planet is truly absent. What appears missing is simply dormant.",
+   "kind": "fn",
+   "domain": "structure",
+   "fn": "allPlanetsPresent"
+  },
+  {
+   "id": "LK250-077",
+   "number": 77,
+   "section": "D",
+   "sectionName": "Sleeping, blind and artificial planets",
+   "text": "A planet in its Pucca Ghar (permanent house) is never sleeping — it is always active.",
+   "kind": "fn",
+   "domain": "structure",
+   "fn": "puccaNeverSleeping"
+  },
+  {
+   "id": "LK250-078",
+   "number": 78,
+   "section": "D",
+   "sectionName": "Sleeping, blind and artificial planets",
+   "text": "A planet aspected by at least one other planet is not sleeping — the aspect activates it.",
+   "kind": "fn",
+   "domain": "structure",
+   "fn": "aspectedNotSleeping"
+  },
+  {
+   "id": "LK250-079",
+   "number": 79,
+   "section": "D",
+   "sectionName": "Sleeping, blind and artificial planets",
+   "text": "A planet conjunct with another planet in the same house is not sleeping — the company activates it.",
+   "kind": "fn",
+   "domain": "structure",
+   "fn": "conjunctNotSleeping"
+  },
+  {
+   "id": "LK250-080",
+   "number": 80,
+   "section": "D",
+   "sectionName": "Sleeping, blind and artificial planets",
+   "text": "A blind planet (Andha Graha) is one whose Pucca Ghar is occupied by an enemy — it can see but cannot act effectively.",
+   "kind": "fn",
+   "domain": "structure",
+   "fn": "blindPlanet",
+   "needs": "enemyTable"
+  },
+  {
+   "id": "LK250-081",
+   "number": 81,
+   "section": "D",
+   "sectionName": "Sleeping, blind and artificial planets",
+   "text": "Remedies for blind planets require strengthening the planet AND weakening the enemy in its Pucca Ghar simultaneously.",
+   "kind": "advisory"
+  },
+  {
+   "id": "LK250-082",
+   "number": 82,
+   "section": "D",
+   "sectionName": "Sleeping, blind and artificial planets",
+   "text": "An awakened planet (Jagrit Graha) is one in a strong position — in its Pucca Ghar, own house, or exalted house with supporting aspects.",
+   "kind": "cannot",
+   "reason": "Own-sign, exaltation and debilitation tables are not supplied in this rule file."
+  },
+  {
+   "id": "LK250-083",
+   "number": 83,
+   "section": "D",
+   "sectionName": "Sleeping, blind and artificial planets",
+   "text": "Lal Kitab uses the concept of Artificial Planets (Banawati / Masnoi Graha) — two planets together can mimic the effect of a third planet.",
+   "kind": "advisory"
+  },
+  {
+   "id": "LK250-084",
+   "number": 84,
+   "section": "D",
+   "sectionName": "Sleeping, blind and artificial planets",
+   "text": "Mercury + Venus together = Artificial Sun.",
+   "kind": "cond",
+   "when": {
+    "together": [
+     "Mercury",
+     "Venus"
+    ]
+   },
+   "domain": "artificial-planet"
+  },
+  {
+   "id": "LK250-085",
+   "number": 85,
+   "section": "D",
+   "sectionName": "Sleeping, blind and artificial planets",
+   "text": "Sun + Jupiter together = Artificial Moon.",
+   "kind": "cond",
+   "when": {
+    "together": [
+     "Sun",
+     "Jupiter"
+    ]
+   },
+   "domain": "artificial-planet"
+  },
+  {
+   "id": "LK250-086",
+   "number": 86,
+   "section": "D",
+   "sectionName": "Sleeping, blind and artificial planets",
+   "text": "Sun + Mercury together = Artificial Mars.",
+   "kind": "cond",
+   "when": {
+    "together": [
+     "Sun",
+     "Mercury"
+    ]
+   },
+   "domain": "artificial-planet"
+  },
+  {
+   "id": "LK250-087",
+   "number": 87,
+   "section": "D",
+   "sectionName": "Sleeping, blind and artificial planets",
+   "text": "Jupiter + Rahu together = Artificial Mercury.",
+   "kind": "cond",
+   "when": {
+    "together": [
+     "Jupiter",
+     "Rahu"
+    ]
+   },
+   "domain": "artificial-planet"
+  },
+  {
+   "id": "LK250-088",
+   "number": 88,
+   "section": "D",
+   "sectionName": "Sleeping, blind and artificial planets",
+   "text": "Sun + Venus together = Artificial Jupiter.",
+   "kind": "cond",
+   "when": {
+    "together": [
+     "Sun",
+     "Venus"
+    ]
+   },
+   "domain": "artificial-planet"
+  },
+  {
+   "id": "LK250-089",
+   "number": 89,
+   "section": "D",
+   "sectionName": "Sleeping, blind and artificial planets",
+   "text": "Rahu + Ketu together (in influence, not physical conjunction) = Artificial Venus.",
+   "kind": "cannot",
+   "reason": "Described as an influence, not a physical conjunction; the app cannot compute it."
+  },
+  {
+   "id": "LK250-090",
+   "number": 90,
+   "section": "D",
+   "sectionName": "Sleeping, blind and artificial planets",
+   "text": "Mars + Saturn = Artificial Rahu (exalted form). Sun + Saturn = Artificial Rahu (debilitated form).",
+   "kind": "cond",
+   "when": {
+    "any": [
+     {
+      "together": [
+       "Mars",
+       "Saturn"
+      ]
+     },
+     {
+      "together": [
+       "Sun",
+       "Saturn"
+      ]
+     }
+    ]
+   },
+   "domain": "artificial-planet"
+  },
+  {
+   "id": "LK250-091",
+   "number": 91,
+   "section": "D",
+   "sectionName": "Sleeping, blind and artificial planets",
+   "text": "Venus + Saturn = Artificial Ketu (exalted form). Moon + Saturn = Artificial Ketu (debilitated form).",
+   "kind": "cond",
+   "when": {
+    "any": [
+     {
+      "together": [
+       "Venus",
+       "Saturn"
+      ]
+     },
+     {
+      "together": [
+       "Moon",
+       "Saturn"
+      ]
+     }
+    ]
+   },
+   "domain": "artificial-planet"
+  },
+  {
+   "id": "LK250-092",
+   "number": 92,
+   "section": "D",
+   "sectionName": "Sleeping, blind and artificial planets",
+   "text": "When a primary planet is weak, its artificial planet equivalent can be used as a remedial substitute.",
+   "kind": "advisory"
+  },
+  {
+   "id": "LK250-093",
+   "number": 93,
+   "section": "D",
+   "sectionName": "Sleeping, blind and artificial planets",
+   "text": "If Mercury afflicts Jupiter, propitiating Jupiter's artificial form (Jupiter + Rahu) will strengthen Jupiter and weaken Mercury's affliction.",
+   "kind": "cannot",
+   "reason": "\"Afflicted\" / \"weak\" is not defined in this rule file, so this cannot be tested."
+  },
+  {
+   "id": "LK250-094",
+   "number": 94,
+   "section": "D",
+   "sectionName": "Sleeping, blind and artificial planets",
+   "text": "If Jupiter afflicts Mercury, propitiating Venus will help — because Sun + Venus constitute artificial Jupiter, and Venus is not Jupiter's enemy.",
+   "kind": "cannot",
+   "reason": "\"Afflicted\" is not defined in this rule file, so this cannot be tested."
+  },
+  {
+   "id": "LK250-095",
+   "number": 95,
+   "section": "D",
+   "sectionName": "Sleeping, blind and artificial planets",
+   "text": "Artificial planets are one of the most powerful tools in Lal Kitab remedial analysis — they allow indirect treatment of planetary problems.",
+   "kind": "advisory"
+  },
+  {
+   "id": "LK250-096",
+   "number": 96,
+   "section": "E",
+   "sectionName": "Karmic debt (rin)",
+   "text": "Rin (karmic debt) is the central concept of Lal Kitab — afflicted planets indicate unpaid debts from past lives or ancestral actions.",
+   "kind": "advisory"
+  },
+  {
+   "id": "LK250-097",
+   "number": 97,
+   "section": "E",
+   "sectionName": "Karmic debt (rin)",
+   "text": "There are multiple categories of Rin in Lal Kitab. The most commonly cited are: Pitra Rin, Matri Rin, Stree Rin, Atma/Swa Rin, and Dev Rin.",
+   "kind": "advisory"
+  },
+  {
+   "id": "LK250-098",
+   "number": 98,
+   "section": "E",
+   "sectionName": "Karmic debt (rin)",
+   "text": "Pitra Rin (ancestral/paternal debt) is linked to an afflicted Sun and the 9th house. It manifests as problems with authority, government, father, and self-confidence.",
+   "kind": "cannot",
+   "reason": "Debt (Rin) categories are named, but the specific planet-house signature for each is not given (rule 109 says no single placement declares a debt). Earlier unverified Rin conditions are on the Rules & Analysis tab."
+  },
+  {
+   "id": "LK250-099",
+   "number": 99,
+   "section": "E",
+   "sectionName": "Karmic debt (rin)",
+   "text": "Matri Rin (maternal debt) relates to the Moon and maternal lineage. It manifests as emotional instability, problems with mother, and lack of mental peace.",
+   "kind": "cannot",
+   "reason": "Debt (Rin) categories are named, but the specific planet-house signature for each is not given (rule 109 says no single placement declares a debt). Earlier unverified Rin conditions are on the Rules & Analysis tab."
+  },
+  {
+   "id": "LK250-100",
+   "number": 100,
+   "section": "E",
+   "sectionName": "Karmic debt (rin)",
+   "text": "Stree Rin (spouse/feminine debt) is connected to Venus and the 7th house. It manifests as marital problems, relationship failures, and financial losses through partnerships.",
+   "kind": "cannot",
+   "reason": "Debt (Rin) categories are named, but the specific planet-house signature for each is not given (rule 109 says no single placement declares a debt). Earlier unverified Rin conditions are on the Rules & Analysis tab."
+  },
+  {
+   "id": "LK250-101",
+   "number": 101,
+   "section": "E",
+   "sectionName": "Karmic debt (rin)",
+   "text": "Dev Rin (divine debt) is linked to Jupiter and the 5th/9th houses. It manifests as lack of spiritual progress, problems with children, and loss of wisdom.",
+   "kind": "cannot",
+   "reason": "Debt (Rin) categories are named, but the specific planet-house signature for each is not given (rule 109 says no single placement declares a debt). Earlier unverified Rin conditions are on the Rules & Analysis tab."
+  },
+  {
+   "id": "LK250-102",
+   "number": 102,
+   "section": "E",
+   "sectionName": "Karmic debt (rin)",
+   "text": "Atma/Swa Rin (self-debt) is karma from one's own past actions. It is linked to Saturn and manifests as delays, obstacles, and chronic suffering.",
+   "kind": "cannot",
+   "reason": "Debt (Rin) categories are named, but the specific planet-house signature for each is not given (rule 109 says no single placement declares a debt). Earlier unverified Rin conditions are on the Rules & Analysis tab."
+  },
+  {
+   "id": "LK250-103",
+   "number": 103,
+   "section": "E",
+   "sectionName": "Karmic debt (rin)",
+   "text": "Bhoomi/Dharti Rin (earth debt) is connected to land and property matters. It manifests as property disputes and losses related to real estate.",
+   "kind": "cannot",
+   "reason": "Debt (Rin) categories are named, but the specific planet-house signature for each is not given (rule 109 says no single placement declares a debt). Earlier unverified Rin conditions are on the Rules & Analysis tab."
+  },
+  {
+   "id": "LK250-104",
+   "number": 104,
+   "section": "E",
+   "sectionName": "Karmic debt (rin)",
+   "text": "Guru Rin (debt to teachers/mentors/elders) manifests as lack of guidance, failed education, and disrespect from younger people.",
+   "kind": "cannot",
+   "reason": "Debt (Rin) categories are named, but the specific planet-house signature for each is not given (rule 109 says no single placement declares a debt). Earlier unverified Rin conditions are on the Rules & Analysis tab."
+  },
+  {
+   "id": "LK250-105",
+   "number": 105,
+   "section": "E",
+   "sectionName": "Karmic debt (rin)",
+   "text": "Bhratri Rin (sibling debt) relates to debts toward brothers and siblings. It manifests as sibling conflicts and lack of support from brothers.",
+   "kind": "cannot",
+   "reason": "Debt (Rin) categories are named, but the specific planet-house signature for each is not given (rule 109 says no single placement declares a debt). Earlier unverified Rin conditions are on the Rules & Analysis tab."
+  },
+  {
+   "id": "LK250-106",
+   "number": 106,
+   "section": "E",
+   "sectionName": "Karmic debt (rin)",
+   "text": "Bhagini/Kanya Rin (sister's/daughter's debt) is indicated when Venus, Moon, or feminine planets are afflicted in the 7th, 8th, or 10th houses.",
+   "kind": "cannot",
+   "reason": "Debt (Rin) categories are named, but the specific planet-house signature for each is not given (rule 109 says no single placement declares a debt). Earlier unverified Rin conditions are on the Rules & Analysis tab."
+  },
+  {
+   "id": "LK250-107",
+   "number": 107,
+   "section": "E",
+   "sectionName": "Karmic debt (rin)",
+   "text": "Agyat/Ajat Rin (unknown/unidentified debt) is the most mysterious — it is indicated by shadow planet (Rahu/Ketu) configurations that don't fit other debt categories.",
+   "kind": "cannot",
+   "reason": "Debt (Rin) categories are named, but the specific planet-house signature for each is not given (rule 109 says no single placement declares a debt). Earlier unverified Rin conditions are on the Rules & Analysis tab."
+  },
+  {
+   "id": "LK250-108",
+   "number": 108,
+   "section": "E",
+   "sectionName": "Karmic debt (rin)",
+   "text": "Rahu and Ketu, being shadow planets (Chhaya Graha), are the primary markers of karma carried from past lives. They feature prominently wherever a debt is suspected.",
+   "kind": "advisory"
+  },
+  {
+   "id": "LK250-109",
+   "number": 109,
+   "section": "E",
+   "sectionName": "Karmic debt (rin)",
+   "text": "No single placement mechanically declares a debt — Lal Kitab reads debt from configurations (specific planets in specific houses, often multiple indicators together).",
+   "kind": "advisory"
+  },
+  {
+   "id": "LK250-110",
+   "number": 110,
+   "section": "E",
+   "sectionName": "Karmic debt (rin)",
+   "text": "Discharging Rin (debt) typically involves the entire family contributing to a single act of giving — this collective remedy is a signature Lal Kitab prescription.",
+   "kind": "advisory"
+  },
+  {
+   "id": "LK250-111",
+   "number": 111,
+   "section": "E",
+   "sectionName": "Karmic debt (rin)",
+   "text": "Remedies for Rin are acts of repayment — feeding specific animals, donating specific items, performing specific charitable acts — that clear the karmic account.",
+   "kind": "advisory"
+  },
+  {
+   "id": "LK250-112",
+   "number": 112,
+   "section": "E",
+   "sectionName": "Karmic debt (rin)",
+   "text": "Rin remedies must be performed for a continuous 43-day period without interruption.",
+   "kind": "advisory"
+  },
+  {
+   "id": "LK250-113",
+   "number": 113,
+   "section": "E",
+   "sectionName": "Karmic debt (rin)",
+   "text": "If a Rin remedy is broken before 43 days, it must be restarted from day 1.",
+   "kind": "advisory"
+  },
+  {
+   "id": "LK250-114",
+   "number": 114,
+   "section": "E",
+   "sectionName": "Karmic debt (rin)",
+   "text": "A malefic planet in a house does not automatically indicate Rin — the specific house-planet combination must match the debt's signature.",
+   "kind": "advisory"
+  },
+  {
+   "id": "LK250-115",
+   "number": 115,
+   "section": "E",
+   "sectionName": "Karmic debt (rin)",
+   "text": "Rin from the native's own past actions (Swa Rin) is typically harder to discharge than ancestral Rin.",
+   "kind": "advisory"
+  },
+  {
+   "id": "LK250-116",
+   "number": 116,
+   "section": "E",
+   "sectionName": "Karmic debt (rin)",
+   "text": "Lal Kitab holds that most chronic, recurring life problems (repeated failures, persistent illness, marital discord) are rooted in unresolved Rin.",
+   "kind": "advisory"
+  },
+  {
+   "id": "LK250-117",
+   "number": 117,
+   "section": "E",
+   "sectionName": "Karmic debt (rin)",
+   "text": "The 6th house is considered the primary house of debts (both financial and karmic).",
+   "kind": "advisory"
+  },
+  {
+   "id": "LK250-118",
+   "number": 118,
+   "section": "E",
+   "sectionName": "Karmic debt (rin)",
+   "text": "Saturn in the 8th house with an empty 2nd house creates a powerful Rin indicator — the native must not visit temples or places of worship (a counterintuitive but specific Lal Kitab rule).",
+   "kind": "cond",
+   "when": {
+    "all": [
+     {
+      "in": [
+       "Saturn",
+       [
+        8
+       ]
+      ]
+     },
+     {
+      "empty": [
+       2
+      ]
+     }
+    ]
+   },
+   "domain": "debt"
+  },
+  {
+   "id": "LK250-119",
+   "number": 119,
+   "section": "E",
+   "sectionName": "Karmic debt (rin)",
+   "text": "Rin-related problems intensify during the periods (dashas) of the afflicted planets.",
+   "kind": "cannot",
+   "reason": "Dasha / planetary period system is not described in this rule file."
+  },
+  {
+   "id": "LK250-120",
+   "number": 120,
+   "section": "E",
+   "sectionName": "Karmic debt (rin)",
+   "text": "Successfully clearing a Rin is said to bring dramatic, almost overnight positive changes in the related life area.",
+   "kind": "advisory"
+  },
+  {
+   "id": "LK250-121",
+   "number": 121,
+   "section": "F",
+   "sectionName": "House-specific rules",
+   "text": "Ketu in the 1st house makes Sun always give good results, regardless of Sun's placement.",
+   "subsection": "House 1 (Self / Aries)",
+   "kind": "cond",
+   "when": {
+    "in": [
+     "Ketu",
+     [
+      1
+     ]
+    ]
+   },
+   "domain": "self"
+  },
+  {
+   "id": "LK250-122",
+   "number": 122,
+   "section": "F",
+   "sectionName": "House-specific rules",
+   "text": "If the 1st house has no planets, the native's luck did not arrive with birth — fortune comes later through effort.",
+   "subsection": "House 1 (Self / Aries)",
+   "kind": "cond",
+   "when": {
+    "empty": [
+     1
+    ]
+   },
+   "domain": "self"
+  },
+  {
+   "id": "LK250-123",
+   "number": 123,
+   "section": "F",
+   "sectionName": "House-specific rules",
+   "text": "Sun in the 1st house (its Pucca Ghar) is always strong and gives government favor, confidence, and leadership.",
+   "subsection": "House 1 (Self / Aries)",
+   "kind": "cond",
+   "when": {
+    "in": [
+     "Sun",
+     [
+      1
+     ]
+    ]
+   },
+   "domain": "self"
+  },
+  {
+   "id": "LK250-124",
+   "number": 124,
+   "section": "F",
+   "sectionName": "House-specific rules",
+   "text": "Mars in the 1st house gives courage but can make the native aggressive and hot-tempered.",
+   "subsection": "House 1 (Self / Aries)",
+   "kind": "cond",
+   "when": {
+    "in": [
+     "Mars",
+     [
+      1
+     ]
+    ]
+   },
+   "domain": "self"
+  },
+  {
+   "id": "LK250-125",
+   "number": 125,
+   "section": "F",
+   "sectionName": "House-specific rules",
+   "text": "Saturn in the 1st house with Jupiter in the 5th house can cause death of children one after another if copper coins are given in charity.",
+   "subsection": "House 1 (Self / Aries)",
+   "kind": "cond",
+   "when": {
+    "all": [
+     {
+      "in": [
+       "Saturn",
+       [
+        1
+       ]
+      ]
+     },
+     {
+      "in": [
+       "Jupiter",
+       [
+        5
+       ]
+      ]
+     }
+    ]
+   },
+   "domain": "children",
+   "sensitive": true
+  },
+  {
+   "id": "LK250-126",
+   "number": 126,
+   "section": "F",
+   "sectionName": "House-specific rules",
+   "text": "If there is no planet in the 2nd house, the native may get a government job around the 22nd year of life.",
+   "subsection": "House 2 (Wealth, Family / Taurus)",
+   "kind": "cond",
+   "when": {
+    "empty": [
+     2
+    ]
+   },
+   "domain": "career"
+  },
+  {
+   "id": "LK250-127",
+   "number": 127,
+   "section": "F",
+   "sectionName": "House-specific rules",
+   "text": "The 2nd house governs speech, family wealth, and food habits. Afflictions here affect all three.",
+   "subsection": "House 2 (Wealth, Family / Taurus)",
+   "kind": "advisory"
+  },
+  {
+   "id": "LK250-128",
+   "number": 128,
+   "section": "F",
+   "sectionName": "House-specific rules",
+   "text": "Ketu in the 2nd house or 2nd sign strengthens Venus but debilitates Moon.",
+   "subsection": "House 2 (Wealth, Family / Taurus)",
+   "kind": "cond",
+   "when": {
+    "in": [
+     "Ketu",
+     [
+      2
+     ]
+    ]
+   },
+   "domain": "wealth"
+  },
+  {
+   "id": "LK250-129",
+   "number": 129,
+   "section": "F",
+   "sectionName": "House-specific rules",
+   "text": "The place where valuables and money are kept in the home should never be left empty — keeping it empty is inauspicious. If little wealth exists, keep dry fruits there.",
+   "subsection": "House 2 (Wealth, Family / Taurus)",
+   "kind": "advisory"
+  },
+  {
+   "id": "LK250-130",
+   "number": 130,
+   "section": "F",
+   "sectionName": "House-specific rules",
+   "text": "Mercury in the 3rd house (its own sign's house) gives intelligence but can make the native cunning.",
+   "subsection": "House 3 (Siblings, Courage / Gemini)",
+   "kind": "cond",
+   "when": {
+    "in": [
+     "Mercury",
+     [
+      3
+     ]
+    ]
+   },
+   "domain": "personality"
+  },
+  {
+   "id": "LK250-131",
+   "number": 131,
+   "section": "F",
+   "sectionName": "House-specific rules",
+   "text": "A malefic planet in the 3rd house can cause problems with younger siblings.",
+   "subsection": "House 3 (Siblings, Courage / Gemini)",
+   "kind": "cannot",
+   "reason": "\"Malefic\" is not defined in this rule file, so this cannot be tested."
+  },
+  {
+   "id": "LK250-132",
+   "number": 132,
+   "section": "F",
+   "sectionName": "House-specific rules",
+   "text": "The 3rd house also represents short journeys and communication — afflictions here cause travel problems and misunderstandings.",
+   "subsection": "House 3 (Siblings, Courage / Gemini)",
+   "kind": "advisory"
+  },
+  {
+   "id": "LK250-133",
+   "number": 133,
+   "section": "F",
+   "sectionName": "House-specific rules",
+   "text": "Moon in the 4th house (its Pucca Ghar) gives peace of mind, good property, and a caring mother.",
+   "subsection": "House 4 (Mother, Property / Cancer)",
+   "kind": "cond",
+   "when": {
+    "in": [
+     "Moon",
+     [
+      4
+     ]
+    ]
+   },
+   "domain": "home"
+  },
+  {
+   "id": "LK250-134",
+   "number": 134,
+   "section": "F",
+   "sectionName": "House-specific rules",
+   "text": "Malefic planets in the 4th house disturb domestic peace and can indicate problems with immovable property.",
+   "subsection": "House 4 (Mother, Property / Cancer)",
+   "kind": "cannot",
+   "reason": "\"Malefic\" is not defined in this rule file, so this cannot be tested."
+  },
+  {
+   "id": "LK250-135",
+   "number": 135,
+   "section": "F",
+   "sectionName": "House-specific rules",
+   "text": "Mars in the 4th house — the native should keep distance from fire and hot equipment and avoid association with disabled persons.",
+   "subsection": "House 4 (Mother, Property / Cancer)",
+   "kind": "cond",
+   "when": {
+    "in": [
+     "Mars",
+     [
+      4
+     ]
+    ]
+   },
+   "domain": "safety"
+  },
+  {
+   "id": "LK250-136",
+   "number": 136,
+   "section": "F",
+   "sectionName": "House-specific rules",
+   "text": "Jupiter in the 5th house (its Pucca Ghar) gives excellent results for children, education, wisdom, and spiritual growth.",
+   "subsection": "House 5 (Children, Education / Leo)",
+   "kind": "cond",
+   "when": {
+    "in": [
+     "Jupiter",
+     [
+      5
+     ]
+    ]
+   },
+   "domain": "children"
+  },
+  {
+   "id": "LK250-137",
+   "number": 137,
+   "section": "F",
+   "sectionName": "House-specific rules",
+   "text": "Mercury in the 5th house indicates fortune after 34 years of age.",
+   "subsection": "House 5 (Children, Education / Leo)",
+   "kind": "cond",
+   "when": {
+    "in": [
+     "Mercury",
+     [
+      5
+     ]
+    ]
+   },
+   "domain": "fortune"
+  },
+  {
+   "id": "LK250-138",
+   "number": 138,
+   "section": "F",
+   "sectionName": "House-specific rules",
+   "text": "If the 5th house is afflicted, the native should worship Lord Ganesha regularly for the welfare of children.",
+   "subsection": "House 5 (Children, Education / Leo)",
+   "kind": "cannot",
+   "reason": "\"Afflicted\" is not defined in this rule file, so this cannot be tested."
+  },
+  {
+   "id": "LK250-139",
+   "number": 139,
+   "section": "F",
+   "sectionName": "House-specific rules",
+   "text": "Maintain good moral character when Mars is in the 5th house — immoral behavior amplifies Mars's malefic effects.",
+   "subsection": "House 5 (Children, Education / Leo)",
+   "kind": "cond",
+   "when": {
+    "in": [
+     "Mars",
+     [
+      5
+     ]
+    ]
+   },
+   "domain": "conduct"
+  },
+  {
+   "id": "LK250-140",
+   "number": 140,
+   "section": "F",
+   "sectionName": "House-specific rules",
+   "text": "Ketu in the 6th house (its Pucca Ghar) gives the ability to defeat enemies and overcome obstacles.",
+   "subsection": "House 6 (Enemies, Debts, Illness / Virgo)",
+   "kind": "cond",
+   "when": {
+    "in": [
+     "Ketu",
+     [
+      6
+     ]
+    ]
+   },
+   "domain": "health"
+  },
+  {
+   "id": "LK250-141",
+   "number": 141,
+   "section": "F",
+   "sectionName": "House-specific rules",
+   "text": "Mercury in the 6th house with a weak Venus — the native should store rainwater in a glass bottle at home.",
+   "subsection": "House 6 (Enemies, Debts, Illness / Virgo)",
+   "kind": "cond",
+   "when": {
+    "in": [
+     "Mercury",
+     [
+      6
+     ]
+    ]
+   },
+   "domain": "remedy",
+   "partialNote": "Needs Venus to be \"weak\", which is not defined here."
+  },
+  {
+   "id": "LK250-142",
+   "number": 142,
+   "section": "F",
+   "sectionName": "House-specific rules",
+   "text": "Moon in the 6th house — the native must NEVER dig wells or provide drinking water facilities. Violation invites utter destruction and extreme poverty.",
+   "subsection": "House 6 (Enemies, Debts, Illness / Virgo)",
+   "kind": "cond",
+   "when": {
+    "in": [
+     "Moon",
+     [
+      6
+     ]
+    ]
+   },
+   "domain": "conduct",
+   "sensitive": true
+  },
+  {
+   "id": "LK250-143",
+   "number": 143,
+   "section": "F",
+   "sectionName": "House-specific rules",
+   "text": "The 6th house is the house of Ketu as significator — enemies, diseases, and debts are its primary significations.",
+   "subsection": "House 6 (Enemies, Debts, Illness / Virgo)",
+   "kind": "advisory"
+  },
+  {
+   "id": "LK250-144",
+   "number": 144,
+   "section": "F",
+   "sectionName": "House-specific rules",
+   "text": "Mercury in the 7th house (its Pucca Ghar) — even powerful planets like Sun, Mars, Jupiter, and Saturn in Kendra, 2nd, or 11th house cannot adversely affect the native's health.",
+   "subsection": "House 7 (Marriage, Partnerships / Libra)",
+   "kind": "cond",
+   "when": {
+    "in": [
+     "Mercury",
+     [
+      7
+     ]
+    ]
+   },
+   "domain": "health"
+  },
+  {
+   "id": "LK250-145",
+   "number": 145,
+   "section": "F",
+   "sectionName": "House-specific rules",
+   "text": "The 7th house is the most important house for marriage analysis in Lal Kitab.",
+   "subsection": "House 7 (Marriage, Partnerships / Libra)",
+   "kind": "advisory"
+  },
+  {
+   "id": "LK250-146",
+   "number": 146,
+   "section": "F",
+   "sectionName": "House-specific rules",
+   "text": "Residential houses should be kept away from temples with idols — this principle is especially important for natives with Jupiter in the 7th house. Pictures of deities are acceptable; idol-temples nearby are not.",
+   "subsection": "House 7 (Marriage, Partnerships / Libra)",
+   "kind": "cond",
+   "when": {
+    "in": [
+     "Jupiter",
+     [
+      7
+     ]
+    ]
+   },
+   "domain": "home"
+  },
+  {
+   "id": "LK250-147",
+   "number": 147,
+   "section": "F",
+   "sectionName": "House-specific rules",
+   "text": "Mars in the 7th house with Venus creates Manglik-like effects — the native should perform Mars-specific remedies.",
+   "subsection": "House 7 (Marriage, Partnerships / Libra)",
+   "kind": "cond",
+   "when": {
+    "all": [
+     {
+      "in": [
+       "Mars",
+       [
+        7
+       ]
+      ]
+     },
+     {
+      "in": [
+       "Venus",
+       [
+        7
+       ]
+      ]
+     }
+    ]
+   },
+   "domain": "marriage"
+  },
+  {
+   "id": "LK250-148",
+   "number": 148,
+   "section": "F",
+   "sectionName": "House-specific rules",
+   "text": "Saturn in the 8th house (its Pucca Ghar) gives long life but also chronic health issues. Building dharamshalas, sarais, or inns is strictly prohibited.",
+   "subsection": "House 8 (Longevity, Obstacles / Scorpio)",
+   "kind": "cond",
+   "when": {
+    "in": [
+     "Saturn",
+     [
+      8
+     ]
+    ]
+   },
+   "domain": "health"
+  },
+  {
+   "id": "LK250-149",
+   "number": 149,
+   "section": "F",
+   "sectionName": "House-specific rules",
+   "text": "Saturn in the 8th house with an empty 2nd house — the native must NOT visit temples or religious places.",
+   "subsection": "House 8 (Longevity, Obstacles / Scorpio)",
+   "kind": "cond",
+   "when": {
+    "all": [
+     {
+      "in": [
+       "Saturn",
+       [
+        8
+       ]
+      ]
+     },
+     {
+      "empty": [
+       2
+      ]
+     }
+    ]
+   },
+   "domain": "conduct"
+  },
+  {
+   "id": "LK250-150",
+   "number": 150,
+   "section": "F",
+   "sectionName": "House-specific rules",
+   "text": "The 8th house governs hidden matters, death, and inheritance — it is the most feared house in Lal Kitab.",
+   "subsection": "House 8 (Longevity, Obstacles / Scorpio)",
+   "kind": "advisory",
+   "sensitive": true
+  },
+  {
+   "id": "LK250-151",
+   "number": 151,
+   "section": "F",
+   "sectionName": "House-specific rules",
+   "text": "Malefic 8th house planets create problems that the native cannot see coming — they strike from behind.",
+   "subsection": "House 8 (Longevity, Obstacles / Scorpio)",
+   "kind": "cannot",
+   "reason": "\"Malefic\" is not defined in this rule file, so this cannot be tested."
+  },
+  {
+   "id": "LK250-152",
+   "number": 152,
+   "section": "F",
+   "sectionName": "House-specific rules",
+   "text": "Jupiter in the 9th house indicates strong fortune, religious inclination, and a supportive father.",
+   "subsection": "House 9 (Father, Fortune, Religion / Sagittarius)",
+   "kind": "cond",
+   "when": {
+    "in": [
+     "Jupiter",
+     [
+      9
+     ]
+    ]
+   },
+   "domain": "fortune"
+  },
+  {
+   "id": "LK250-153",
+   "number": 153,
+   "section": "F",
+   "sectionName": "House-specific rules",
+   "text": "Venus in the 9th house — financial aid to widows and scholarships to poor children are strictly prohibited for this native.",
+   "subsection": "House 9 (Father, Fortune, Religion / Sagittarius)",
+   "kind": "cond",
+   "when": {
+    "in": [
+     "Venus",
+     [
+      9
+     ]
+    ]
+   },
+   "domain": "conduct"
+  },
+  {
+   "id": "LK250-154",
+   "number": 154,
+   "section": "F",
+   "sectionName": "House-specific rules",
+   "text": "The 9th house is the house of Bhagya (fate) — its strength determines how much natural luck supports the native.",
+   "subsection": "House 9 (Father, Fortune, Religion / Sagittarius)",
+   "kind": "advisory"
+  },
+  {
+   "id": "LK250-155",
+   "number": 155,
+   "section": "F",
+   "sectionName": "House-specific rules",
+   "text": "Saturn in the 10th house (its own sign's house) gives career stability but demands hard work and discipline.",
+   "subsection": "House 10 (Career, Government / Capricorn)",
+   "kind": "cond",
+   "when": {
+    "in": [
+     "Saturn",
+     [
+      10
+     ]
+    ]
+   },
+   "domain": "career"
+  },
+  {
+   "id": "LK250-156",
+   "number": 156,
+   "section": "F",
+   "sectionName": "House-specific rules",
+   "text": "Mars in the 10th house — serve a dark-complexioned or one-eyed person to reduce inauspiciousness.",
+   "subsection": "House 10 (Career, Government / Capricorn)",
+   "kind": "cond",
+   "when": {
+    "in": [
+     "Mars",
+     [
+      10
+     ]
+    ]
+   },
+   "domain": "remedy"
+  },
+  {
+   "id": "LK250-157",
+   "number": 157,
+   "section": "F",
+   "sectionName": "House-specific rules",
+   "text": "The 10th house represents Karma Bhava — it shows the native's life purpose and public reputation.",
+   "subsection": "House 10 (Career, Government / Capricorn)",
+   "kind": "advisory"
+  },
+  {
+   "id": "LK250-158",
+   "number": 158,
+   "section": "F",
+   "sectionName": "House-specific rules",
+   "text": "Ketu in the 11th house makes Moon weak and causes expenditure problems.",
+   "subsection": "House 11 (Gains, Income / Aquarius)",
+   "kind": "cond",
+   "when": {
+    "in": [
+     "Ketu",
+     [
+      11
+     ]
+    ]
+   },
+   "domain": "wealth"
+  },
+  {
+   "id": "LK250-159",
+   "number": 159,
+   "section": "F",
+   "sectionName": "House-specific rules",
+   "text": "The 11th house shows gains and fulfillment of desires — strong planets here ensure financial success.",
+   "subsection": "House 11 (Gains, Income / Aquarius)",
+   "kind": "cannot",
+   "reason": "\"Afflicted\" / \"weak\" is not defined in this rule file, so this cannot be tested."
+  },
+  {
+   "id": "LK250-160",
+   "number": 160,
+   "section": "F",
+   "sectionName": "House-specific rules",
+   "text": "Moon in the 11th house — throw 125 pieces of sweet peda into a river as a remedy if Moon is malefic.",
+   "subsection": "House 11 (Gains, Income / Aquarius)",
+   "kind": "cond",
+   "when": {
+    "in": [
+     "Moon",
+     [
+      11
+     ]
+    ]
+   },
+   "domain": "remedy",
+   "partialNote": "Applies only if Moon is \"malefic\", which is not defined here.",
+   "caution": "Throwing food into rivers pollutes water; consider a less wasteful alternative."
+  },
+  {
+   "id": "LK250-161",
+   "number": 161,
+   "section": "G",
+   "sectionName": "Vastu and household",
+   "text": "There must be some uncemented (kachcha/open earth) space in every residential house. If not feasible, install Venus-related articles in the home.",
+   "kind": "advisory"
+  },
+  {
+   "id": "LK250-162",
+   "number": 162,
+   "section": "G",
+   "sectionName": "Vastu and household",
+   "text": "Residential houses should not have small, dark rooms with no light or air at the back of the house — this creates negative planetary effects.",
+   "kind": "advisory"
+  },
+  {
+   "id": "LK250-163",
+   "number": 163,
+   "section": "G",
+   "sectionName": "Vastu and household",
+   "text": "The storage space for valuables and money should never be empty. Keep dry fruits if nothing else.",
+   "kind": "advisory"
+  },
+  {
+   "id": "LK250-164",
+   "number": 164,
+   "section": "G",
+   "sectionName": "Vastu and household",
+   "text": "Worship of Lord Ganesha regularly is auspicious for the welfare of property and children.",
+   "kind": "advisory"
+  },
+  {
+   "id": "LK250-165",
+   "number": 165,
+   "section": "G",
+   "sectionName": "Vastu and household",
+   "text": "Underground furnaces or bhattis should NOT be constructed within the premises of the house (especially relevant for Sun-related afflictions).",
+   "kind": "advisory"
+  },
+  {
+   "id": "LK250-166",
+   "number": 166,
+   "section": "G",
+   "sectionName": "Vastu and household",
+   "text": "After dinner, sprinkle milk over the kitchen fire/stove to extinguish it — this pacifies aggressive Mars and fire-related doshas.",
+   "kind": "advisory"
+  },
+  {
+   "id": "LK250-167",
+   "number": 167,
+   "section": "G",
+   "sectionName": "Vastu and household",
+   "text": "Always keep Gangajal (holy water from the Ganges) in the premises of the house for general auspiciousness.",
+   "kind": "advisory"
+  },
+  {
+   "id": "LK250-168",
+   "number": 168,
+   "section": "G",
+   "sectionName": "Vastu and household",
+   "text": "Ancestral brass pots and utensils must be used and never sold — selling them invites ancestral displeasure.",
+   "kind": "advisory"
+  },
+  {
+   "id": "LK250-169",
+   "number": 169,
+   "section": "G",
+   "sectionName": "Vastu and household",
+   "text": "Never accept articles of silver as gifts or donations if Mercury is malefic. Instead, donate silver articles frequently.",
+   "kind": "advisory"
+  },
+  {
+   "id": "LK250-170",
+   "number": 170,
+   "section": "G",
+   "sectionName": "Vastu and household",
+   "text": "The threshold (dehleez) of the oldest ancestral house should be carefully preserved — even if the house is sold, keep the threshold.",
+   "kind": "advisory"
+  },
+  {
+   "id": "LK250-171",
+   "number": 171,
+   "section": "G",
+   "sectionName": "Vastu and household",
+   "text": "If Saturn is in a specific house, starting house construction before a certain age can ruin relatives (e.g., Saturn in 6th house — do not build before age 39).",
+   "kind": "cond",
+   "when": {
+    "in": [
+     "Saturn",
+     [
+      6
+     ]
+    ]
+   },
+   "domain": "home",
+   "sensitive": true
+  },
+  {
+   "id": "LK250-172",
+   "number": 172,
+   "section": "G",
+   "sectionName": "Vastu and household",
+   "text": "Native should start building a house when his wife or mother is pregnant if Saturn is in the 9th house.",
+   "kind": "cond",
+   "when": {
+    "in": [
+     "Saturn",
+     [
+      9
+     ]
+    ]
+   },
+   "domain": "home"
+  },
+  {
+   "id": "LK250-173",
+   "number": 173,
+   "section": "G",
+   "sectionName": "Vastu and household",
+   "text": "Place empty sugar bags on the roof of house, shop, or factory to avoid fire hazards (Mars in 4th house remedy).",
+   "kind": "cond",
+   "when": {
+    "in": [
+     "Mars",
+     [
+      4
+     ]
+    ]
+   },
+   "domain": "home"
+  },
+  {
+   "id": "LK250-174",
+   "number": 174,
+   "section": "G",
+   "sectionName": "Vastu and household",
+   "text": "Eating meals should be done in the kitchen — avoid eating on the bed or in the bedroom (reduces Rahu's ill effects).",
+   "kind": "advisory"
+  },
+  {
+   "id": "LK250-175",
+   "number": 175,
+   "section": "G",
+   "sectionName": "Vastu and household",
+   "text": "The dining table should be close to the kitchen — this arrangement reduces Rahu's negative influence.",
+   "kind": "advisory"
+  },
+  {
+   "id": "LK250-176",
+   "number": 176,
+   "section": "G",
+   "sectionName": "Vastu and household",
+   "text": "Dispose of articles not used for decades — clutter in the house strengthens Rahu's negative effects.",
+   "kind": "advisory"
+  },
+  {
+   "id": "LK250-177",
+   "number": 177,
+   "section": "G",
+   "sectionName": "Vastu and household",
+   "text": "Use silver utensils and tumblers — this brings good Moon effects and reduces Rahu's negativity.",
+   "kind": "advisory"
+  },
+  {
+   "id": "LK250-178",
+   "number": 178,
+   "section": "G",
+   "sectionName": "Vastu and household",
+   "text": "A part of the house should remain as open sky or open terrace for best planetary influences.",
+   "kind": "advisory"
+  },
+  {
+   "id": "LK250-179",
+   "number": 179,
+   "section": "G",
+   "sectionName": "Vastu and household",
+   "text": "Keep a square piece of silver in the house to reduce Mars's inauspicious results.",
+   "kind": "advisory"
+  },
+  {
+   "id": "LK250-180",
+   "number": 180,
+   "section": "G",
+   "sectionName": "Vastu and household",
+   "text": "Gold ornaments should be worn to minimize the inauspicious effects of Mars.",
+   "kind": "advisory"
+  },
+  {
+   "id": "LK250-181",
+   "number": 181,
+   "section": "G",
+   "sectionName": "Vastu and household",
+   "text": "Never keep Money Plant or Tulsi in the home if Mercury is malefic in the 7th house.",
+   "kind": "cond",
+   "when": {
+    "in": [
+     "Mercury",
+     [
+      7
+     ]
+    ]
+   },
+   "domain": "home",
+   "partialNote": "Applies only if Mercury is \"malefic\", which is not defined here."
+  },
+  {
+   "id": "LK250-182",
+   "number": 182,
+   "section": "G",
+   "sectionName": "Vastu and household",
+   "text": "Fill up pits or potholes on the roadside in front of your house — this is a Jupiter remedy.",
+   "kind": "advisory"
+  },
+  {
+   "id": "LK250-183",
+   "number": 183,
+   "section": "G",
+   "sectionName": "Vastu and household",
+   "text": "Plant a Neem tree near the house when Mars is in the 5th house for protection.",
+   "kind": "cond",
+   "when": {
+    "in": [
+     "Mars",
+     [
+      5
+     ]
+    ]
+   },
+   "domain": "home"
+  },
+  {
+   "id": "LK250-184",
+   "number": 184,
+   "section": "G",
+   "sectionName": "Vastu and household",
+   "text": "After giving birth, pots used during the process should be offered to a temple.",
+   "kind": "advisory"
+  },
+  {
+   "id": "LK250-185",
+   "number": 185,
+   "section": "G",
+   "sectionName": "Vastu and household",
+   "text": "Houses with many blind (empty) houses in the chart should have all rooms well-lit and ventilated to compensate.",
+   "kind": "fn",
+   "domain": "home",
+   "fn": "manyBlind"
+  },
+  {
+   "id": "LK250-186",
+   "number": 186,
+   "section": "H",
+   "sectionName": "Remedies (upay / totka)",
+   "text": "Remedies are low-cost, everyday actions — donations, feeding animals, keeping specific metals at home. Expensive rituals and gemstones are NOT the Lal Kitab way.",
+   "subsection": "General Remedy Rules",
+   "kind": "advisory"
+  },
+  {
+   "id": "LK250-187",
+   "number": 187,
+   "section": "H",
+   "sectionName": "Remedies (upay / totka)",
+   "text": "All Lal Kitab remedies must be performed for a minimum of 43 consecutive days.",
+   "subsection": "General Remedy Rules",
+   "kind": "advisory"
+  },
+  {
+   "id": "LK250-188",
+   "number": 188,
+   "section": "H",
+   "sectionName": "Remedies (upay / totka)",
+   "text": "Only one remedy should be performed at a time — multiple simultaneous remedies can conflict.",
+   "subsection": "General Remedy Rules",
+   "kind": "advisory"
+  },
+  {
+   "id": "LK250-189",
+   "number": 189,
+   "section": "H",
+   "sectionName": "Remedies (upay / totka)",
+   "text": "The native should never tell others about the remedy being performed — secrecy enhances effectiveness.",
+   "subsection": "General Remedy Rules",
+   "kind": "advisory"
+  },
+  {
+   "id": "LK250-190",
+   "number": 190,
+   "section": "H",
+   "sectionName": "Remedies (upay / totka)",
+   "text": "Remedies should be done with patience and discipline, not with desperation or anxiety.",
+   "subsection": "General Remedy Rules",
+   "kind": "advisory"
+  },
+  {
+   "id": "LK250-191",
+   "number": 191,
+   "section": "H",
+   "sectionName": "Remedies (upay / totka)",
+   "text": "A remedy for a sleeping planet must first awaken it before any other remedy can work on it.",
+   "subsection": "General Remedy Rules",
+   "kind": "advisory"
+  },
+  {
+   "id": "LK250-192",
+   "number": 192,
+   "section": "H",
+   "sectionName": "Remedies (upay / totka)",
+   "text": "Gemstones should NEVER be worn without specific chart-based prescription from a Lal Kitab expert.",
+   "subsection": "General Remedy Rules",
+   "kind": "advisory"
+  },
+  {
+   "id": "LK250-193",
+   "number": 193,
+   "section": "H",
+   "sectionName": "Remedies (upay / totka)",
+   "text": "Feed cows with fresh wheat when Sun is poorly placed.",
+   "subsection": "Sun Remedies",
+   "kind": "catalogue",
+   "planet": "Sun"
+  },
+  {
+   "id": "LK250-194",
+   "number": 194,
+   "section": "H",
+   "sectionName": "Remedies (upay / totka)",
+   "text": "Offer water (Arghya) to the Sun at sunrise for Sun-related problems.",
+   "subsection": "Sun Remedies",
+   "kind": "catalogue",
+   "planet": "Sun"
+  },
+  {
+   "id": "LK250-195",
+   "number": 195,
+   "section": "H",
+   "sectionName": "Remedies (upay / totka)",
+   "text": "Offer wheat or jaggery (gur) to monkeys for Sun afflictions.",
+   "subsection": "Sun Remedies",
+   "kind": "catalogue",
+   "planet": "Sun"
+  },
+  {
+   "id": "LK250-196",
+   "number": 196,
+   "section": "H",
+   "sectionName": "Remedies (upay / totka)",
+   "text": "Keep a solid square copper piece in your pocket for Sun's strength.",
+   "subsection": "Sun Remedies",
+   "kind": "catalogue",
+   "planet": "Sun"
+  },
+  {
+   "id": "LK250-197",
+   "number": 197,
+   "section": "H",
+   "sectionName": "Remedies (upay / totka)",
+   "text": "Keep a silver coin in the wallet for Moon's strength.",
+   "subsection": "Moon Remedies",
+   "kind": "catalogue",
+   "planet": "Moon"
+  },
+  {
+   "id": "LK250-198",
+   "number": 198,
+   "section": "H",
+   "sectionName": "Remedies (upay / totka)",
+   "text": "Offer milk to snakes (at snake pits or anthills) and rice to fish for Moon afflictions.",
+   "subsection": "Moon Remedies",
+   "kind": "catalogue",
+   "planet": "Moon",
+   "caution": "Milk is harmful to snakes and approaching them is dangerous; the app does not recommend this action."
+  },
+  {
+   "id": "LK250-199",
+   "number": 199,
+   "section": "H",
+   "sectionName": "Remedies (upay / totka)",
+   "text": "Serve milk to laborers when Moon is in the 10th house.",
+   "subsection": "Moon Remedies",
+   "kind": "cond",
+   "when": {
+    "in": [
+     "Moon",
+     [
+      10
+     ]
+    ]
+   },
+   "domain": "remedy"
+  },
+  {
+   "id": "LK250-200",
+   "number": 200,
+   "section": "H",
+   "sectionName": "Remedies (upay / totka)",
+   "text": "Abstain from wine, meat, and adultery when Moon occupies the 10th house.",
+   "subsection": "Moon Remedies",
+   "kind": "cond",
+   "when": {
+    "in": [
+     "Moon",
+     [
+      10
+     ]
+    ]
+   },
+   "domain": "conduct"
+  },
+  {
+   "id": "LK250-201",
+   "number": 201,
+   "section": "H",
+   "sectionName": "Remedies (upay / totka)",
+   "text": "Never drink milk at night if Moon is malefic in the 10th house.",
+   "subsection": "Moon Remedies",
+   "kind": "cond",
+   "when": {
+    "in": [
+     "Moon",
+     [
+      10
+     ]
+    ]
+   },
+   "domain": "conduct"
+  },
+  {
+   "id": "LK250-202",
+   "number": 202,
+   "section": "H",
+   "sectionName": "Remedies (upay / totka)",
+   "text": "Feed sweet chapatis (tandoori rotis) to dogs for Mars remedies — this is one of the most iconic Lal Kitab remedies.",
+   "subsection": "Mars Remedies",
+   "kind": "catalogue",
+   "planet": "Mars"
+  },
+  {
+   "id": "LK250-203",
+   "number": 203,
+   "section": "H",
+   "sectionName": "Remedies (upay / totka)",
+   "text": "Wear a ring made of three metals (gold, silver, and copper) for Mars in the 1st house.",
+   "subsection": "Mars Remedies",
+   "kind": "cond",
+   "when": {
+    "in": [
+     "Mars",
+     [
+      1
+     ]
+    ]
+   },
+   "domain": "remedy",
+   "caution": "Cost and metal purity matter; this is a traditional practice, not a medical or financial recommendation."
+  },
+  {
+   "id": "LK250-204",
+   "number": 204,
+   "section": "H",
+   "sectionName": "Remedies (upay / totka)",
+   "text": "Keep a red handkerchief in your pocket when Mars is in the 9th house.",
+   "subsection": "Mars Remedies",
+   "kind": "cond",
+   "when": {
+    "in": [
+     "Mars",
+     [
+      9
+     ]
+    ]
+   },
+   "domain": "remedy"
+  },
+  {
+   "id": "LK250-205",
+   "number": 205,
+   "section": "H",
+   "sectionName": "Remedies (upay / totka)",
+   "text": "Visit Lord Hanuman's temple every Tuesday and offer a chola (red cloth) when Mars is in the 9th house.",
+   "subsection": "Mars Remedies",
+   "kind": "cond",
+   "when": {
+    "in": [
+     "Mars",
+     [
+      9
+     ]
+    ]
+   },
+   "domain": "remedy"
+  },
+  {
+   "id": "LK250-206",
+   "number": 206,
+   "section": "H",
+   "sectionName": "Remedies (upay / totka)",
+   "text": "Keep articles of ivory when Mars is in the 3rd house.",
+   "subsection": "Mars Remedies",
+   "kind": "cond",
+   "when": {
+    "in": [
+     "Mars",
+     [
+      3
+     ]
+    ]
+   },
+   "domain": "remedy"
+  },
+  {
+   "id": "LK250-207",
+   "number": 207,
+   "section": "H",
+   "sectionName": "Remedies (upay / totka)",
+   "text": "Wear a silver ring on the left hand when Mars is in the 3rd house.",
+   "subsection": "Mars Remedies",
+   "kind": "cond",
+   "when": {
+    "in": [
+     "Mars",
+     [
+      3
+     ]
+    ]
+   },
+   "domain": "remedy"
+  },
+  {
+   "id": "LK250-208",
+   "number": 208,
+   "section": "H",
+   "sectionName": "Remedies (upay / totka)",
+   "text": "The male child should not wear gold when Mars is in the 6th house.",
+   "subsection": "Mars Remedies",
+   "kind": "cond",
+   "when": {
+    "in": [
+     "Mars",
+     [
+      6
+     ]
+    ]
+   },
+   "domain": "remedy"
+  },
+  {
+   "id": "LK250-209",
+   "number": 209,
+   "section": "H",
+   "sectionName": "Remedies (upay / totka)",
+   "text": "Feed jaggery to monkeys on Tuesdays for general Mars pacification.",
+   "subsection": "Mars Remedies",
+   "kind": "catalogue",
+   "planet": "Mars"
+  },
+  {
+   "id": "LK250-210",
+   "number": 210,
+   "section": "H",
+   "sectionName": "Remedies (upay / totka)",
+   "text": "Serve a black cow when Mercury is in the 7th house.",
+   "subsection": "Mercury Remedies",
+   "kind": "cond",
+   "when": {
+    "in": [
+     "Mercury",
+     [
+      7
+     ]
+    ]
+   },
+   "domain": "remedy"
+  },
+  {
+   "id": "LK250-211",
+   "number": 211,
+   "section": "H",
+   "sectionName": "Remedies (upay / totka)",
+   "text": "Respect elder females (especially mother figures) for Mercury remedies.",
+   "subsection": "Mercury Remedies",
+   "kind": "catalogue",
+   "planet": "Mercury"
+  },
+  {
+   "id": "LK250-212",
+   "number": 212,
+   "section": "H",
+   "sectionName": "Remedies (upay / totka)",
+   "text": "Float a holed coin in running water for Mercury-related financial problems.",
+   "subsection": "Mercury Remedies",
+   "kind": "catalogue",
+   "planet": "Mercury"
+  },
+  {
+   "id": "LK250-213",
+   "number": 213,
+   "section": "H",
+   "sectionName": "Remedies (upay / totka)",
+   "text": "Donate gram dal (chana dal) and turmeric for Mercury afflictions.",
+   "subsection": "Mercury Remedies",
+   "kind": "catalogue",
+   "planet": "Mercury"
+  },
+  {
+   "id": "LK250-214",
+   "number": 214,
+   "section": "H",
+   "sectionName": "Remedies (upay / totka)",
+   "text": "Store rainwater in a glass bottle at home when Venus is weak and Mercury is in the 6th house.",
+   "subsection": "Mercury Remedies",
+   "kind": "cond",
+   "when": {
+    "in": [
+     "Mercury",
+     [
+      6
+     ]
+    ]
+   },
+   "domain": "remedy",
+   "partialNote": "Needs Venus to be \"weak\", which is not defined here."
+  },
+  {
+   "id": "LK250-215",
+   "number": 215,
+   "section": "H",
+   "sectionName": "Remedies (upay / totka)",
+   "text": "Wear a silver ring on the right hand when Moon and Ketu are weak and Mercury is in the 6th house.",
+   "subsection": "Mercury Remedies",
+   "kind": "cond",
+   "when": {
+    "in": [
+     "Mercury",
+     [
+      6
+     ]
+    ]
+   },
+   "domain": "remedy",
+   "partialNote": "Needs Moon and Ketu to be \"weak\", which is not defined here."
+  },
+  {
+   "id": "LK250-216",
+   "number": 216,
+   "section": "H",
+   "sectionName": "Remedies (upay / totka)",
+   "text": "Worship goddess Durga with sweets when Jupiter is in the 3rd house.",
+   "subsection": "Jupiter Remedies",
+   "kind": "cond",
+   "when": {
+    "in": [
+     "Jupiter",
+     [
+      3
+     ]
+    ]
+   },
+   "domain": "remedy"
+  },
+  {
+   "id": "LK250-217",
+   "number": 217,
+   "section": "H",
+   "sectionName": "Remedies (upay / totka)",
+   "text": "Fill roadside pits near your house for Jupiter afflictions.",
+   "subsection": "Jupiter Remedies",
+   "kind": "catalogue",
+   "planet": "Jupiter"
+  },
+  {
+   "id": "LK250-218",
+   "number": 218,
+   "section": "H",
+   "sectionName": "Remedies (upay / totka)",
+   "text": "Saffron (kesar) tilak on the forehead strengthens Jupiter.",
+   "subsection": "Jupiter Remedies",
+   "kind": "catalogue",
+   "planet": "Jupiter"
+  },
+  {
+   "id": "LK250-219",
+   "number": 219,
+   "section": "H",
+   "sectionName": "Remedies (upay / totka)",
+   "text": "Donate turmeric, gram dal, and gold-colored items for Jupiter remedies.",
+   "subsection": "Jupiter Remedies",
+   "kind": "catalogue",
+   "planet": "Jupiter"
+  },
+  {
+   "id": "LK250-220",
+   "number": 220,
+   "section": "H",
+   "sectionName": "Remedies (upay / totka)",
+   "text": "Respect and serve one's Guru (teacher) for Jupiter afflictions.",
+   "subsection": "Jupiter Remedies",
+   "kind": "catalogue",
+   "planet": "Jupiter"
+  },
+  {
+   "id": "LK250-221",
+   "number": 221,
+   "section": "H",
+   "sectionName": "Remedies (upay / totka)",
+   "text": "Donate curd, ghee, or camphor for Venus afflictions.",
+   "subsection": "Venus Remedies",
+   "kind": "catalogue",
+   "planet": "Venus"
+  },
+  {
+   "id": "LK250-222",
+   "number": 222,
+   "section": "H",
+   "sectionName": "Remedies (upay / totka)",
+   "text": "Serve a white cow for Venus remedies.",
+   "subsection": "Venus Remedies",
+   "kind": "catalogue",
+   "planet": "Venus"
+  },
+  {
+   "id": "LK250-223",
+   "number": 223,
+   "section": "H",
+   "sectionName": "Remedies (upay / totka)",
+   "text": "Keep Venus-related articles (perfume, flowers, white items) in the home when the house lacks open earth space.",
+   "subsection": "Venus Remedies",
+   "kind": "catalogue",
+   "planet": "Venus"
+  },
+  {
+   "id": "LK250-224",
+   "number": 224,
+   "section": "H",
+   "sectionName": "Remedies (upay / totka)",
+   "text": "Serve black-complexioned or disabled persons for Saturn remedies.",
+   "subsection": "Saturn Remedies",
+   "kind": "catalogue",
+   "planet": "Saturn"
+  },
+  {
+   "id": "LK250-225",
+   "number": 225,
+   "section": "H",
+   "sectionName": "Remedies (upay / totka)",
+   "text": "Donate mustard oil on Saturdays for Saturn afflictions.",
+   "subsection": "Saturn Remedies",
+   "kind": "catalogue",
+   "planet": "Saturn"
+  },
+  {
+   "id": "LK250-226",
+   "number": 226,
+   "section": "H",
+   "sectionName": "Remedies (upay / totka)",
+   "text": "Feed crows with cooked rice for Saturn pacification.",
+   "subsection": "Saturn Remedies",
+   "kind": "catalogue",
+   "planet": "Saturn"
+  },
+  {
+   "id": "LK250-227",
+   "number": 227,
+   "section": "H",
+   "sectionName": "Remedies (upay / totka)",
+   "text": "Avoid black color on Saturdays when Saturn is malefic.",
+   "subsection": "Saturn Remedies",
+   "kind": "catalogue",
+   "planet": "Saturn"
+  },
+  {
+   "id": "LK250-228",
+   "number": 228,
+   "section": "H",
+   "sectionName": "Remedies (upay / totka)",
+   "text": "Bring home a buffalo, feed it, mark it, and then release it before starting house construction (Saturn in specific houses).",
+   "subsection": "Saturn Remedies",
+   "kind": "cannot",
+   "reason": "The specific houses for Saturn are not specified.",
+   "caution": "Involves marking and releasing a live animal; the app does not recommend this action."
+  },
+  {
+   "id": "LK250-229",
+   "number": 229,
+   "section": "H",
+   "sectionName": "Remedies (upay / totka)",
+   "text": "Keep a piece of lead or iron under the pillow for Rahu afflictions.",
+   "subsection": "Rahu & Ketu Remedies",
+   "kind": "catalogue",
+   "planet": "Rahu/Ketu"
+  },
+  {
+   "id": "LK250-230",
+   "number": 230,
+   "section": "H",
+   "sectionName": "Remedies (upay / totka)",
+   "text": "Donate black and white sesame seeds (til) at a temple for Rahu-Ketu remedies.",
+   "subsection": "Rahu & Ketu Remedies",
+   "kind": "catalogue",
+   "planet": "Rahu/Ketu"
+  },
+  {
+   "id": "LK250-231",
+   "number": 231,
+   "section": "I",
+   "sectionName": "Prohibitions and precautions",
+   "text": "Never give copper coins in charity if Saturn is in Lagna (1st house) and Jupiter is in the 5th house — this can cause death of children.",
+   "kind": "cond",
+   "when": {
+    "all": [
+     {
+      "in": [
+       "Saturn",
+       [
+        1
+       ]
+      ]
+     },
+     {
+      "in": [
+       "Jupiter",
+       [
+        5
+       ]
+      ]
+     }
+    ]
+   },
+   "domain": "children",
+   "sensitive": true
+  },
+  {
+   "id": "LK250-232",
+   "number": 232,
+   "section": "I",
+   "sectionName": "Prohibitions and precautions",
+   "text": "Financial aid to widows and scholarships to poor children are prohibited for those with Venus in the 9th house.",
+   "kind": "cond",
+   "when": {
+    "in": [
+     "Venus",
+     [
+      9
+     ]
+    ]
+   },
+   "domain": "conduct"
+  },
+  {
+   "id": "LK250-233",
+   "number": 233,
+   "section": "I",
+   "sectionName": "Prohibitions and precautions",
+   "text": "Digging wells or providing drinking water facilities is strictly prohibited for those with Moon in the 6th house.",
+   "kind": "cond",
+   "when": {
+    "in": [
+     "Moon",
+     [
+      6
+     ]
+    ]
+   },
+   "domain": "conduct",
+   "sensitive": true
+  },
+  {
+   "id": "LK250-234",
+   "number": 234,
+   "section": "I",
+   "sectionName": "Prohibitions and precautions",
+   "text": "Building dharamshalas, sarais (inns), or rest houses is prohibited for those with Saturn in the 8th house.",
+   "kind": "cond",
+   "when": {
+    "in": [
+     "Saturn",
+     [
+      8
+     ]
+    ]
+   },
+   "domain": "conduct"
+  },
+  {
+   "id": "LK250-235",
+   "number": 235,
+   "section": "I",
+   "sectionName": "Prohibitions and precautions",
+   "text": "Never open educational institutions if Moon is in the 12th house.",
+   "kind": "cond",
+   "when": {
+    "in": [
+     "Moon",
+     [
+      12
+     ]
+    ]
+   },
+   "domain": "conduct"
+  },
+  {
+   "id": "LK250-236",
+   "number": 236,
+   "section": "I",
+   "sectionName": "Prohibitions and precautions",
+   "text": "Never offer milk and food to religious saints/sadhus if Moon is in the 12th house.",
+   "kind": "cond",
+   "when": {
+    "in": [
+     "Moon",
+     [
+      12
+     ]
+    ]
+   },
+   "domain": "conduct"
+  },
+  {
+   "id": "LK250-237",
+   "number": 237,
+   "section": "I",
+   "sectionName": "Prohibitions and precautions",
+   "text": "The grandmother should not see her grandson if Moon is malefic in the 11th house.",
+   "kind": "cond",
+   "when": {
+    "in": [
+     "Moon",
+     [
+      11
+     ]
+    ]
+   },
+   "domain": "family",
+   "partialNote": "Applies only if Moon is \"malefic\", which is not defined here.",
+   "sensitive": true
+  },
+  {
+   "id": "LK250-238",
+   "number": 238,
+   "section": "I",
+   "sectionName": "Prohibitions and precautions",
+   "text": "Do not take up business associated with iron and wood if Sun is in the 4th house.",
+   "kind": "cond",
+   "when": {
+    "in": [
+     "Sun",
+     [
+      4
+     ]
+    ]
+   },
+   "domain": "career"
+  },
+  {
+   "id": "LK250-239",
+   "number": 239,
+   "section": "I",
+   "sectionName": "Prohibitions and precautions",
+   "text": "Do not indulge in gambling and flirting — these actions amplify malefic planetary effects universally.",
+   "kind": "advisory"
+  },
+  {
+   "id": "LK250-240",
+   "number": 240,
+   "section": "I",
+   "sectionName": "Prohibitions and precautions",
+   "text": "The native should not marry between ages 24 and 27 if certain Mars combinations exist in the chart.",
+   "kind": "cannot",
+   "reason": "The age window and the \"certain Mars combinations\" are not specified."
+  },
+  {
+   "id": "LK250-241",
+   "number": 241,
+   "section": "I",
+   "sectionName": "Prohibitions and precautions",
+   "text": "Avoid playing with fire or hot equipment when Mars is in the 4th house.",
+   "kind": "cond",
+   "when": {
+    "in": [
+     "Mars",
+     [
+      4
+     ]
+    ]
+   },
+   "domain": "safety"
+  },
+  {
+   "id": "LK250-242",
+   "number": 242,
+   "section": "I",
+   "sectionName": "Prohibitions and precautions",
+   "text": "Ensure timely marriage and progeny when Jupiter or the 5th house is under affliction — delay worsens the situation.",
+   "kind": "cannot",
+   "reason": "\"Afflicted\" / \"weak\" is not defined in this rule file, so this cannot be tested."
+  },
+  {
+   "id": "LK250-243",
+   "number": 243,
+   "section": "I",
+   "sectionName": "Prohibitions and precautions",
+   "text": "Never keep the house completely cemented — some open earth must remain.",
+   "kind": "advisory"
+  },
+  {
+   "id": "LK250-244",
+   "number": 244,
+   "section": "I",
+   "sectionName": "Prohibitions and precautions",
+   "text": "Do not sell ancestral property impulsively — consult the chart first, as certain planetary positions make selling disastrous.",
+   "kind": "cannot",
+   "reason": "The chart-specific planetary positions that make selling disastrous are not specified."
+  },
+  {
+   "id": "LK250-245",
+   "number": 245,
+   "section": "I",
+   "sectionName": "Prohibitions and precautions",
+   "text": "Obtain blessings from your mother and keep her happy always — this is a universal remedy that strengthens Moon and the 4th house.",
+   "kind": "advisory"
+  },
+  {
+   "id": "LK250-246",
+   "number": 246,
+   "section": "I",
+   "sectionName": "Prohibitions and precautions",
+   "text": "Serve milk and rice to the needy when Sun is in the 3rd house.",
+   "kind": "cond",
+   "when": {
+    "in": [
+     "Sun",
+     [
+      3
+     ]
+    ]
+   },
+   "domain": "remedy"
+  },
+  {
+   "id": "LK250-247",
+   "number": 247,
+   "section": "I",
+   "sectionName": "Prohibitions and precautions",
+   "text": "Distribute alms and food to needy people when Sun is in the 4th house.",
+   "kind": "cond",
+   "when": {
+    "in": [
+     "Sun",
+     [
+      4
+     ]
+    ]
+   },
+   "domain": "remedy"
+  },
+  {
+   "id": "LK250-248",
+   "number": 248,
+   "section": "I",
+   "sectionName": "Prohibitions and precautions",
+   "text": "Obey your elder brother and serve him when Mars is in the 9th house — disobedience amplifies Mars's malefic effects.",
+   "kind": "cond",
+   "when": {
+    "in": [
+     "Mars",
+     [
+      9
+     ]
+    ]
+   },
+   "domain": "remedy"
+  },
+  {
+   "id": "LK250-249",
+   "number": 249,
+   "section": "I",
+   "sectionName": "Prohibitions and precautions",
+   "text": "Lal Kitab experts advise leaving exalted planets strictly alone — do NOT perform remedies for a planet that is already well-placed, as interference can disturb its natural beneficence.",
+   "kind": "fn",
+   "domain": "remedy",
+   "fn": "leaveWellPlaced"
+  },
+  {
+   "id": "LK250-250",
+   "number": 250,
+   "section": "I",
+   "sectionName": "Prohibitions and precautions",
+   "text": "The overarching Lal Kitab principle: Act with humility, perform remedies with faith and discipline, respect elders and ancestors, and trust that consistent small actions settle even the heaviest karmic debts.",
+   "kind": "advisory"
+  }
+ ]
+}

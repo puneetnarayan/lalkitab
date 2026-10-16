@@ -31,20 +31,21 @@ table{width:100%;border-collapse:collapse;font-size:13px;margin:12px 0}th,td{tex
 <main>
 <div class="layout">
 <aside class="panel">
-<h2>Birth Details</h2><p class="hint">Enter the native's details to prepare a chart.</p>
+<h2>Birth Details</h2><p class="hint">Results update automatically as you type. A valid date, time, latitude, longitude and time zone are enough.</p>
 <form id="birthForm">
 <label for="native">Name / label (optional)</label><input id="native" name="native" value="Puneet Narayan" placeholder="e.g. Native 1">
 <div class="grid2"><div><label for="birthDate">Birth date</label><input id="birthDate" name="birthDate" type="date" value="1970-06-02" required></div><div><label for="birthTime">Birth time</label><input id="birthTime" name="birthTime" type="time" required value="18:27"></div></div>
-<label for="place">Birth place</label><input id="place" name="place" value="Gorakhpur, Uttar Pradesh, India" placeholder="City, state, country" required>
+<label for="place">Birth place (label only)</label><input id="place" name="place" value="Gorakhpur, Uttar Pradesh, India" placeholder="City, state, country (optional)">
 <div class="grid2"><div><label for="latitude">Latitude</label><input id="latitude" name="latitude" type="number" step="any" min="-90" max="90" value="26.7606" placeholder="e.g. 26.76" required></div><div><label for="longitude">Longitude</label><input id="longitude" name="longitude" type="number" step="any" min="-180" max="180" value="83.3732" placeholder="e.g. 83.37" required></div></div>
 <label for="timezone">Time zone</label><select id="timezone" name="timezone"><option value="Asia/Kolkata" selected>India Standard Time (Asia/Kolkata)</option><option value="UTC">UTC</option><option value="America/New_York">America/New_York</option><option value="Europe/London">Europe/London</option><option value="Australia/Sydney">Australia/Sydney</option></select>
-<div class="btnrow"><button class="btn" type="submit">Prepare chart</button><button class="btn secondary" type="reset">Clear</button></div><div id="message" role="status" aria-live="polite"></div>
+<div class="btnrow"><button class="btn" type="submit">Recalculate now</button><button class="btn secondary" type="reset">Clear</button></div><div id="message" role="status" aria-live="polite"></div>
 </form>
 <div class="notice"><strong>Calculation status</strong><br>Swiss Ephemeris WASM is used when its local binary assets load; otherwise the offline astronomy fallback is used. House mapping remains provisional; source-verified Lal Kitab interpretations are not yet enabled.</div>
 </aside>
 <section>
 <div class="tabs" role="tablist" aria-label="Lal Kitab modules">
 <button class="tab" role="tab" aria-selected="true" data-tab="overview">Overview</button>
+<button class="tab" role="tab" aria-selected="false" data-tab="interpretation">Native Interpretation</button>
 <button class="tab" role="tab" aria-selected="false" data-tab="chart">Lal Kitab Chart</button>
 <button class="tab" role="tab" aria-selected="false" data-tab="placements">Planet Placements</button>
 <button class="tab" role="tab" aria-selected="false" data-tab="rulebook">Rulebook Analysis</button>
@@ -67,6 +68,7 @@ const descriptions={
  overview:{title:'Your Lal Kitab workspace',hint:'A clear starting point for chart calculations and rule-based interpretation.',help:'Overview shows the birth profile, engine readiness and the status of the rule library.',html:'<div class="empty"><div class="symbol">✧</div><h3>Build the chart on verified calculations</h3><p>Enter birth details on the left to calculate a preliminary planetary inventory. House mapping remains provisional and the source-backed rule registry is still empty.</p><span class="status"><span class="dot"></span> Inventory calculation available · traditional rules pending source verification</span></div>'},
  chart:{title:'Lal Kitab Chart',hint:'Visual chart layout will be populated from calculated planetary house placements.',help:'This tab will display the Lal Kitab chart and the planet-to-house mapping. The mapping convention will be documented before interpretations are added.',html:'<div class="empty"><div class="symbol">▦</div><h3>Preliminary chart inventory</h3><p>The chart grid will show the provisional fixed natural-zodiac mapping. Confirm the selected Lal Kitab edition\'s house convention before relying on house-based readings.</p></div>'},
  placements:{title:'Planet Placements',hint:'A calculation-backed table of planetary longitudes, signs and Lal Kitab houses.',help:'This tab will list each planet, longitude, sign and Lal Kitab house, with the calculation method visible for review.',html:'<div class="empty"><div class="symbol">☼</div><h3>Planetary inventory</h3><p>Planetary longitudes use Swiss Ephemeris when its local WASM assets are available, with an astronomy-engine fallback. House placement is currently provisional.</p></div>'},
+ interpretation:{title:'Native Interpretation',hint:'The 250-rule compilation applied to this chart.',help:'Shows which of the 250 supplied rules apply to the chart, which cannot be evaluated and why, and the remedy and precaution rules that follow from the placements.',html:''},
  rulebook:{title:'Rulebook Analysis',hint:'Deterministic checks from the owner-supplied rulebook (unsourced).',help:'Applies the supplied rulebook to the chart and states what could be derived and what could not.',html:''},
  rules:{title:'Rules & Analysis',hint:'Traceable interpretations, with the source and reasoning shown.',help:'This tab will explain which documented Lal Kitab rule matched a placement, which source supports it, and any uncertainty or conflicting convention.',html:'<div class="empty"><div class="symbol">≋</div><h3>Source-verified rule library</h3><p>Rules will be stored as structured data with source references and test cases. Parashari yogas and aspects will not be silently reused as Lal Kitab rules.</p></div>'},
  remedies:{title:'Remedies',hint:'Traditional remedies linked to specific rules and placements.',help:'This tab will show remedies only when they are tied to an implemented rule, with a plain-language explanation and source reference.',html:'<div class="empty"><div class="symbol">✿</div><h3>Source-linked remedy library</h3><p>Remedies will be linked to the rule that recommends them. Unverified or contradictory recommendations will be marked instead of presented as certain.</p></div>'},
@@ -87,6 +89,7 @@ document.getElementById('birthForm').addEventListener('reset',()=>{document.getE
 <script src="js/lalkitab/ruleEngine.js"></script>
 <script src="js/lalkitab/derivation.js"></script>
 <script src="js/lalkitab/rulebook.js"></script>
+<script src="js/lalkitab/rules250.js"></script>
 <script src="js/lalkitab/app.js"></script>
 <script type="module" src="js/swissephBridge.js"></script>
 </body>

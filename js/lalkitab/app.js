@@ -2,21 +2,20 @@
   'use strict';
   const $ = id => document.getElementById(id);
   window.LAL_KITAB_RULES = { rules: [] };
-  fetch('data/lalkitab-rules.json')
-    .then(response => { if (!response.ok) throw new Error('Rule registry unavailable'); return response.json(); })
-    .then(data => { window.LAL_KITAB_RULES = data; })
-    .catch(() => { window.LAL_KITAB_RULES = { rules: [] }; });
   window.LAL_KITAB_CANDIDATES = { rules: [] };
-  fetch('data/lalkitab-rule-candidates.json')
-    .then(response => { if (!response.ok) throw new Error('Candidates unavailable'); return response.json(); })
-    .then(data => { window.LAL_KITAB_CANDIDATES = data; })
-    .catch(() => { window.LAL_KITAB_CANDIDATES = { rules: [] }; });
   window.LAL_KITAB_BOOK = null;
-  fetch('data/lalkitab-rulebook.json')
-    .then(response => { if (!response.ok) throw new Error('Rulebook unavailable'); return response.json(); })
-    .then(data => { window.LAL_KITAB_BOOK = data; })
-    .catch(() => { window.LAL_KITAB_BOOK = null; });
-  const state = { rulebook: null, derivation: null, profile: null, chart: null, inventory: null, activeTab: 'overview', findings: [] };
+  window.LAL_KITAB_250 = null;
+  const load = (url, apply) => fetch(url)
+    .then(response => { if (!response.ok) throw new Error(url + ' unavailable'); return response.json(); })
+    .then(apply)
+    .catch(() => {});
+  const dataReady = Promise.all([
+    load('data/lalkitab-rules.json', d => { window.LAL_KITAB_RULES = d; }),
+    load('data/lalkitab-rule-candidates.json', d => { window.LAL_KITAB_CANDIDATES = d; }),
+    load('data/lalkitab-rulebook.json', d => { window.LAL_KITAB_BOOK = d; }),
+    load('data/lalkitab-250-rules.json', d => { window.LAL_KITAB_250 = d; })
+  ]);
+  const state = { interp: null, rulebook: null, derivation: null, profile: null, chart: null, inventory: null, activeTab: 'overview', findings: [] };
   window.LAL_KITAB_APP_STATE = state;
 
   const signs = window.LalKitabChart.SIGNS;
@@ -119,6 +118,76 @@
     return '<h3>' + esc(s.title) + ' ' + chip(s.status) + '</h3><p class="hint">' + esc(s.summary) + '</p>' + body;
   }
 
+  const IS_ACTION = r => r.sectionName === 'Remedies (upay / totka)' || r.sectionName === 'Prohibitions and precautions' || r.domain === 'remedy';
+  const AS_BELIEF = 'Traditional belief reported by the source, not a prediction or advice.';
+
+  function ruleCard(r) {
+    const flags = [];
+    if (r.sensitive) flags.push('<span class="hint">' + AS_BELIEF + '</span>');
+    if (r.usesUnverifiedInput) flags.push('<span class="hint">Uses the unverified web-sourced friend/enemy table.</span>');
+    if (r.assumption) flags.push('<span class="hint">Assumption: ' + esc(r.assumption) + '</span>');
+    if (r.caution) flags.push('<span class="hint"><strong>Caution:</strong> ' + esc(r.caution) + '</span>');
+    return '<div class="tile" style="margin:8px 0"><strong>Rule ' + r.number + '</strong> · ' + chip(r.status === 'applies' ? 'derived' : r.status === 'partial' ? 'partial' : r.status) +
+      '<p>' + esc(r.text) + '</p>' + (r.detail ? '<p class="hint">' + esc(r.detail) + '</p>' : '') +
+      (flags.length ? '<p>' + flags.join('<br>') + '</p>' : '') + '</div>';
+  }
+
+  function groupBySection(list) {
+    const groups = {};
+    list.forEach(r => { (groups[r.section] = groups[r.section] || { name: r.sectionName, items: [] }).items.push(r); });
+    return Object.keys(groups).sort().map(k => '<h4>' + esc(groups[k].name) + ' (' + groups[k].items.length + ')</h4>' + groups[k].items.map(ruleCard).join('')).join('');
+  }
+
+  function puccaComparison() {
+    const b250 = window.LAL_KITAB_250, own = window.LAL_KITAB_BOOK, cand = window.LAL_KITAB_CANDIDATES.rules;
+    if (!b250) return '';
+    const a = cand.find(r => r.id === 'LK-CAND-PAKKA-GHAR-VARIANT-A'), b = cand.find(r => r.id === 'LK-CAND-PAKKA-GHAR-VARIANT-B');
+    const mine = {};
+    if (own) Object.keys(own.pacca).forEach(h => own.pacca[h].forEach(p => (mine[p] = mine[p] || []).push(+h)));
+    const rows = window.LalKitabChart.PLANETS.map(p => [p, b250.pucca[p].join(', '), (mine[p] || []).join(', ') || '—',
+      a ? (a.conditionsDraft.table[p] || []).join(', ') : '—', b ? (b.conditionsDraft.table[p] || []).join(', ') : '—']);
+    return '<h4>Permanent house (Pucca Ghar) in the four sources the app holds</h4>' +
+      table(['Planet','250-rule file (used here)','Owner rulebook','Web variant A','Web variant B'], rows) +
+      '<p class="hint">These disagree and none is verified against a primary edition.</p>';
+  }
+
+  function interpretationView() {
+    const banner = '<div class="notice"><strong>Unverified compilation.</strong> The 250 rules are an owner-supplied secondary compilation. Its own disclaimer says rules vary across the 1939-1952 editions and must be checked against the original texts and reviewed by a qualified Lal Kitab scholar. Traditional claims are reported as beliefs, not predictions. The fixed house mapping (Aries = 1) is provisional, and nothing here is medical, legal or financial advice.</div>';
+    if (!window.LAL_KITAB_250) return banner + empty('Rules not loaded', 'The 250-rule data file could not be loaded. Serve the app over HTTP and reload.');
+    if (!state.interp) return banner + empty('Waiting for complete birth details', 'Enter a valid date, time, latitude, longitude and time zone. This view updates automatically.');
+    const it = state.interp, c = it.counts;
+    const tiles = '<div class="tiles"><div class="tile"><span>Apply to this chart</span><strong>' + (c.applies || 0) + '</strong></div>' +
+      '<div class="tile"><span>Partly evaluable</span><strong>' + (c.partial || 0) + '</strong></div>' +
+      '<div class="tile"><span>Cannot be evaluated</span><strong>' + (c['cannot-derive'] || 0) + '</strong></div>' +
+      '<div class="tile"><span>Evaluated, not applicable</span><strong>' + (c['not-applicable'] || 0) + '</strong></div>' +
+      '<div class="tile"><span>General principles</span><strong>' + (c.advisory || 0) + '</strong></div>' +
+      '<div class="tile"><span>Untriggered remedy list</span><strong>' + (c.catalogue || 0) + '</strong></div></div>';
+    const applies = it.results.filter(r => r.status === 'applies');
+    const partial = it.results.filter(r => r.status === 'partial');
+    const interp = applies.filter(r => !IS_ACTION(r)), actions = applies.filter(IS_ACTION);
+    const occ = table(['House','Sign (fixed)','Planets'], Object.keys(it.occupancy).map(h => [h, signs[h - 1], it.occupancy[h].join(', ') || 'Empty']));
+    const asp = it.aspects.length ? table(['Houses','Strength','Planets'], it.aspects.map(a => [a.a + ' ↔ ' + a.b, a.percent + '%', a.planetsA.join(', ') + ' with ' + a.planetsB.join(', ')])) : '<p class="hint">No aspect links between occupied houses.</p>';
+    const art = it.artificial.length ? table(['House','Planets','Forms'], it.artificial.map(a => [a.house, a.pair.join(' + '), a.forms + ' (rule ' + a.rule + ')'])) : '<p class="hint">No defined pairs share a house.</p>';
+    const cannot = it.results.filter(r => r.status === 'cannot-derive');
+    const adv = it.results.filter(r => r.status === 'advisory');
+    const cat = it.results.filter(r => r.status === 'catalogue');
+    const na = it.results.filter(r => r.status === 'not-applicable').map(r => r.number);
+    const wellPlaced = it.results.find(r => r.number === 249 && r.status === 'applies');
+    return banner + tiles +
+      '<h3>Interpretation: rules that apply (' + interp.length + ')</h3>' + (interp.length ? groupBySection(interp) : '<p class="hint">None.</p>') +
+      '<h3>Remedies and precautions triggered by the placements (' + actions.length + ')</h3>' +
+      '<div class="notice">Rules from the file for performing any remedy: one remedy at a time (rules 25, 188); daytime, 43 consecutive days, restart if broken (rules 24, 112, 113, 187); keep it private (rules 27, 189); no gemstones without a specific prescription (rules 26, 192). ' +
+      (wellPlaced ? esc(wellPlaced.detail) : '') + ' The app does not choose a single planet for you, because the file does not say how.</div>' +
+      (actions.length ? groupBySection(actions) : '<p class="hint">None.</p>') +
+      (partial.length ? '<h3>Partly evaluable (' + partial.length + ')</h3><p class="hint">The placement part matches; the rest uses a term the file never defines, so no verdict is made.</p>' + partial.map(ruleCard).join('') : '') +
+      '<h3>Chart facts used</h3><h4>Houses</h4>' + occ + '<h4>Aspect links (from the file)</h4>' + asp + '<h4>Artificial planets</h4>' + art +
+      '<h3>Cannot be evaluated (' + cannot.length + ')</h3><details><summary>Show the rules and why</summary>' + cannot.map(r => '<div class="tile" style="margin:8px 0"><strong>Rule ' + r.number + '</strong><p>' + esc(r.text) + '</p><p class="hint">Why not: ' + esc(r.detail) + '</p></div>').join('') + '</details>' +
+      '<h3>General principles and household guidance (' + adv.length + ')</h3><p class="hint">Not chart-dependent, so they are not matched against the chart.</p><details><summary>Show</summary>' + adv.map(r => '<p><strong>' + r.number + '.</strong> ' + esc(r.text) + (r.sensitive ? ' <span class="hint">(' + AS_BELIEF + ')</span>' : '') + '</p>').join('') + '</details>' +
+      '<h3>Remedy list with no stated trigger (' + cat.length + ')</h3><p class="hint">The file lists these per planet without saying when to use them, and "afflicted" is undefined. They are not recommended automatically.</p><details><summary>Show</summary>' + cat.map(r => '<p><strong>' + r.number + '. [' + esc(r.planet) + ']</strong> ' + esc(r.text) + (r.caution ? ' <span class="hint"><strong>Caution:</strong> ' + esc(r.caution) + '</span>' : '') + '</p>').join('') + '</details>' +
+      '<h3>Evaluated and not applicable (' + na.length + ')</h3><p class="hint">Rule numbers: ' + esc(na.join(', ')) + '</p>' +
+      '<h3>Inconsistencies noticed in the file</h3><ul>' + it.inconsistencies.map(x => '<li>' + esc(x) + '</li>').join('') + '</ul>' + puccaComparison();
+  }
+
   function rulebookView() {
     const banner = '<div class="notice"><strong>Owner-supplied rulebook, not source-verified.</strong> These results apply the rulebook you supplied. It carries no edition or page references and has not been checked against a primary Lal Kitab text. House mapping is the fixed Aries=1 convention it prescribes. Anything the rulebook does not define is listed as not derivable instead of being guessed.</div>';
     if (!state.rulebook) return banner + empty('No chart yet', 'Prepare a chart to run the rulebook.');
@@ -165,7 +234,7 @@
       ['Coordinates',state.profile.latitude + ', ' + state.profile.longitude],
       ['UTC instant',state.chart.utc.toISOString()],['Ascendant',state.chart.ascendant.sign + ' · ' + fmt(state.chart.ascendant.longitude)],
       ['Astronomy engine',state.chart.engine],['House mapping',state.chart.mappingPolicy]
-    ]) + '<h3>Placements</h3>' + placements() + '<h3>Owner-supplied rulebook (unsourced)</h3>' + (state.rulebook ? '<ul>' + state.rulebook.sections.map(sx => '<li>' + esc(sx.title) + ': ' + esc(STATUS_LABEL[sx.status]) + '</li>').join('') + '<li>Remedial plan: ' + esc(STATUS_LABEL[state.rulebook.remedyPlan.status]) + '</li></ul><p class="hint">Cannot be derived: ' + state.rulebook.cannotDerive.map(esc).join(' ') + '</p>' : '<p class="hint">Not run.</p>') + '<h3>Candidate rules (unverified)</h3><p class="hint">Derived: ' + (state.derivation ? state.derivation.derived.map(r => esc(r.title) + ' – ' + esc(OUTCOME[r.outcome] || r.outcome)).join('; ') : 'none') + '. Cannot be derived: ' + (state.derivation ? state.derivation.cannotDerive.map(r => esc(r.title)).join('; ') : 'none') + '. These come from unverified secondary summaries.</p><p class="hint">Interpretations: ' + (state.findings || []).length + ' eligible source-backed findings. This report is generated from a traditional astrology framework and is not a scientific or medical assessment.</p><div class="btnrow"><button class="btn" type="button" id="printReport">Print / Save as PDF</button></div>';
+    ]) + '<h3>Placements</h3>' + placements() + '<h3>250-rule compilation (unverified)</h3>' + (state.interp ? '<p class="hint">Apply: ' + state.interp.counts.applies + '; partly evaluable: ' + (state.interp.counts.partial || 0) + '; cannot be evaluated: ' + state.interp.counts['cannot-derive'] + '.</p><ul>' + state.interp.results.filter(r => r.status === 'applies').map(r => '<li>Rule ' + r.number + ': ' + esc(r.text) + (r.sensitive ? ' (traditional belief, not a prediction)' : '') + '</li>').join('') + '</ul>' : '<p class="hint">Not run.</p>') + '<h3>Owner-supplied rulebook (unsourced)</h3>' + (state.rulebook ? '<ul>' + state.rulebook.sections.map(sx => '<li>' + esc(sx.title) + ': ' + esc(STATUS_LABEL[sx.status]) + '</li>').join('') + '<li>Remedial plan: ' + esc(STATUS_LABEL[state.rulebook.remedyPlan.status]) + '</li></ul><p class="hint">Cannot be derived: ' + state.rulebook.cannotDerive.map(esc).join(' ') + '</p>' : '<p class="hint">Not run.</p>') + '<h3>Candidate rules (unverified)</h3><p class="hint">Derived: ' + (state.derivation ? state.derivation.derived.map(r => esc(r.title) + ' – ' + esc(OUTCOME[r.outcome] || r.outcome)).join('; ') : 'none') + '. Cannot be derived: ' + (state.derivation ? state.derivation.cannotDerive.map(r => esc(r.title)).join('; ') : 'none') + '. These come from unverified secondary summaries.</p><p class="hint">Interpretations: ' + (state.findings || []).length + ' eligible source-backed findings. This report is generated from a traditional astrology framework and is not a scientific or medical assessment.</p><div class="btnrow"><button class="btn" type="button" id="printReport">Print / Save as PDF</button></div>';
   }
 
   function renderActiveTab() {
@@ -177,6 +246,9 @@
         break;
       case 'placements':
         host.innerHTML = state.inventory ? placements() : empty('Planet table not ready','Calculate the chart first.');
+        break;
+      case 'interpretation':
+        host.innerHTML = interpretationView();
         break;
       case 'rulebook':
         host.innerHTML = rulebookView();
@@ -209,8 +281,9 @@
       '<div class="empty"><div class="symbol">✧</div><h3>Ready to prepare a chart</h3><p>Enter date, time, place, timezone and coordinates. This version calculates a planetary inventory but intentionally does not invent Lal Kitab interpretations.</p></div>');
   }
 
-  async function calculate(form) {
+  async function calculate(form, token) {
     if (window.SWISSEPH_INIT_PROMISE) await window.SWISSEPH_INIT_PROMISE;
+    if (token !== seq) return false; // a newer edit superseded this calculation
     if (typeof window.computePlanetLongitudes !== 'function' ||
         typeof window.computeAscendant !== 'function' ||
         typeof window.zonedLocalToUtc !== 'function') {
@@ -244,50 +317,86 @@
       housePlanets: inventory.filter(other => other.house === p.house && other.status === 'calculated').map(other => other.planet)
     }));
     state.rulebook = null;
-    if (window.LAL_KITAB_BOOK) {
-      const houses = {};
-      inventory.forEach(p => { if (p.status === 'calculated') houses[p.planet] = p.house; });
-      const rel = (window.LAL_KITAB_CANDIDATES.rules.find(r => r.id === 'LK-CAND-PLANET-RELATIONSHIPS') || {}).conditionsDraft;
-      const born = new Date(Date.UTC(year, month - 1, day)), now = new Date();
-      let age = now.getUTCFullYear() - year;
-      if (now.getUTCMonth() + 1 < month || (now.getUTCMonth() + 1 === month && now.getUTCDate() < day)) age -= 1;
-      state.rulebook = window.LalKitabRulebook.analyze(window.LAL_KITAB_BOOK, {
-        houses, age: age >= 0 ? age : null, relationships: rel ? rel.table : null
-      });
-    }
+    state.interp = null;
+    const houses = {};
+    inventory.forEach(p => { if (p.status === 'calculated') houses[p.planet] = p.house; });
+    const rel = (window.LAL_KITAB_CANDIDATES.rules.find(r => r.id === 'LK-CAND-PLANET-RELATIONSHIPS') || {}).conditionsDraft;
+    const now = new Date();
+    let age = now.getUTCFullYear() - year;
+    if (now.getUTCMonth() + 1 < month || (now.getUTCMonth() + 1 === month && now.getUTCDate() < day)) age -= 1;
+    const analysisInput = { houses, age: age >= 0 ? age : null, relationships: rel ? rel.table : null };
+    if (window.LAL_KITAB_BOOK) state.rulebook = window.LalKitabRulebook.analyze(window.LAL_KITAB_BOOK, analysisInput);
+    if (window.LAL_KITAB_250) state.interp = window.LalKitabRules250.evaluateAll(window.LAL_KITAB_250, analysisInput);
     state.derivation = window.LalKitabDerivation.deriveCandidates(window.LAL_KITAB_CANDIDATES.rules, inventory);
     state.findings = window.LalKitabRuleEngine.evaluate(window.LAL_KITAB_RULES.rules, contexts);
+    return true;
   }
 
   const form = $('birthForm');
-  form.addEventListener('submit', async event => {
-    event.preventDefault();
+  const REQUIRED = ['birthDate', 'birthTime', 'latitude', 'longitude', 'timezone'];
+  let seq = 0, timer = null, firstResult = true;
+  const formReady = () => REQUIRED.every(n => { const el = form.elements.namedItem(n); return el && el.value !== '' && el.checkValidity(); });
+
+  function clearResults() {
+    state.profile = state.chart = state.inventory = state.derivation = state.rulebook = state.interp = null;
+    state.findings = [];
+  }
+
+  async function refresh() {
+    const token = ++seq;
+    if (!formReady()) {
+      clearResults();
+      $('message').textContent = 'Waiting for a valid date, time, latitude, longitude and time zone.';
+      if ($('birthSummary')) $('birthSummary').textContent = 'Not entered';
+      renderActiveTab();
+      return;
+    }
     try {
-      await calculate(form);
-      $('message').textContent = 'Planetary inventory calculated using ' + state.chart.engine + '. House mapping is provisional; source-verified interpretations are not enabled.';
+      await dataReady;
+      const done = await calculate(form, token);
+      if (done === false || token !== seq) return;
+      $('message').textContent = 'Updated automatically using ' + state.chart.engine + '. House mapping is provisional; interpretations are from unverified sources.';
       if ($('birthSummary')) $('birthSummary').textContent = state.profile.date + ' ' + state.profile.time;
-      state.activeTab = document.querySelector('[data-tab][aria-selected="true"]')?.dataset.tab || 'overview';
+      if (firstResult) {
+        firstResult = false;
+        state.activeTab = 'interpretation';
+        document.querySelectorAll('[data-tab]').forEach(b => b.setAttribute('aria-selected', String(b.dataset.tab === 'interpretation')));
+        const t = $('sectionTitle'); if (t) t.textContent = 'Native Interpretation';
+        const hnt = $('sectionHint'); if (hnt) hnt.textContent = 'The 250-rule compilation applied to this chart.';
+      } else {
+        state.activeTab = document.querySelector('[data-tab][aria-selected="true"]')?.dataset.tab || 'overview';
+      }
       renderActiveTab();
     } catch (error) {
-      $('message').textContent = 'Could not calculate chart: ' + error.message;
+      if (token === seq) $('message').textContent = 'Could not calculate chart: ' + error.message;
     }
-  });
+  }
+
+  function schedule() {
+    clearTimeout(timer);
+    $('message').textContent = 'Updating…';
+    timer = setTimeout(refresh, 300);
+  }
+
+  form.addEventListener('input', schedule);
+  form.addEventListener('change', schedule);
+  form.addEventListener('submit', event => { event.preventDefault(); clearTimeout(timer); refresh(); });
 
   document.querySelectorAll('[data-tab]').forEach(button => button.addEventListener('click', () => {
     state.activeTab = button.dataset.tab;
     renderActiveTab();
   }));
-  const originalReset = form.reset.bind(form);
-  form.addEventListener('reset', () => {
-    state.profile = state.chart = state.inventory = null;
-    state.findings = [];
-    state.derivation = null;
-    state.rulebook = null;
-    state.activeTab = 'overview';
-    setTimeout(renderActiveTab, 0);
+  // "Clear" empties the fields (the browser default would restore the pre-filled values).
+  form.addEventListener('reset', event => {
+    event.preventDefault();
+    clearTimeout(timer);
+    ['native', 'birthDate', 'birthTime', 'place', 'latitude', 'longitude'].forEach(n => { form.elements.namedItem(n).value = ''; });
+    refresh();
   });
+  refresh(); // pre-filled details are calculated on load
+  // If a calculation ran on the fallback engine before the WASM engine finished loading, redo it with WASM.
   document.addEventListener('swisseph-ready', () => {
-    if ($('message').textContent.includes('fallback')) $('message').textContent = 'Swiss Ephemeris WASM is ready for subsequent calculations.';
+    if (state.chart && !/Swiss Ephemeris/.test(state.chart.engine)) refresh();
   });
   window.addEventListener('beforeprint', () => { if (state.chart) renderActiveTab(); });
 })();
