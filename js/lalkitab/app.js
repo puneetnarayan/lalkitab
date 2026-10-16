@@ -11,7 +11,12 @@
     .then(response => { if (!response.ok) throw new Error('Candidates unavailable'); return response.json(); })
     .then(data => { window.LAL_KITAB_CANDIDATES = data; })
     .catch(() => { window.LAL_KITAB_CANDIDATES = { rules: [] }; });
-  const state = { derivation: null, profile: null, chart: null, inventory: null, activeTab: 'overview', findings: [] };
+  window.LAL_KITAB_BOOK = null;
+  fetch('data/lalkitab-rulebook.json')
+    .then(response => { if (!response.ok) throw new Error('Rulebook unavailable'); return response.json(); })
+    .then(data => { window.LAL_KITAB_BOOK = data; })
+    .catch(() => { window.LAL_KITAB_BOOK = null; });
+  const state = { rulebook: null, derivation: null, profile: null, chart: null, inventory: null, activeTab: 'overview', findings: [] };
   window.LAL_KITAB_APP_STATE = state;
 
   const signs = window.LalKitabChart.SIGNS;
@@ -67,6 +72,68 @@
     return '';
   }
 
+  const STATUS_LABEL = { derived: 'Derived', partial: 'Partly derived', 'cannot-derive': 'Cannot be derived', 'not-applicable': 'Not applicable' };
+  const chip = (status) => '<span class="status"><span class="dot"></span>' + esc(STATUS_LABEL[status] || status) + '</span>';
+  const yn = v => v ? 'Present' : 'Not present';
+
+  function pakkaComparison() {
+    const book = window.LAL_KITAB_BOOK, cand = window.LAL_KITAB_CANDIDATES.rules;
+    if (!book) return '';
+    const a = cand.find(r => r.id === 'LK-CAND-PAKKA-GHAR-VARIANT-A'), b = cand.find(r => r.id === 'LK-CAND-PAKKA-GHAR-VARIANT-B');
+    if (!a || !b) return '';
+    const mine = {};
+    Object.keys(book.pacca).forEach(h => book.pacca[h].forEach(p => (mine[p] = mine[p] || []).push(+h)));
+    const rows = window.LalKitabChart.PLANETS.map(p => [p, (mine[p] || []).join(', ') || '—',
+      (a.conditionsDraft.table[p] || []).join(', ') || '—', (b.conditionsDraft.table[p] || []).join(', ') || '—']);
+    return '<h3>Where your rulebook differs from the earlier web-sourced Pakka Ghar tables</h3>' +
+      table(['Planet','Your rulebook','Web variant A','Web variant B'], rows) +
+      '<p class="hint">These disagree and none is verified. Your rulebook is used for the analysis above; the earlier tables remain on the Rules &amp; Analysis tab.</p>';
+  }
+
+  function rulebookSection(s) {
+    let body = '';
+    if (s.id === 'chart-types') {
+      body = s.items.map(i => '<div class="tile" style="margin:8px 0"><strong>' + esc(i.name) + '</strong> · ' +
+        (i.status === 'cannot-derive' ? chip('cannot-derive') + '<p>' + esc(i.reason) + '</p>' :
+          chip('derived') + ' <strong>' + yn(i.present) + '</strong><p>' + esc(i.detail) + '</p>' +
+          (i.interpretation ? '<p><em>' + esc(i.interpretation) + '</em></p>' : '') +
+          (i.usesUnverifiedInput ? '<p class="hint">Uses an unverified web-sourced input.</p>' : '')) + '</div>').join('');
+    } else if (s.id === 'dignity') {
+      body = table(['Planet','House','Result','Why','Direct remedy'], s.rows.map(r => r.status === 'cannot-derive'
+        ? [r.planet, '—', 'Cannot be derived', r.reason, '—']
+        : [r.planet, r.house, r.result, r.reasons.join(', ') || 'None of the Grahfal conditions', r.remedyAllowed ? 'Allowed' : 'Not allowed']));
+    } else if (s.id === 'aspects') {
+      body = (s.aspects.length ? table(['From house','To house','Strength','By','Planets in target'], s.aspects.map(a =>
+        [a.from, a.to, a.percent === null ? 'Not stated' : a.percent + '%', a.by.join(', '), a.targetOccupants.join(', ') || 'Empty'])) : '<p class="hint">No aspects from occupied houses.</p>') +
+        '<p><strong>Soya Ghar (dormant houses):</strong> ' + esc(s.soyaGhar.length ? s.soyaGhar.join(', ') : 'none') + '</p>' +
+        '<p><strong>Soya Grah (sleeping planets):</strong> ' + esc(s.soyaGrah.length ? s.soyaGrah.map(g => g.planet + ' (house ' + g.house + ')').join(', ') : 'none') + '</p>' +
+        '<p class="hint">' + esc(s.incomplete) + '</p>';
+    } else if (s.id === 'masnooi') {
+      body = s.items.length ? table(['House','Planets','Forms','Meaning'], s.items.map(i => i.ambiguous
+        ? [i.house, i.pair.join(' + '), 'Unresolved: ' + i.alt, i.note] : [i.house, i.pair.join(' + '), i.forms, i.meaning])) : '<p class="hint">No defined pairs share a house.</p>';
+    } else if (s.id === 'timing') {
+      body = table(['Planet','Activation age','Native\'s house','Phase','Domain named in rulebook'], s.rows.map(r => [r.planet, r.age, r.house === null ? '—' : r.house, r.phase, r.domain]));
+    } else if (s.id === 'qurbani') {
+      body = table(['Rule','Status','Note'], s.rows.map(r => [r.rule, STATUS_LABEL[r.status], r.reason]));
+    }
+    return '<h3>' + esc(s.title) + ' ' + chip(s.status) + '</h3><p class="hint">' + esc(s.summary) + '</p>' + body;
+  }
+
+  function rulebookView() {
+    const banner = '<div class="notice"><strong>Owner-supplied rulebook, not source-verified.</strong> These results apply the rulebook you supplied. It carries no edition or page references and has not been checked against a primary Lal Kitab text. House mapping is the fixed Aries=1 convention it prescribes. Anything the rulebook does not define is listed as not derivable instead of being guessed.</div>';
+    if (!state.rulebook) return banner + empty('No chart yet', 'Prepare a chart to run the rulebook.');
+    const r = state.rulebook;
+    const rp = r.remedyPlan;
+    const lookup = rp.nabalikLookup && rp.nabalikLookup.status === 'partial'
+      ? '<p><strong>Nabalik remedy lookup (age ' + rp.nabalikLookup.age + '):</strong> house ' + rp.nabalikLookup.house + ' (' + esc(rp.nabalikLookup.lord) + '). ' + esc(rp.nabalikLookup.reason) + '</p>' : '';
+    return banner + r.sections.map(rulebookSection).join('') +
+      '<h3>Remedial plan ' + chip('cannot-derive') + '</h3><p>' + esc(rp.reason) + '</p>' + lookup +
+      '<p><strong>Rules any remedy must follow (from the rulebook):</strong></p><ul>' + rp.rules.map(x => '<li>' + esc(x) + '</li>').join('') + '</ul>' +
+      '<h3>What cannot be derived from this rulebook</h3><ul>' + r.cannotDerive.map(x => '<li>' + esc(x) + '</li>').join('') + '</ul>' +
+      '<h3>Inconsistencies noticed in the rulebook</h3><ul>' + r.warnings.map(x => '<li>' + esc(x) + '</li>').join('') + '</ul>' +
+      pakkaComparison();
+  }
+
   function rulesView() {
     const verified = window.LAL_KITAB_RULES.rules.length;
     const warn = '<div class="notice"><strong>Unverified research candidates.</strong> The results below apply rules collected from secondary web summaries. No primary Lal Kitab edition has been checked, sources disagree in places, and the house mapping is provisional. Treat them as what a reported rule would say, not as a validated reading. Verified rules available: ' + verified + '.</div>';
@@ -98,7 +165,7 @@
       ['Coordinates',state.profile.latitude + ', ' + state.profile.longitude],
       ['UTC instant',state.chart.utc.toISOString()],['Ascendant',state.chart.ascendant.sign + ' · ' + fmt(state.chart.ascendant.longitude)],
       ['Astronomy engine',state.chart.engine],['House mapping',state.chart.mappingPolicy]
-    ]) + '<h3>Placements</h3>' + placements() + '<h3>Candidate rules (unverified)</h3><p class="hint">Derived: ' + (state.derivation ? state.derivation.derived.map(r => esc(r.title) + ' – ' + esc(OUTCOME[r.outcome] || r.outcome)).join('; ') : 'none') + '. Cannot be derived: ' + (state.derivation ? state.derivation.cannotDerive.map(r => esc(r.title)).join('; ') : 'none') + '. These come from unverified secondary summaries.</p><p class="hint">Interpretations: ' + (state.findings || []).length + ' eligible source-backed findings. This report is generated from a traditional astrology framework and is not a scientific or medical assessment.</p><div class="btnrow"><button class="btn" type="button" id="printReport">Print / Save as PDF</button></div>';
+    ]) + '<h3>Placements</h3>' + placements() + '<h3>Owner-supplied rulebook (unsourced)</h3>' + (state.rulebook ? '<ul>' + state.rulebook.sections.map(sx => '<li>' + esc(sx.title) + ': ' + esc(STATUS_LABEL[sx.status]) + '</li>').join('') + '<li>Remedial plan: ' + esc(STATUS_LABEL[state.rulebook.remedyPlan.status]) + '</li></ul><p class="hint">Cannot be derived: ' + state.rulebook.cannotDerive.map(esc).join(' ') + '</p>' : '<p class="hint">Not run.</p>') + '<h3>Candidate rules (unverified)</h3><p class="hint">Derived: ' + (state.derivation ? state.derivation.derived.map(r => esc(r.title) + ' – ' + esc(OUTCOME[r.outcome] || r.outcome)).join('; ') : 'none') + '. Cannot be derived: ' + (state.derivation ? state.derivation.cannotDerive.map(r => esc(r.title)).join('; ') : 'none') + '. These come from unverified secondary summaries.</p><p class="hint">Interpretations: ' + (state.findings || []).length + ' eligible source-backed findings. This report is generated from a traditional astrology framework and is not a scientific or medical assessment.</p><div class="btnrow"><button class="btn" type="button" id="printReport">Print / Save as PDF</button></div>';
   }
 
   function renderActiveTab() {
@@ -110,6 +177,9 @@
         break;
       case 'placements':
         host.innerHTML = state.inventory ? placements() : empty('Planet table not ready','Calculate the chart first.');
+        break;
+      case 'rulebook':
+        host.innerHTML = rulebookView();
         break;
       case 'rules':
         host.innerHTML = rulesView();
@@ -173,6 +243,18 @@
       planet: p.planet, house: p.house, sign: p.sign,
       housePlanets: inventory.filter(other => other.house === p.house && other.status === 'calculated').map(other => other.planet)
     }));
+    state.rulebook = null;
+    if (window.LAL_KITAB_BOOK) {
+      const houses = {};
+      inventory.forEach(p => { if (p.status === 'calculated') houses[p.planet] = p.house; });
+      const rel = (window.LAL_KITAB_CANDIDATES.rules.find(r => r.id === 'LK-CAND-PLANET-RELATIONSHIPS') || {}).conditionsDraft;
+      const born = new Date(Date.UTC(year, month - 1, day)), now = new Date();
+      let age = now.getUTCFullYear() - year;
+      if (now.getUTCMonth() + 1 < month || (now.getUTCMonth() + 1 === month && now.getUTCDate() < day)) age -= 1;
+      state.rulebook = window.LalKitabRulebook.analyze(window.LAL_KITAB_BOOK, {
+        houses, age: age >= 0 ? age : null, relationships: rel ? rel.table : null
+      });
+    }
     state.derivation = window.LalKitabDerivation.deriveCandidates(window.LAL_KITAB_CANDIDATES.rules, inventory);
     state.findings = window.LalKitabRuleEngine.evaluate(window.LAL_KITAB_RULES.rules, contexts);
   }
@@ -200,6 +282,7 @@
     state.profile = state.chart = state.inventory = null;
     state.findings = [];
     state.derivation = null;
+    state.rulebook = null;
     state.activeTab = 'overview';
     setTimeout(renderActiveTab, 0);
   });
