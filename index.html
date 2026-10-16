@@ -40,7 +40,7 @@ table{width:100%;border-collapse:collapse;font-size:13px;margin:12px 0}th,td{tex
 <label for="timezone">Time zone</label><select id="timezone" name="timezone"><option value="Asia/Kolkata" selected>India Standard Time (Asia/Kolkata)</option><option value="UTC">UTC</option><option value="America/New_York">America/New_York</option><option value="Europe/London">Europe/London</option><option value="Australia/Sydney">Australia/Sydney</option></select>
 <div class="btnrow"><button class="btn" type="submit">Prepare chart</button><button class="btn secondary" type="reset">Clear</button></div><div id="message" role="status" aria-live="polite"></div>
 </form>
-<div class="notice"><strong>Calculation status</strong><br>Offline astronomy fallback is connected. House mapping remains provisional; source-verified Lal Kitab interpretations are not yet enabled.</div>
+<div class="notice"><strong>Calculation status</strong><br>Swiss Ephemeris WASM is used when its local binary assets load; otherwise the offline astronomy fallback is used. House mapping remains provisional; source-verified Lal Kitab interpretations are not yet enabled.</div>
 </aside>
 <section>
 <div class="tabs" role="tablist" aria-label="Lal Kitab modules">
