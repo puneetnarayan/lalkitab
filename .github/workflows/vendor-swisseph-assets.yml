@@ -3,7 +3,7 @@ name: Vendor Swiss Ephemeris runtime assets
 on:
   pull_request:
     branches: [main]
-    types: [opened, synchronize, ready_for_review]
+    types: [opened, synchronize, ready_for_review, edited]
   push:
     branches: [feat/bundle-swisseph-assets]
     paths:
@@ -23,6 +23,7 @@ jobs:
           repository: puneetnarayan/Parashari-Astrology-
           ref: main
           path: upstream
+          lfs: true
           persist-credentials: false
 
       - name: Check out Lal Kitab branch
@@ -42,12 +43,19 @@ jobs:
           cp upstream/ephemeris/wasm/swisseph.wasm target/ephemeris/wasm/swisseph.wasm
           cp upstream/ephemeris/wasm/swisseph.data target/ephemeris/wasm/swisseph.data
           cp upstream/ephemeris/LICENSE-swisseph-wasm.txt target/ephemeris/LICENSE-swisseph-wasm.txt
-          test "$(stat -c %s target/ephemeris/wasm/swisseph.js)" -eq 74272
-          test "$(stat -c %s target/ephemeris/wasm/swisseph.wasm)" -eq 561871
-          test "$(stat -c %s target/ephemeris/wasm/swisseph.data)" -eq 2151204
-          test "$(sha1sum target/ephemeris/wasm/swisseph.js | cut -d ' ' -f1)" = "f7d36e518e9f3743f1ea27b19a0aa1d7c75af225"
-          test "$(sha1sum target/ephemeris/wasm/swisseph.wasm | cut -d ' ' -f1)" = "a58d1b88947685562b367e56607c3b8002409a00"
-          test "$(sha1sum target/ephemeris/wasm/swisseph.data | cut -d ' ' -f1)" = "03850e4899bd8e621869786ded88b515d39a8d9c"
+
+          echo "Asset sizes (bytes):"
+          stat -c '%n %s' target/ephemeris/wasm/swisseph.js target/ephemeris/wasm/swisseph.wasm target/ephemeris/wasm/swisseph.data
+
+          test "$(stat -c %s target/ephemeris/wasm/swisseph.js)" -eq 74272 || { echo "::error::Unexpected swisseph.js size"; exit 1; }
+          test "$(stat -c %s target/ephemeris/wasm/swisseph.wasm)" -eq 561871 || { echo "::error::Unexpected swisseph.wasm size; verify LFS checkout and source version"; exit 1; }
+          test "$(stat -c %s target/ephemeris/wasm/swisseph.data)" -eq 2151204 || { echo "::error::Unexpected swisseph.data size; verify LFS checkout and source version"; exit 1; }
+
+          echo "Asset SHA-1 hashes:"
+          sha1sum target/ephemeris/wasm/swisseph.js target/ephemeris/wasm/swisseph.wasm target/ephemeris/wasm/swisseph.data
+          test "$(sha1sum target/ephemeris/wasm/swisseph.js | cut -d ' ' -f1)" = "f7d36e518e9f3743f1ea27b19a0aa1d7c75af225" || { echo "::error::swisseph.js SHA-1 mismatch"; exit 1; }
+          test "$(sha1sum target/ephemeris/wasm/swisseph.wasm | cut -d ' ' -f1)" = "a58d1b88947685562b367e56607c3b8002409a00" || { echo "::error::swisseph.wasm SHA-1 mismatch"; exit 1; }
+          test "$(sha1sum target/ephemeris/wasm/swisseph.data | cut -d ' ' -f1)" = "03850e4899bd8e621869786ded88b515d39a8d9c" || { echo "::error::swisseph.data SHA-1 mismatch"; exit 1; }
 
       - name: Commit assets to Lal Kitab branch
         shell: bash
