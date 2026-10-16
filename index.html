@@ -33,10 +33,10 @@ table{width:100%;border-collapse:collapse;font-size:13px;margin:12px 0}th,td{tex
 <aside class="panel">
 <h2>Birth Details</h2><p class="hint">Enter the native's details to prepare a chart.</p>
 <form id="birthForm">
-<label for="native">Name / label (optional)</label><input id="native" name="native" placeholder="e.g. Native 1">
-<div class="grid2"><div><label for="birthDate">Birth date</label><input id="birthDate" name="birthDate" type="date" required></div><div><label for="birthTime">Birth time</label><input id="birthTime" name="birthTime" type="time" required value="12:00"></div></div>
-<label for="place">Birth place</label><input id="place" name="place" placeholder="City, state, country" required>
-<div class="grid2"><div><label for="latitude">Latitude</label><input id="latitude" name="latitude" type="number" step="any" min="-90" max="90" placeholder="e.g. 26.76" required></div><div><label for="longitude">Longitude</label><input id="longitude" name="longitude" type="number" step="any" min="-180" max="180" placeholder="e.g. 83.37" required></div></div>
+<label for="native">Name / label (optional)</label><input id="native" name="native" value="Puneet Narayan" placeholder="e.g. Native 1">
+<div class="grid2"><div><label for="birthDate">Birth date</label><input id="birthDate" name="birthDate" type="date" value="1970-06-02" required></div><div><label for="birthTime">Birth time</label><input id="birthTime" name="birthTime" type="time" required value="18:27"></div></div>
+<label for="place">Birth place</label><input id="place" name="place" value="Gorakhpur, Uttar Pradesh, India" placeholder="City, state, country" required>
+<div class="grid2"><div><label for="latitude">Latitude</label><input id="latitude" name="latitude" type="number" step="any" min="-90" max="90" value="26.7606" placeholder="e.g. 26.76" required></div><div><label for="longitude">Longitude</label><input id="longitude" name="longitude" type="number" step="any" min="-180" max="180" value="83.3732" placeholder="e.g. 83.37" required></div></div>
 <label for="timezone">Time zone</label><select id="timezone" name="timezone"><option value="Asia/Kolkata" selected>India Standard Time (Asia/Kolkata)</option><option value="UTC">UTC</option><option value="America/New_York">America/New_York</option><option value="Europe/London">Europe/London</option><option value="Australia/Sydney">Australia/Sydney</option></select>
 <div class="btnrow"><button class="btn" type="submit">Prepare chart</button><button class="btn secondary" type="reset">Clear</button></div><div id="message" role="status" aria-live="polite"></div>
 </form>
