@@ -13,12 +13,12 @@ Browser-based Lal Kitab astrology application. The implementation is designed to
 
 ## Current implementation status (16 Oct 2026)
 
-- The browser UI now loads an offline astronomy fallback, timezone conversion, a planet inventory, a provisional chart grid, and guarded rule-evaluation code.
+- The browser UI loads timezone conversion, a planet inventory, a provisional chart grid, and guarded rule-evaluation code.
 - The source app's `astronomy.browser.min.js`, `ephemeris.js`, and `timezone.js` were reused. The upstream astronomy bundle retains its MIT header.
-- Swiss Ephemeris wrapper and bridge are now included. Download `swisseph.wasm` and `swisseph.data` by running `scripts/Download-EphemerisAssets.ps1`; see [Swiss Ephemeris setup](docs/SWISSEPH_SETUP.md). The astronomy fallback remains available if initialization fails.
+- Swiss Ephemeris wrapper and bridge are adapted from the [Parashari-Astrology source app](https://github.com/puneetnarayan/Parashari-Astrology-). The bridge uses the wrapper's `calc_ut()` array return and `houses()` result shape, applies Lahiri mode, and exposes an astronomy-engine fallback if initialization fails. Download `swisseph.wasm` and `swisseph.data` by running `scripts/Download-EphemerisAssets.ps1`; see [Swiss Ephemeris setup](docs/SWISSEPH_SETUP.md).
 - The fixed natural-zodiac house mapping is explicitly provisional. Do not treat house-based readings as validated until the selected primary Lal Kitab edition establishes the convention.
 - `data/lalkitab-rules.json` intentionally contains zero active rules. Research concepts are not prediction rules. The rule engine rejects records that lack eligible confidence and pinpoint source references.
-- To test the current pure-JavaScript modules: `node tests/lalkitab-chart.test.js` and `node tests/lalkitab-engine.test.js`. GitHub Actions is configured to run these tests on pushes and pull requests.
+- To test the current pure-JavaScript modules: `node tests/lalkitab-chart.test.js`, `node tests/lalkitab-engine.test.js`, and `node tests/swisseph-bridge.test.js`. GitHub Actions runs these tests on pushes and pull requests.
 
 ## Proposed MVP modules
 
@@ -31,7 +31,7 @@ Browser-based Lal Kitab astrology application. The implementation is designed to
 
 ## Reuse strategy
 
-The source repository contains `ephemeris/src/swisseph.js`, `ephemeris/wasm/`, `js/swissephBridge.js`, `js/ephemeris.js`, `js/timezone.js`, and `js/astronomy.browser.min.js`. This app currently reuses the astronomy fallback and timezone utilities only. Integrate Swiss Ephemeris WASM in a later step after preserving the expected relative asset paths and carrying forward all required license notices.
+The source repository contains `ephemeris/src/swisseph.js`, `ephemeris/wasm/`, `js/swissephBridge.js`, `js/ephemeris.js`, `js/timezone.js`, and `js/astronomy.browser.min.js`. This app reuses the astronomy fallback, timezone utility, Swiss Ephemeris wrapper and bridge where applicable. Keep Lal Kitab interpretations isolated from Parashari interpretation functions.
 
 Only the calculation primitives should be shared. Lal Kitab rules will live under js/lalkitab/ and will not call Parashari interpretation functions.
 
@@ -46,4 +46,4 @@ Then open http://localhost:8000/.
 
 ## Status
 
-Working scaffold with preliminary planetary inventory; not yet a validated astrology product. Swiss Ephemeris WASM integration, house-convention verification, source-backed rule ingestion, and end-to-end/browser testing remain outstanding.
+Working scaffold with preliminary planetary inventory; not yet a validated astrology product. Swiss Ephemeris browser/WASM runtime verification, house-convention verification, and source-backed Lal Kitab rule ingestion remain outstanding.
