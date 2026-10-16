@@ -11,6 +11,15 @@ Browser-based Lal Kitab astrology application. The implementation is designed to
 - Clearly distinguish implemented rules from planned or unverified content.
 - Preserve the upstream Swiss Ephemeris and WASM licensing notices. Review licensing before distributing or hosting the app as a service.
 
+## Current implementation status (16 Oct 2026)
+
+- The browser UI now loads an offline astronomy fallback, timezone conversion, a planet inventory, a provisional chart grid, and guarded rule-evaluation code.
+- The source app's `astronomy.browser.min.js`, `ephemeris.js`, and `timezone.js` were reused. The upstream astronomy bundle retains its MIT header.
+- **Swiss Ephemeris WASM is not bundled in this repository yet.** Current results use the Astronomy Engine fallback and have not been benchmark-validated against Swiss Ephemeris.
+- The fixed natural-zodiac house mapping is explicitly provisional. Do not treat house-based readings as validated until the selected primary Lal Kitab edition establishes the convention.
+- `data/lalkitab-rules.json` intentionally contains zero active rules. Research concepts are not prediction rules. The rule engine rejects records that lack eligible confidence and pinpoint source references.
+- To test the current pure-JavaScript modules: `node tests/lalkitab-chart.test.js` and `node tests/lalkitab-engine.test.js`.
+
 ## Proposed MVP modules
 
 1. Birth details: date, local time, place/coordinates, and time zone.
@@ -22,7 +31,7 @@ Browser-based Lal Kitab astrology application. The implementation is designed to
 
 ## Reuse strategy
 
-The source repository currently contains ephemeris/src/swisseph.js, ephemeris/wasm/, js/swissephBridge.js, js/ephemeris.js, js/timezone.js, and general longitude/sign utility code. Before copying, verify the current source paths and required relative paths. The WASM assets must remain at paths expected by the bridge, and their license files must be carried along.
+The source repository contains `ephemeris/src/swisseph.js`, `ephemeris/wasm/`, `js/swissephBridge.js`, `js/ephemeris.js`, `js/timezone.js`, and `js/astronomy.browser.min.js`. This app currently reuses the astronomy fallback and timezone utilities only. Integrate Swiss Ephemeris WASM in a later step after preserving the expected relative asset paths and carrying forward all required license notices.
 
 Only the calculation primitives should be shared. Lal Kitab rules will live under js/lalkitab/ and will not call Parashari interpretation functions.
 
@@ -37,4 +46,4 @@ Then open http://localhost:8000/.
 
 ## Status
 
-Project scaffold / planning stage. Do not consider the calculation engine integrated until the upstream bridge and WASM files have been copied and tested together.
+Working scaffold with preliminary planetary inventory; not yet a validated astrology product. Swiss Ephemeris WASM integration, house-convention verification, source-backed rule ingestion, and end-to-end/browser testing remain outstanding.
