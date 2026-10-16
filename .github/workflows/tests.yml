@@ -24,3 +24,5 @@ jobs:
         run: node tests/lalkitab-chart.test.js
       - name: Test rule engine safety
         run: node tests/lalkitab-engine.test.js
+      - name: Test Swiss Ephemeris adapter
+        run: node tests/swisseph-bridge.test.js
