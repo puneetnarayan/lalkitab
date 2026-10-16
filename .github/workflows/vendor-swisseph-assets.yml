@@ -14,24 +14,12 @@ jobs:
   vendor-assets:
     runs-on: ubuntu-latest
     steps:
-      - name: Verify source repository token is configured
-        shell: bash
-        env:
-          SOURCE_REPO_TOKEN: ${{ secrets.PARASHARI_REPO_TOKEN }}
-        run: |
-          set -euo pipefail
-          if [ -z "$SOURCE_REPO_TOKEN" ]; then
-            echo "::error::Add a read-only PAT as the repository Actions secret PARASHARI_REPO_TOKEN so this workflow can read the private Parashari-Astrology- repository."
-            exit 1
-          fi
-
-      - name: Check out upstream ephemeris assets
+      - name: Check out public upstream ephemeris assets
         uses: actions/checkout@v4
         with:
           repository: puneetnarayan/Parashari-Astrology-
           ref: main
           path: upstream
-          token: ${{ secrets.PARASHARI_REPO_TOKEN }}
           persist-credentials: false
 
       - name: Check out Lal Kitab branch
@@ -51,8 +39,10 @@ jobs:
           cp upstream/ephemeris/wasm/swisseph.wasm target/ephemeris/wasm/swisseph.wasm
           cp upstream/ephemeris/wasm/swisseph.data target/ephemeris/wasm/swisseph.data
           cp upstream/ephemeris/LICENSE-swisseph-wasm.txt target/ephemeris/LICENSE-swisseph-wasm.txt
+          test "$(stat -c %s target/ephemeris/wasm/swisseph.js)" -eq 74272
           test "$(stat -c %s target/ephemeris/wasm/swisseph.wasm)" -eq 561871
           test "$(stat -c %s target/ephemeris/wasm/swisseph.data)" -eq 2151204
+          test "$(sha1sum target/ephemeris/wasm/swisseph.js | cut -d ' ' -f1)" = "f7d36e518e9f3743f1ea27b19a0aa1d7c75af225"
           test "$(sha1sum target/ephemeris/wasm/swisseph.wasm | cut -d ' ' -f1)" = "a58d1b88947685562b367e56607c3b8002409a00"
           test "$(sha1sum target/ephemeris/wasm/swisseph.data | cut -d ' ' -f1)" = "03850e4899bd8e621869786ded88b515d39a8d9c"
 
