@@ -1,0 +1,26 @@
+name: Lal Kitab JavaScript tests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  unit-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Test chart and rule schema
+        run: node tests/lalkitab-chart.test.js
+      - name: Test rule engine safety
+        run: node tests/lalkitab-engine.test.js
