@@ -1,6 +1,9 @@
 name: Vendor Swiss Ephemeris runtime assets
 
 on:
+  pull_request:
+    branches: [main]
+    types: [opened, synchronize, ready_for_review]
   push:
     branches: [feat/bundle-swisseph-assets]
     paths:
