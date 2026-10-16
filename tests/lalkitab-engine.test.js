@@ -20,6 +20,11 @@ const verified = {
 assert.equal(schema.isEligibleForInterpretation(pending), false);
 assert.equal(schema.isEligibleForInterpretation(activeNoPinpoint), false);
 assert.equal(schema.isEligibleForInterpretation(verified), true);
+const secondaryOnly = {
+  ...verified, id: 'LK-SECONDARY',
+  source: { ...verified.source, evidenceType: 'secondary-commentary' }
+};
+assert.equal(schema.isEligibleForInterpretation(secondaryOnly), false);
 
 const contexts = [{ planet: 'Sun', house: 1, sign: 'Aries', housePlanets: ['Sun'] }];
 assert.equal(engine.evaluate([pending], contexts).length, 0);
