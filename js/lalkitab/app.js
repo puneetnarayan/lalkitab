@@ -102,7 +102,7 @@
   function overview() {
     const ready = !!state.chart;
     return '<div class="tiles"><div class="tile"><span>Birth details</span><strong>' + (state.profile ? esc(state.profile.date + ' ' + state.profile.time) : 'Not entered') + '</strong></div>' +
-      '<div class="tile"><span>Calculation engine</span><strong>' + (ready ? 'Fallback calculation ready' : 'Ready to calculate') + '</strong></div>' +
+      '<div class="tile"><span>Calculation engine</span><strong>' + (ready ? esc(state.chart.engine) : 'Ready to calculate') + '</strong></div>' +
       '<div class="tile"><span>Active source-backed rules</span><strong>' + window.LAL_KITAB_RULES.rules.filter(r => window.LalKitabRuleSchema.isEligibleForInterpretation(r)).length + '</strong></div></div>' +
       (ready ? '<div class="notice"><strong>Chart calculated.</strong><br>House mapping is provisional and the astronomy fallback has not yet been benchmark-validated. No traditional predictions are enabled without source-verified rules.</div>' :
       '<div class="empty"><div class="symbol">✧</div><h3>Ready to prepare a chart</h3><p>Enter date, time, place, timezone and coordinates. This version calculates a planetary inventory but intentionally does not invent Lal Kitab interpretations.</p></div>');
@@ -135,7 +135,7 @@
     state.inventory = inventory;
     state.chart = {
       utc, ascendant: { longitude: ascendantLongitude, sign: ascSign },
-      engine: (window.SWISSEPH_READY ? 'Swiss Ephemeris WASM' : 'Astronomy-engine fallback (not benchmark-validated)'),
+      engine: (window.SWISSEPH_READY ? 'Swiss Ephemeris WASM' + (window.SWISSEPH_VERSION && window.SWISSEPH_VERSION !== 'unknown' ? ' (' + window.SWISSEPH_VERSION + ')' : '') : 'Astronomy-engine fallback (not benchmark-validated)'),
       mappingPolicy: 'Fixed natural-zodiac mapping (provisional)'
     };
     const contexts = inventory.filter(p => p.status === 'calculated').map(p => ({
