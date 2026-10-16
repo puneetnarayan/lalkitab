@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#f7f4ed">
+<title>Lal Kitab Astrology</title>
+<style>
+:root{--bg:#f7f4ed;--panel:#fffdf8;--ink:#292b35;--muted:#6d7180;--line:#b8b4a8;--accent:#7b3f35;--accent-soft:#f0ded5;--gold:#c19a52;--green:#e1eee5;--blue:#e4edf5}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 system-ui,-apple-system,Segoe UI,sans-serif}
+header{padding:22px clamp(16px,4vw,48px);border-bottom:1px solid var(--line);background:#fbf8f0}
+.brand{display:flex;align-items:center;gap:13px}.mark{width:44px;height:44px;border:1px solid var(--accent);border-radius:50%;display:grid;place-items:center;color:var(--accent);font-size:22px}
+h1{font-size:clamp(23px,3vw,32px);margin:0;letter-spacing:-.04em}header p{margin:3px 0 0;color:var(--muted)}
+main{max-width:1250px;margin:auto;padding:24px clamp(14px,3vw,32px) 48px}.layout{display:grid;grid-template-columns:minmax(260px,330px) 1fr;gap:20px;align-items:start}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:18px;min-width:0}.panel h2{font-size:18px;margin:0 0 5px}.hint{color:var(--muted);font-size:13px;margin:0 0 16px}
+label{display:block;font-size:13px;font-weight:650;margin:12px 0 5px}input,select{width:100%;padding:10px 11px;border:1px solid #aaa79e;border-radius:8px;background:white;color:var(--ink);font:inherit}input:focus,select:focus,button:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}.btn{border:1px solid var(--accent);background:var(--accent);color:white;border-radius:8px;padding:10px 14px;font:inherit;font-weight:650;cursor:pointer}.btn.secondary{background:transparent;color:var(--accent)}.btnrow{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}
+.notice{background:var(--blue);border:1px solid #a9bfce;border-radius:10px;padding:12px;font-size:13px;margin-top:14px}.status{display:inline-flex;align-items:center;gap:6px;border-radius:99px;padding:4px 9px;background:#eee9dc;font-size:12px;font-weight:700}.dot{width:7px;height:7px;border-radius:50%;background:#9a783c}
+.tabs{display:flex;gap:7px;flex-wrap:wrap;margin:0 0 16px}.tab{background:transparent;border:1px solid var(--line);padding:8px 12px;border-radius:8px;cursor:pointer;color:var(--ink);font:inherit}.tab[aria-selected=true]{background:var(--accent-soft);border-color:var(--accent);font-weight:700}
+.toprow{display:flex;justify-content:space-between;align-items:start;gap:12px;margin-bottom:14px}.help{border:1px solid var(--line);background:#fff;border-radius:7px;padding:6px 9px;cursor:pointer;font:inherit;font-size:12px;white-space:nowrap}
+.empty{border:1px dashed var(--line);border-radius:12px;padding:28px 20px;text-align:center;background:#fcfaf4}.empty .symbol{font-size:30px;color:var(--accent)}.empty h3{margin:8px 0 5px}.empty p{color:var(--muted);max-width:520px;margin:0 auto 14px}
+.tiles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:16px 0}.tile{border:1px solid var(--line);border-radius:10px;padding:12px;background:#fff}.tile span{display:block;font-size:12px;color:var(--muted)}.tile strong{font-size:15px}
+table{width:100%;border-collapse:collapse;font-size:13px}th,td{text-align:left;padding:10px 8px;border-bottom:1px solid #dedbd2}th{color:var(--muted);font-weight:650}
+#message{min-height:20px;color:#37674a;font-size:13px;margin-top:8px}
+@media(max-width:820px){.layout{grid-template-columns:1fr}.tiles{grid-template-columns:1fr 1fr}}@media(max-width:460px){.tiles{grid-template-columns:1fr}.toprow{flex-direction:column}.grid2{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+<header><div class="brand"><div class="mark" aria-hidden="true">ॐ</div><div><h1>Lal Kitab Astrology</h1><p>Birth chart, planetary placements and traditional remedies</p></div></div></header>
+<main>
+<div class="layout">
+<aside class="panel">
+<h2>Birth Details</h2><p class="hint">Enter the native's details to prepare a chart.</p>
+<form id="birthForm">
+<label for="native">Name / label (optional)</label><input id="native" name="native" placeholder="e.g. Native 1">
+<div class="grid2"><div><label for="birthDate">Birth date</label><input id="birthDate" name="birthDate" type="date" required></div><div><label for="birthTime">Birth time</label><input id="birthTime" name="birthTime" type="time" required value="12:00"></div></div>
+<label for="place">Birth place</label><input id="place" name="place" placeholder="City, state, country" required>
+<div class="grid2"><div><label for="latitude">Latitude</label><input id="latitude" name="latitude" type="number" step="any" min="-90" max="90" placeholder="e.g. 26.76" required></div><div><label for="longitude">Longitude</label><input id="longitude" name="longitude" type="number" step="any" min="-180" max="180" placeholder="e.g. 83.37" required></div></div>
+<label for="timezone">Time zone</label><select id="timezone" name="timezone"><option value="Asia/Kolkata" selected>India Standard Time (Asia/Kolkata)</option><option value="UTC">UTC</option><option value="America/New_York">America/New_York</option><option value="Europe/London">Europe/London</option><option value="Australia/Sydney">Australia/Sydney</option></select>
+<div class="btnrow"><button class="btn" type="submit">Prepare chart</button><button class="btn secondary" type="reset">Clear</button></div><div id="message" role="status" aria-live="polite"></div>
+</form>
+<div class="notice"><strong>Calculation status</strong><br>Ephemeris integration is not connected yet. This scaffold will not invent planetary positions or remedies.</div>
+</aside>
+<section>
+<div class="tabs" role="tablist" aria-label="Lal Kitab modules">
+<button class="tab" role="tab" aria-selected="true" data-tab="overview">Overview</button>
+<button class="tab" role="tab" aria-selected="false" data-tab="chart">Lal Kitab Chart</button>
+<button class="tab" role="tab" aria-selected="false" data-tab="placements">Planet Placements</button>
+<button class="tab" role="tab" aria-selected="false" data-tab="rules">Rules &amp; Analysis</button>
+<button class="tab" role="tab" aria-selected="false" data-tab="remedies">Remedies</button>
+<button class="tab" role="tab" aria-selected="false" data-tab="report">Report</button>
+</div>
+<div class="panel">
+<div class="toprow"><div><h2 id="sectionTitle">Your Lal Kitab workspace</h2><p class="hint" id="sectionHint">A clear starting point for chart calculations and rule-based interpretation.</p></div><button class="help" id="helpBtn" type="button">What does this tab do?</button></div>
+<div id="tabContent">
+<div class="tiles"><div class="tile"><span>Birth details</span><strong id="birthSummary">Not entered</strong></div><div class="tile"><span>Calculation engine</span><strong>Pending integration</strong></div><div class="tile"><span>Rule library</span><strong>To be source-tagged</strong></div></div>
+<div class="empty"><div class="symbol">✧</div><h3>Build the chart on verified calculations</h3><p>Enter birth details on the left. The next implementation step is to connect the existing Swiss Ephemeris WASM engine, then add Lal Kitab-specific chart and interpretation rules.</p><span class="status"><span class="dot"></span> Scaffold ready · calculations not yet enabled</span></div>
+</div>
+</div>
+</section>
+</div>
+</main>
+<script>
+const descriptions={
+ overview:{title:'Your Lal Kitab workspace',hint:'A clear starting point for chart calculations and rule-based interpretation.',help:'Overview shows the birth profile, engine readiness and the status of the rule library.',html:'<div class="empty"><div class="symbol">✧</div><h3>Build the chart on verified calculations</h3><p>Enter birth details on the left. The next implementation step is to connect the existing Swiss Ephemeris WASM engine, then add Lal Kitab-specific chart and interpretation rules.</p><span class="status"><span class="dot"></span> Scaffold ready · calculations not yet enabled</span></div>'},
+ chart:{title:'Lal Kitab Chart',hint:'Visual chart layout will be populated from calculated planetary house placements.',help:'This tab will display the Lal Kitab chart and the planet-to-house mapping. The mapping convention will be documented before interpretations are added.',html:'<div class="empty"><div class="symbol">▦</div><h3>Chart renderer planned</h3><p>The chart will only be drawn after birth-time conversion, Ascendant and planetary positions have been verified. Lal Kitab house mapping will remain separate from Parashari interpretation rules.</p></div>'},
+ placements:{title:'Planet Placements',hint:'A calculation-backed table of planetary longitudes, signs and Lal Kitab houses.',help:'This tab will list each planet, longitude, sign and Lal Kitab house, with the calculation method visible for review.',html:'<div class="empty"><div class="symbol">☼</div><h3>Planet table planned</h3><p>Planetary longitudes will come from the shared Swiss Ephemeris engine. House placement will be computed by a separate Lal Kitab module.</p></div>'},
+ rules:{title:'Rules & Analysis',hint:'Traceable interpretations, with the source and reasoning shown.',help:'This tab will explain which documented Lal Kitab rule matched a placement, which source supports it, and any uncertainty or conflicting convention.',html:'<div class="empty"><div class="symbol">≋</div><h3>Rule engine planned</h3><p>Rules will be stored as structured data with source references and test cases. Parashari yogas and aspects will not be silently reused as Lal Kitab rules.</p></div>'},
+ remedies:{title:'Remedies',hint:'Traditional remedies linked to specific rules and placements.',help:'This tab will show remedies only when they are tied to an implemented rule, with a plain-language explanation and source reference.',html:'<div class="empty"><div class="symbol">✿</div><h3>Remedy library planned</h3><p>Remedies will be linked to the rule that recommends them. Unverified or contradictory recommendations will be marked instead of presented as certain.</p></div>'},
+ report:{title:'Report',hint:'A printable summary of birth details, chart, interpretations and remedies.',help:'This tab will assemble the verified chart and its explanations into a print-friendly report.',html:'<div class="empty"><div class="symbol">▤</div><h3>Report generation planned</h3><p>The report will include calculation settings, placements, matched rules, remedy notes and source references.</p></div>'}
+};
+const tabs=[...document.querySelectorAll('[data-tab]')];
+function activate(key){const d=descriptions[key];tabs.forEach(b=>b.setAttribute('aria-selected',String(b.dataset.tab===key)));document.getElementById('sectionTitle').textContent=d.title;document.getElementById('sectionHint').textContent=d.hint;document.getElementById('tabContent').innerHTML=d.html;document.getElementById('helpBtn').onclick=()=>alert(d.help);}
+tabs.forEach(b=>b.addEventListener('click',()=>activate(b.dataset.tab)));
+document.getElementById('helpBtn').onclick=()=>alert(descriptions.overview.help);
+document.getElementById('birthForm').addEventListener('submit',e=>{e.preventDefault();const f=new FormData(e.currentTarget);const date=f.get('birthDate'),time=f.get('birthTime'),place=f.get('place');document.getElementById('birthSummary').textContent=date+' '+time;document.getElementById('message').textContent='Birth details captured in this page. Planetary calculations are not connected yet; no chart has been calculated.';document.getElementById('sectionHint').textContent='Profile entered for '+place+'. '+descriptions.overview.hint;});
+document.getElementById('birthForm').addEventListener('reset',()=>{document.getElementById('message').textContent='';document.getElementById('birthSummary').textContent='Not entered';});
+</script>
+</body>
+</html>
