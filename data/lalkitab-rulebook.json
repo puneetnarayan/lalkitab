@@ -1,0 +1,448 @@
+{
+  "schemaVersion": 1,
+  "name": "User-supplied Lal Kitab rulebook",
+  "provenance": {
+    "origin": "Supplied by the project owner as 'lal-kitab-system-prompt.md' (copy in docs/LAL_KITAB_SYSTEM_PROMPT.md)",
+    "evidenceType": "user-supplied-unsourced",
+    "note": "No edition, page or section references. Not verified against any Lal Kitab primary text. Shown as the owner's rulebook, not as a verified edition."
+  },
+  "pacca": {
+    "1": [
+      "Sun"
+    ],
+    "2": [
+      "Jupiter"
+    ],
+    "3": [
+      "Mars"
+    ],
+    "4": [
+      "Moon"
+    ],
+    "5": [
+      "Jupiter"
+    ],
+    "6": [
+      "Mercury",
+      "Ketu"
+    ],
+    "7": [
+      "Venus",
+      "Mercury"
+    ],
+    "8": [
+      "Mars",
+      "Saturn"
+    ],
+    "9": [
+      "Jupiter"
+    ],
+    "10": [
+      "Saturn"
+    ],
+    "11": [
+      "Jupiter",
+      "Saturn"
+    ],
+    "12": [
+      "Jupiter",
+      "Rahu"
+    ]
+  },
+  "exalted": {
+    "1": [
+      "Sun"
+    ],
+    "2": [
+      "Moon"
+    ],
+    "3": [
+      "Rahu"
+    ],
+    "4": [
+      "Jupiter"
+    ],
+    "6": [
+      "Mercury",
+      "Rahu"
+    ],
+    "7": [
+      "Saturn"
+    ],
+    "9": [
+      "Ketu"
+    ],
+    "10": [
+      "Mars"
+    ],
+    "12": [
+      "Venus",
+      "Ketu"
+    ]
+  },
+  "debilitated": {
+    "1": [
+      "Saturn"
+    ],
+    "3": [
+      "Ketu"
+    ],
+    "4": [
+      "Mars"
+    ],
+    "6": [
+      "Venus",
+      "Ketu"
+    ],
+    "7": [
+      "Sun"
+    ],
+    "8": [
+      "Moon"
+    ],
+    "9": [
+      "Rahu"
+    ],
+    "10": [
+      "Jupiter"
+    ],
+    "12": [
+      "Mercury",
+      "Rahu"
+    ]
+  },
+  "ownSigns": {
+    "assumption": "NOT in the supplied prompt. Standard sign rulership applied to the fixed house=sign mapping; confirm or replace.",
+    "houses": {
+      "1": [
+        "Mars"
+      ],
+      "2": [
+        "Venus"
+      ],
+      "3": [
+        "Mercury"
+      ],
+      "4": [
+        "Moon"
+      ],
+      "5": [
+        "Sun"
+      ],
+      "6": [
+        "Mercury"
+      ],
+      "7": [
+        "Venus"
+      ],
+      "8": [
+        "Mars"
+      ],
+      "9": [
+        "Jupiter"
+      ],
+      "10": [
+        "Saturn"
+      ],
+      "11": [
+        "Saturn"
+      ],
+      "12": [
+        "Jupiter"
+      ]
+    }
+  },
+  "aspects": [
+    {
+      "from": 1,
+      "to": 7,
+      "percent": 100
+    },
+    {
+      "from": 4,
+      "to": 10,
+      "percent": 100
+    },
+    {
+      "from": 3,
+      "to": 9,
+      "percent": 50
+    },
+    {
+      "from": 3,
+      "to": 11,
+      "percent": 50
+    },
+    {
+      "from": 5,
+      "to": 9,
+      "percent": 50
+    },
+    {
+      "from": 2,
+      "to": 6,
+      "percent": 25
+    },
+    {
+      "from": 6,
+      "to": 12,
+      "percent": 25
+    },
+    {
+      "from": 8,
+      "to": 2,
+      "percent": null,
+      "note": "Special reverse aspect; percentage not stated"
+    }
+  ],
+  "masnooi": [
+    {
+      "pair": [
+        "Sun",
+        "Mercury"
+      ],
+      "forms": "Mars Positive (Mars Nek)",
+      "meaning": "Auspicious energy, sweet nature, courage"
+    },
+    {
+      "pair": [
+        "Sun",
+        "Saturn"
+      ],
+      "forms": "Mars Negative (Mars Manda)",
+      "meaning": "Toxic/malefic energy, rage, obstruction"
+    },
+    {
+      "pair": [
+        "Sun",
+        "Jupiter"
+      ],
+      "forms": "Moon",
+      "meaning": "Pure emotional and maternal energy"
+    },
+    {
+      "pair": [
+        "Sun",
+        "Venus"
+      ],
+      "forms": "Jupiter (Khali Hawai)",
+      "meaning": "Mental/philosophical thoughts without material base"
+    },
+    {
+      "pair": [
+        "Mercury",
+        "Venus"
+      ],
+      "forms": "Sun",
+      "meaning": "Royal authority and vitality"
+    },
+    {
+      "pair": [
+        "Rahu",
+        "Ketu"
+      ],
+      "forms": "Venus",
+      "meaning": "Material and worldly pleasure"
+    },
+    {
+      "pair": [
+        "Jupiter",
+        "Rahu"
+      ],
+      "forms": "Mercury",
+      "meaning": "Intellect and business acumen"
+    },
+    {
+      "pair": [
+        "Mars",
+        "Saturn"
+      ],
+      "forms": "Rahu Exalted",
+      "meaning": "Sharp strategic intellect"
+    },
+    {
+      "pair": [
+        "Venus",
+        "Saturn"
+      ],
+      "forms": "Ketu Exalted",
+      "meaning": "Spiritual liberation and focus"
+    },
+    {
+      "pair": [
+        "Moon",
+        "Saturn"
+      ],
+      "forms": "Ketu Debilitated",
+      "meaning": "Emotional distress and anxiety"
+    }
+  ],
+  "masnooiAmbiguous": {
+    "pair": [
+      "Sun",
+      "Saturn"
+    ],
+    "alt": "Rahu Debilitated",
+    "meaning": "Confusion and sudden setbacks",
+    "note": "The prompt lists 'Sun + Saturn (Debilitated)' without saying which planet is debilitated; shown as an unresolved alternative."
+  },
+  "activationAges": [
+    {
+      "planet": "Jupiter",
+      "age": 16,
+      "domain": "Education, wisdom, family growth"
+    },
+    {
+      "planet": "Sun",
+      "age": 22,
+      "domain": "Career launch, reputation, father's status"
+    },
+    {
+      "planet": "Moon",
+      "age": 24,
+      "domain": "Emotional stability, marriage, mental peace"
+    },
+    {
+      "planet": "Venus",
+      "age": 25,
+      "domain": "Marital bliss, luxury, vehicle acquisition"
+    },
+    {
+      "planet": "Mars",
+      "age": 28,
+      "domain": "Property, courage, professional dominance"
+    },
+    {
+      "planet": "Mercury",
+      "age": 34,
+      "domain": "Business expansion, intellect, trade gains"
+    },
+    {
+      "planet": "Saturn",
+      "age": 36,
+      "domain": "Permanent career stability, property, heavy responsibility"
+    },
+    {
+      "planet": "Rahu",
+      "age": 42,
+      "domain": "Sudden major elevation or unexpected upheaval"
+    },
+    {
+      "planet": "Ketu",
+      "age": 48,
+      "domain": "Spiritual awakening, children's success, detachment"
+    }
+  ],
+  "nabalikLookup": [
+    {
+      "age": 1,
+      "house": 7,
+      "lord": "Venus"
+    },
+    {
+      "age": 2,
+      "house": 4,
+      "lord": "Moon"
+    },
+    {
+      "age": 3,
+      "house": 9,
+      "lord": "Jupiter"
+    },
+    {
+      "age": 4,
+      "house": 10,
+      "lord": "Saturn"
+    },
+    {
+      "age": 5,
+      "house": 11,
+      "lord": "Saturn"
+    },
+    {
+      "age": 6,
+      "house": 3,
+      "lord": "Mercury"
+    },
+    {
+      "age": 7,
+      "house": 2,
+      "lord": "Venus"
+    },
+    {
+      "age": 8,
+      "house": 5,
+      "lord": "Sun"
+    },
+    {
+      "age": 9,
+      "house": 6,
+      "lord": "Mercury / Ketu"
+    },
+    {
+      "age": 10,
+      "house": 12,
+      "lord": "Jupiter / Rahu"
+    },
+    {
+      "age": 11,
+      "house": 9,
+      "lord": "Mars"
+    },
+    {
+      "age": 12,
+      "house": 8,
+      "lord": "Mars"
+    }
+  ],
+  "qurbani": [
+    {
+      "afflicted": "Saturn",
+      "by": "Sun",
+      "harms": "Venus",
+      "domain": "Spouse's health, luxury, wealth"
+    },
+    {
+      "afflicted": "Mercury",
+      "by": null,
+      "harms": "Venus",
+      "domain": "Spouse, commercial stability"
+    },
+    {
+      "afflicted": "Mars",
+      "by": "Sun",
+      "harms": "Ketu",
+      "domain": "Children, progeny, maternal uncle"
+    },
+    {
+      "afflicted": "Venus",
+      "by": null,
+      "harms": "Moon",
+      "domain": "Mother's health, mental peace"
+    },
+    {
+      "afflicted": "Jupiter",
+      "by": null,
+      "harms": "Ketu",
+      "domain": "Progeny, spiritual peace"
+    },
+    {
+      "afflicted": "Sun",
+      "by": null,
+      "harms": "Ketu",
+      "domain": "Progeny, spiritual peace"
+    },
+    {
+      "afflicted": "Moon",
+      "by": null,
+      "harms": "Jupiter, Sun, or Mars",
+      "domain": "Wisdom, health, stamina"
+    }
+  ],
+  "upayRules": [
+    "Perform remedies only between sunrise and sunset.",
+    "Execute for 43 consecutive days; if a day is missed, restart from Day 1.",
+    "Recommend remedies for only ONE planet at a time (the planet causing active distress).",
+    "Direct remedies are allowed for the Birth Day planet, not for the Birth Time planet; if the Birth Time planet is malefic, remedy the Birth Day planet."
+  ]
+}

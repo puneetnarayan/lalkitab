@@ -20,6 +20,14 @@ Browser-based Lal Kitab astrology application. The implementation is designed to
 - `data/lalkitab-rules.json` intentionally contains zero active rules. Research concepts are not prediction rules. The rule engine rejects records that lack eligible confidence and pinpoint source references.
 - To test the current pure-JavaScript modules: `node tests/lalkitab-chart.test.js`, `node tests/lalkitab-engine.test.js`, and `node tests/swisseph-bridge.test.js`. GitHub Actions runs these tests on pushes and pull requests.
 
+## Owner-supplied rulebook
+
+`data/lalkitab-rulebook.json` encodes the rulebook in `docs/LAL_KITAB_SYSTEM_PROMPT.md` (fixed houses, Pacca Ghar, Grahfal/Rashiphal, chart types, aspects, Masnooi, activation ages, Qurbani, remedy-grammar rules). `js/lalkitab/rulebook.js` applies it deterministically and the **Rulebook Analysis** tab reports what could be derived and what could not. It is unsourced (no edition or page references) and is labelled that way everywhere. It has no planet-in-house result tables and no remedy content, so life-domain predictions and specific upayas are reported as not derivable. Own-sign dignity uses standard rulership, an assumption not in the rulebook.
+
+## 250 rules and live updates
+
+`data/lalkitab-250-rules.json` holds the owner-supplied "250 Rules of Lal Kitab" (`docs/LAL_KITAB_250_RULES.md`), each classified as chart-dependent (evaluated by `js/lalkitab/rules250.js`), general guidance, an untriggered remedy list, or not evaluable (the reason is stored). Terms the file never defines ("malefic", "afflicted", "weak") are never evaluated. It is an unverified secondary compilation and the **Native Interpretation** tab says so. Birth details recalculate everything automatically as they are edited (debounced); "Recalculate now" is optional.
+
 ## Proposed MVP modules
 
 1. Birth details: date, local time, place/coordinates, and time zone.
