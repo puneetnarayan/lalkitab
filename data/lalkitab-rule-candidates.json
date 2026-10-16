@@ -1,0 +1,526 @@
+{
+  "schemaVersion": 1,
+  "description": "Research CANDIDATES only. Every record is research-pending, comes from unverified web summaries (pages could not be opened; only search-result text was seen), and is excluded from interpretation. Do not move a record to data/lalkitab-rules.json or set it active until checked against a primary or licensed edition with a pinpoint reference. Conflicting variants are kept separate on purpose.",
+  "researchDate": "2026-10-16",
+  "rules": [
+    {
+      "id": "LK-CAND-PAKKA-GHAR-VARIANT-A",
+      "title": "Pakka Ghar (permanent house) table - variant A",
+      "module": "pakka-ghar",
+      "status": "research-pending",
+      "confidence": "provisional",
+      "paraphrase": "One web page lists permanent houses as: Sun 1; Moon 4; Mars 3 and 8; Mercury 7; Jupiter 2, 5, 9, 11; Venus 7; Saturn 8 and 10; Rahu 12; Ketu 6.",
+      "conditionsDraft": {
+        "table": {
+          "Sun": [
+            1
+          ],
+          "Moon": [
+            4
+          ],
+          "Mars": [
+            3,
+            8
+          ],
+          "Mercury": [
+            7
+          ],
+          "Jupiter": [
+            2,
+            5,
+            9,
+            11
+          ],
+          "Venus": [
+            7
+          ],
+          "Saturn": [
+            8,
+            10
+          ],
+          "Rahu": [
+            12
+          ],
+          "Ketu": [
+            6
+          ]
+        }
+      },
+      "source": {
+        "title": "MYM Lal Kitab page as summarised by search (http://www.mym.mysite.com/rich_text.html); astrojyotishi.com article reported to agree on Mars/Saturn",
+        "url": "http://www.mym.mysite.com/rich_text.html",
+        "edition": "not stated (secondary web page)",
+        "evidenceType": "unverified-web-summary",
+        "pageOrSection": null,
+        "retrieval": "Search-result summary on 2026-10-16; page itself could not be opened",
+        "note": "Another result gave Jupiter 12 and Saturn 10/11; tables differ between sources."
+      },
+      "edition_applicability": "unknown",
+      "lastReviewed": "2026-10-16",
+      "reviewerNotes": "Unverified; must be checked against a primary/licensed edition before activation.",
+      "conflictsWith": [
+        "LK-CAND-PAKKA-GHAR-VARIANT-B"
+      ]
+    },
+    {
+      "id": "LK-CAND-PAKKA-GHAR-VARIANT-B",
+      "title": "Pakka Ghar (permanent house) table - variant B",
+      "module": "pakka-ghar",
+      "status": "research-pending",
+      "confidence": "disputed",
+      "paraphrase": "A differing account gives Jupiter 2, 5, 9, 12 and Saturn 10, 11 (otherwise as variant A). Treat the table as disputed until an edition is chosen.",
+      "conditionsDraft": {
+        "table": {
+          "Sun": [
+            1
+          ],
+          "Moon": [
+            4
+          ],
+          "Mars": [
+            3,
+            8
+          ],
+          "Mercury": [
+            7
+          ],
+          "Jupiter": [
+            2,
+            5,
+            9,
+            12
+          ],
+          "Venus": [
+            7
+          ],
+          "Saturn": [
+            10,
+            11
+          ],
+          "Rahu": [
+            12
+          ],
+          "Ketu": [
+            6
+          ]
+        }
+      },
+      "source": {
+        "title": "Astrobix debts article as summarised by search (Jupiter 2/5/9/12) plus a source listing Saturn 10 and 11",
+        "url": "https://astrobix.com/articles/Lal-Kitab-Debts-And-Remedies.aspx",
+        "edition": "not stated (secondary web page)",
+        "evidenceType": "unverified-web-summary",
+        "pageOrSection": null,
+        "retrieval": "Search-result summary on 2026-10-16; page itself could not be opened",
+        "note": "Combined from two search summaries; not a single verified table."
+      },
+      "edition_applicability": "unknown",
+      "lastReviewed": "2026-10-16",
+      "reviewerNotes": "Unverified; must be checked against a primary/licensed edition before activation.",
+      "conflictsWith": [
+        "LK-CAND-PAKKA-GHAR-VARIANT-A"
+      ]
+    },
+    {
+      "id": "LK-CAND-PLANET-RELATIONSHIPS",
+      "title": "Planetary friend/enemy/neutral table",
+      "module": "planet-relationships",
+      "status": "research-pending",
+      "confidence": "provisional",
+      "paraphrase": "One site publishes a Lal Kitab friend/enemy/neutral table. It is not symmetric (e.g. Moon lists Saturn as friend, Saturn lists Moon as enemy) and Jupiter's own row was not captured, so the table is incomplete and needs primary-text checking.",
+      "conditionsDraft": {
+        "table": {
+          "Sun": {
+            "friends": [
+              "Jupiter",
+              "Mars",
+              "Moon"
+            ],
+            "enemies": [
+              "Venus",
+              "Saturn",
+              "Rahu",
+              "Ketu"
+            ],
+            "neutral": [
+              "Mercury"
+            ]
+          },
+          "Moon": {
+            "friends": [
+              "Jupiter",
+              "Mars",
+              "Sun",
+              "Saturn"
+            ],
+            "enemies": [
+              "Rahu",
+              "Ketu"
+            ],
+            "neutral": [
+              "Mercury",
+              "Venus"
+            ]
+          },
+          "Mars": {
+            "friends": [
+              "Sun",
+              "Moon",
+              "Jupiter"
+            ],
+            "enemies": [
+              "Mercury",
+              "Ketu"
+            ],
+            "neutral": [
+              "Venus",
+              "Saturn",
+              "Rahu"
+            ]
+          },
+          "Mercury": {
+            "friends": [
+              "Venus",
+              "Sun",
+              "Rahu"
+            ],
+            "enemies": [
+              "Moon"
+            ],
+            "neutral": [
+              "Saturn",
+              "Ketu",
+              "Mars",
+              "Jupiter"
+            ]
+          },
+          "Venus": {
+            "friends": [
+              "Saturn",
+              "Mercury",
+              "Ketu"
+            ],
+            "enemies": [
+              "Sun",
+              "Moon",
+              "Rahu"
+            ],
+            "neutral": [
+              "Mars",
+              "Jupiter"
+            ]
+          },
+          "Saturn": {
+            "friends": [
+              "Mercury",
+              "Venus",
+              "Rahu"
+            ],
+            "enemies": [
+              "Sun",
+              "Moon",
+              "Mars"
+            ],
+            "neutral": [
+              "Jupiter",
+              "Ketu"
+            ]
+          },
+          "Rahu": {
+            "friends": [
+              "Mercury",
+              "Saturn",
+              "Ketu"
+            ],
+            "enemies": [
+              "Sun",
+              "Venus",
+              "Mars"
+            ],
+            "neutral": [
+              "Jupiter",
+              "Moon"
+            ]
+          },
+          "Ketu": {
+            "friends": [
+              "Venus",
+              "Rahu"
+            ],
+            "enemies": [
+              "Sun",
+              "Moon",
+              "Mars"
+            ],
+            "neutral": [
+              "Jupiter",
+              "Saturn",
+              "Mercury"
+            ]
+          }
+        },
+        "missing": [
+          "Jupiter row"
+        ]
+      },
+      "source": {
+        "title": "Astrobix: Relationship of planets according to Lal Kitab",
+        "url": "https://astrobix.com/lalkitabblog/10-relationship-of-planets-according-to-lal-kitab.html",
+        "edition": "not stated (secondary web page)",
+        "evidenceType": "unverified-web-summary",
+        "pageOrSection": null,
+        "retrieval": "Search-result summary on 2026-10-16; page itself could not be opened",
+        "note": "The site states Lal Kitab relationships follow specific principles unlike Vedic natural relations."
+      },
+      "edition_applicability": "unknown",
+      "lastReviewed": "2026-10-16",
+      "reviewerNotes": "Unverified; must be checked against a primary/licensed edition before activation."
+    },
+    {
+      "id": "LK-CAND-RIN-FATHER-A",
+      "title": "Father's debt (Pitri Rin) - variant A",
+      "module": "rin",
+      "status": "research-pending",
+      "confidence": "provisional",
+      "paraphrase": "Reported: a planet in the 9th house with Mercury sitting in that planet's sign.",
+      "conditionsDraft": {
+        "text": "planet in house 9 AND Mercury in the sign of that planet"
+      },
+      "source": {
+        "title": "Astrobix: Lal Kitab Debts And Remedies",
+        "url": "https://astrobix.com/articles/Lal-Kitab-Debts-And-Remedies.aspx",
+        "edition": "not stated (secondary web page)",
+        "evidenceType": "unverified-web-summary",
+        "pageOrSection": null,
+        "retrieval": "Search-result summary on 2026-10-16; page itself could not be opened",
+        "note": "Conditions as reported in a search summary; remedies not captured."
+      },
+      "edition_applicability": "unknown",
+      "lastReviewed": "2026-10-16",
+      "reviewerNotes": "Unverified; must be checked against a primary/licensed edition before activation.",
+      "conflictsWith": [
+        "LK-CAND-RIN-FATHER-B"
+      ]
+    },
+    {
+      "id": "LK-CAND-RIN-FATHER-B",
+      "title": "Father's debt (Pitri Rin) - variant B",
+      "module": "rin",
+      "status": "research-pending",
+      "confidence": "disputed",
+      "paraphrase": "Reported by a different source: Jupiter outside its pakka houses (2, 5, 9, 12), placed in 3, 6, 7, 8 or 10, while Mercury, Venus, Rahu or Ketu occupies a Jupiter pakka house.",
+      "conditionsDraft": {
+        "text": "Jupiter in {3,6,7,8,10} AND any of Mercury/Venus/Rahu/Ketu in {2,5,9,12}"
+      },
+      "source": {
+        "title": "Search-summarised web account of Lal Kitab debts",
+        "url": "https://astrobix.com/articles/Lal-Kitab-Debts-And-Remedies.aspx",
+        "edition": "not stated (secondary web page)",
+        "evidenceType": "unverified-web-summary",
+        "pageOrSection": null,
+        "retrieval": "Search-result summary on 2026-10-16; page itself could not be opened",
+        "note": "Source of this variant was not clearly identified in the search result."
+      },
+      "edition_applicability": "unknown",
+      "lastReviewed": "2026-10-16",
+      "reviewerNotes": "Unverified; must be checked against a primary/licensed edition before activation.",
+      "conflictsWith": [
+        "LK-CAND-RIN-FATHER-A"
+      ]
+    },
+    {
+      "id": "LK-CAND-RIN-MOTHER",
+      "title": "Mother's debt (Matri Rin)",
+      "module": "rin",
+      "status": "research-pending",
+      "confidence": "provisional",
+      "paraphrase": "Reported: Moon in any house other than 2 or 4, or Ketu in the 4th house.",
+      "conditionsDraft": {
+        "text": "Moon not in {2,4} OR Ketu in 4"
+      },
+      "source": {
+        "title": "Astrobix: Lal Kitab Debts And Remedies",
+        "url": "https://astrobix.com/articles/Lal-Kitab-Debts-And-Remedies.aspx",
+        "edition": "not stated (secondary web page)",
+        "evidenceType": "unverified-web-summary",
+        "pageOrSection": null,
+        "retrieval": "Search-result summary on 2026-10-16; page itself could not be opened",
+        "note": "Conditions as reported in a search summary; remedies not captured."
+      },
+      "edition_applicability": "unknown",
+      "lastReviewed": "2026-10-16",
+      "reviewerNotes": "Unverified; must be checked against a primary/licensed edition before activation."
+    },
+    {
+      "id": "LK-CAND-RIN-SIBLING",
+      "title": "Sibling debt",
+      "module": "rin",
+      "status": "research-pending",
+      "confidence": "provisional",
+      "paraphrase": "Reported: Mercury in 1, 2, 4, 5, 8, 10 or 11 and Moon in 3 or 6.",
+      "conditionsDraft": {
+        "text": "Mercury in {1,2,4,5,8,10,11} AND Moon in {3,6}"
+      },
+      "source": {
+        "title": "Astrobix: Lal Kitab Debts And Remedies",
+        "url": "https://astrobix.com/articles/Lal-Kitab-Debts-And-Remedies.aspx",
+        "edition": "not stated (secondary web page)",
+        "evidenceType": "unverified-web-summary",
+        "pageOrSection": null,
+        "retrieval": "Search-result summary on 2026-10-16; page itself could not be opened",
+        "note": "Conditions as reported in a search summary; remedies not captured."
+      },
+      "edition_applicability": "unknown",
+      "lastReviewed": "2026-10-16",
+      "reviewerNotes": "Unverified; must be checked against a primary/licensed edition before activation."
+    },
+    {
+      "id": "LK-CAND-RIN-SPOUSE",
+      "title": "Spouse debt (Stri Rin)",
+      "module": "rin",
+      "status": "research-pending",
+      "confidence": "provisional",
+      "paraphrase": "Reported: Venus in 3, 4, 5, 6, 9, 10 or 11 and Sun, Moon or Rahu in 2 or 7.",
+      "conditionsDraft": {
+        "text": "Venus in {3,4,5,6,9,10,11} AND any of Sun/Moon/Rahu in {2,7}"
+      },
+      "source": {
+        "title": "Astrobix: Lal Kitab Debts And Remedies",
+        "url": "https://astrobix.com/articles/Lal-Kitab-Debts-And-Remedies.aspx",
+        "edition": "not stated (secondary web page)",
+        "evidenceType": "unverified-web-summary",
+        "pageOrSection": null,
+        "retrieval": "Search-result summary on 2026-10-16; page itself could not be opened",
+        "note": "Conditions as reported in a search summary; remedies not captured."
+      },
+      "edition_applicability": "unknown",
+      "lastReviewed": "2026-10-16",
+      "reviewerNotes": "Unverified; must be checked against a primary/licensed edition before activation."
+    },
+    {
+      "id": "LK-CAND-RIN-OTHER-CATEGORIES",
+      "title": "Other named debts (relatives, clan, atrocity, unborn, spiritual)",
+      "module": "rin",
+      "status": "research-pending",
+      "confidence": "provisional",
+      "paraphrase": "Sources name further categories, but their conditions were not captured. Placeholder to prevent invented rules.",
+      "conditionsDraft": {
+        "text": "conditions unknown"
+      },
+      "source": {
+        "title": "Astrobix: Lal Kitab Debts And Remedies",
+        "url": "https://astrobix.com/articles/Lal-Kitab-Debts-And-Remedies.aspx",
+        "edition": "not stated (secondary web page)",
+        "evidenceType": "unverified-web-summary",
+        "pageOrSection": null,
+        "retrieval": "Search-result summary on 2026-10-16; page itself could not be opened",
+        "note": "Conditions as reported in a search summary; remedies not captured."
+      },
+      "edition_applicability": "unknown",
+      "lastReviewed": "2026-10-16",
+      "reviewerNotes": "Unverified; must be checked against a primary/licensed edition before activation."
+    },
+    {
+      "id": "LK-CAND-ANDHA-TEVA",
+      "title": "Andha Teva (blind horoscope)",
+      "module": "teva-type",
+      "status": "research-pending",
+      "confidence": "provisional",
+      "paraphrase": "Reported: more than two enemy planets in the 10th house makes the horoscope 'Andha'. A suggested traditional remedy is feeding ten blind people; this is a traditional claim, not an established effect.",
+      "conditionsDraft": {
+        "text": "count(enemy planets in house 10) > 2; 'enemy' depends on the unverified relationship table"
+      },
+      "source": {
+        "title": "Astrobix: Lal Kitab Kundali Types",
+        "url": "https://www.astrobix.com/webcasts/83-lal-kitab-kundali-types-their-effects-on-lives-indian-astrology.html",
+        "edition": "not stated (secondary web page)",
+        "evidenceType": "unverified-web-summary",
+        "pageOrSection": null,
+        "retrieval": "Search-result summary on 2026-10-16; page itself could not be opened",
+        "note": "Depends on LK-CAND-PLANET-RELATIONSHIPS."
+      },
+      "edition_applicability": "unknown",
+      "lastReviewed": "2026-10-16",
+      "reviewerNotes": "Unverified; must be checked against a primary/licensed edition before activation.",
+      "dependsOn": [
+        "LK-CAND-PLANET-RELATIONSHIPS"
+      ],
+      "remedyCandidates": [
+        {
+          "text": "Feed ten blind people (as reported)",
+          "status": "not-recommended-until-source-verified",
+          "caution": "Show only with source and as traditional belief."
+        }
+      ]
+    },
+    {
+      "id": "LK-CAND-DHARMI-TEVA",
+      "title": "Dharmi Teva",
+      "module": "teva-type",
+      "status": "research-pending",
+      "confidence": "provisional",
+      "paraphrase": "Reported to be a type of horoscope said to receive divine help in difficulties; formation conditions were not captured.",
+      "conditionsDraft": {
+        "text": "conditions unknown"
+      },
+      "source": {
+        "title": "Astrobix: Lal Kitab Kundali Types",
+        "url": "https://www.astrobix.com/webcasts/83-lal-kitab-kundali-types-their-effects-on-lives-indian-astrology.html",
+        "edition": "not stated (secondary web page)",
+        "evidenceType": "unverified-web-summary",
+        "pageOrSection": null,
+        "retrieval": "Search-result summary on 2026-10-16; page itself could not be opened",
+        "note": "Truncated in search result."
+      },
+      "edition_applicability": "unknown",
+      "lastReviewed": "2026-10-16",
+      "reviewerNotes": "Unverified; must be checked against a primary/licensed edition before activation."
+    },
+    {
+      "id": "LK-CAND-NABALIG-TEVA",
+      "title": "Nabalig Teva",
+      "module": "teva-type",
+      "status": "research-pending",
+      "confidence": "provisional",
+      "paraphrase": "No definition found in this research pass. Placeholder only.",
+      "conditionsDraft": {
+        "text": "conditions unknown"
+      },
+      "source": {
+        "title": "None found",
+        "url": "",
+        "edition": "not stated (secondary web page)",
+        "evidenceType": "unverified-web-summary",
+        "pageOrSection": null,
+        "retrieval": "Search-result summary on 2026-10-16; page itself could not be opened",
+        "note": "No source located."
+      },
+      "edition_applicability": "unknown",
+      "lastReviewed": "2026-10-16",
+      "reviewerNotes": "Unverified; must be checked against a primary/licensed edition before activation."
+    },
+    {
+      "id": "LK-CAND-SLEEPING-PLANETS",
+      "title": "Sleeping planets/houses (soya graha/ghar) and aspect rules",
+      "module": "sleeping",
+      "status": "research-pending",
+      "confidence": "provisional",
+      "paraphrase": "A source names sleeping planets and houses as core vocabulary but no definition, formation rule, or aspect rule was located. Placeholder only.",
+      "conditionsDraft": {
+        "text": "conditions unknown"
+      },
+      "source": {
+        "title": "AstroSage Lal Kitab introduction (vocabulary only)",
+        "url": "https://www.astrosage.com/lalkitab/default.asp",
+        "edition": "not stated (secondary web page)",
+        "evidenceType": "unverified-web-summary",
+        "pageOrSection": null,
+        "retrieval": "Search-result summary on 2026-10-16; page itself could not be opened",
+        "note": "Defining text was truncated; do not infer from other systems' aspects."
+      },
+      "edition_applicability": "unknown",
+      "lastReviewed": "2026-10-16",
+      "reviewerNotes": "Unverified; must be checked against a primary/licensed edition before activation."
+    }
+  ]
+}

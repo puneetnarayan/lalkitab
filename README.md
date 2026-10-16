@@ -44,6 +44,10 @@ Example (Python installed):
 
 Then open http://localhost:8000/.
 
+## Receiving external code
+
+See `docs/INTEGRATION.md` for destination folders, the engine interface contract and the acceptance checklist. Run `npm test` (or `node tests/run-all.js`).
+
 ## Status
 
 Working scaffold with preliminary planetary inventory; not yet a validated astrology product. Swiss Ephemeris browser/WASM runtime verification, house-convention verification, and source-backed Lal Kitab rule ingestion remain outstanding.

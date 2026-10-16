@@ -1,0 +1,6 @@
+{
+  "name": "lalkitab",
+  "private": true,
+  "description": "Browser-based Lal Kitab astrology app (no build step).",
+  "scripts": { "test": "node tests/run-all.js", "serve": "python3 -m http.server 8000" }
+}
