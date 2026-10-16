@@ -1,7 +1,12 @@
 (function () {
   'use strict';
   const $ = id => document.getElementById(id);
-  const state = { profile: null, chart: null, inventory: null, activeTab: 'overview' };
+  window.LAL_KITAB_RULES = { rules: [] };
+  fetch('data/lalkitab-rules.json')
+    .then(response => { if (!response.ok) throw new Error('Rule registry unavailable'); return response.json(); })
+    .then(data => { window.LAL_KITAB_RULES = data; })
+    .catch(() => { window.LAL_KITAB_RULES = { rules: [] }; });
+  const state = { profile: null, chart: null, inventory: null, activeTab: 'overview', findings: [] };
   window.LAL_KITAB_APP_STATE = state;
 
   const signs = window.LalKitabChart.SIGNS;
@@ -144,7 +149,7 @@
     try {
       calculate(form);
       $('message').textContent = 'Planetary inventory calculated. House mapping is provisional; source-verified interpretations are not enabled.';
-      $('birthSummary').textContent = state.profile.date + ' ' + state.profile.time;
+      if ($('birthSummary')) $('birthSummary').textContent = state.profile.date + ' ' + state.profile.time;
       state.activeTab = document.querySelector('[data-tab][aria-selected="true"]')?.dataset.tab || 'overview';
       renderActiveTab();
     } catch (error) {
