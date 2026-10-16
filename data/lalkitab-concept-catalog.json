@@ -1,0 +1,75 @@
+{
+  "schemaVersion": 1,
+  "description": "Research index only. These records are not prediction rules and must not generate readings.",
+  "baseTextDecision": {
+    "status": "pending-user/source-review",
+    "recommendedBaseline": "1952 edition, with earlier editions recorded as separate variants",
+    "reason": "The five-volume corpus and later commentaries are not fully interchangeable; source and pinpoint references must be retained."
+  },
+  "concepts": [
+    {
+      "id": "LK-CONCEPT-TEVA",
+      "name": "Teva / chart inventory",
+      "status": "research-pending",
+      "confidence": "provisional",
+      "description": "Define the chart structure and the exact mapping from calculated planetary positions to Lal Kitab house numbers.",
+      "sourceRequirement": "Verify against the selected primary edition and record page/section."
+    },
+    {
+      "id": "LK-CONCEPT-PAKKA-GHAR",
+      "name": "Pakka Ghar",
+      "status": "research-pending",
+      "confidence": "provisional",
+      "description": "Research the traditional concept of a planet's fixed or permanent house and its precise rules.",
+      "sourceRequirement": "Do not encode planet-to-house mappings until checked against the selected text."
+    },
+    {
+      "id": "LK-CONCEPT-PLANET-HOUSE",
+      "name": "Planet-in-house results",
+      "status": "research-pending",
+      "confidence": "provisional",
+      "description": "Conditional interpretations of planets in each of the twelve houses.",
+      "sourceRequirement": "Each planet-house pair must cite a specific edition and page/section; preserve contradictions as edition-specific variants."
+    },
+    {
+      "id": "LK-CONCEPT-EMPTY-HOUSE",
+      "name": "Occupied and empty houses",
+      "status": "research-pending",
+      "confidence": "provisional",
+      "description": "Rules that use the presence or absence of planets in houses.",
+      "sourceRequirement": "Record all conditions and exceptions; do not infer a result from emptiness alone."
+    },
+    {
+      "id": "LK-CONCEPT-PLANET-STATES",
+      "name": "Planetary states",
+      "status": "research-pending",
+      "confidence": "provisional",
+      "description": "Research source-defined concepts sometimes rendered as sleeping, awake or blind planets.",
+      "sourceRequirement": "Terminology and calculation method must be checked against the chosen edition."
+    },
+    {
+      "id": "LK-CONCEPT-RIN",
+      "name": "Rin / debt concepts",
+      "status": "research-pending",
+      "confidence": "provisional",
+      "description": "Source-specific rules connecting planetary configurations to named forms of debt.",
+      "sourceRequirement": "Avoid moral blame or claims of factual inherited causation; expose the reading as a traditional belief."
+    },
+    {
+      "id": "LK-CONCEPT-REMEDIES",
+      "name": "Totke / upay",
+      "status": "research-pending",
+      "confidence": "provisional",
+      "description": "Traditional remedy records linked to specific triggering rules.",
+      "sourceRequirement": "Store exact procedure, source, timing if present, practical cautions and safety review. Never prescribe generically."
+    },
+    {
+      "id": "LK-CONCEPT-VARSHAPHAL",
+      "name": "Annual chart / Varshaphal",
+      "status": "research-pending",
+      "confidence": "provisional",
+      "description": "Optional annual chart module if supported by the selected source corpus.",
+      "sourceRequirement": "Research separately; do not assume it uses the same calculation or house rules as the birth Teva."
+    }
+  ]
+}
