@@ -39,7 +39,7 @@ table{width:100%;border-collapse:collapse;font-size:13px}th,td{text-align:left;p
 <label for="timezone">Time zone</label><select id="timezone" name="timezone"><option value="Asia/Kolkata" selected>India Standard Time (Asia/Kolkata)</option><option value="UTC">UTC</option><option value="America/New_York">America/New_York</option><option value="Europe/London">Europe/London</option><option value="Australia/Sydney">Australia/Sydney</option></select>
 <div class="btnrow"><button class="btn" type="submit">Prepare chart</button><button class="btn secondary" type="reset">Clear</button></div><div id="message" role="status" aria-live="polite"></div>
 </form>
-<div class="notice"><strong>Calculation status</strong><br>Ephemeris integration is not connected yet. This scaffold will not invent planetary positions or remedies.</div>
+<div class="notice"><strong>Calculation status</strong><br>Offline astronomy fallback is connected. House mapping remains provisional; source-verified Lal Kitab interpretations are not yet enabled.</div>
 </aside>
 <section>
 <div class="tabs" role="tablist" aria-label="Lal Kitab modules">
@@ -54,7 +54,7 @@ table{width:100%;border-collapse:collapse;font-size:13px}th,td{text-align:left;p
 <div class="toprow"><div><h2 id="sectionTitle">Your Lal Kitab workspace</h2><p class="hint" id="sectionHint">A clear starting point for chart calculations and rule-based interpretation.</p></div><button class="help" id="helpBtn" type="button">What does this tab do?</button></div>
 <div id="tabContent">
 <div class="tiles"><div class="tile"><span>Birth details</span><strong id="birthSummary">Not entered</strong></div><div class="tile"><span>Calculation engine</span><strong>Pending integration</strong></div><div class="tile"><span>Rule library</span><strong>To be source-tagged</strong></div></div>
-<div class="empty"><div class="symbol">✧</div><h3>Build the chart on verified calculations</h3><p>Enter birth details on the left. The next implementation step is to connect the existing Swiss Ephemeris WASM engine, then add Lal Kitab-specific chart and interpretation rules.</p><span class="status"><span class="dot"></span> Scaffold ready · calculations not yet enabled</span></div>
+<div class="empty"><div class="symbol">✧</div><h3>Build the chart on verified calculations</h3><p>Enter birth details on the left. The app now calculates a planetary inventory using the reused offline astronomy fallback. The Swiss Ephemeris WASM binary is not yet bundled; Lal Kitab-specific house mapping remains provisional.</p><span class="status"><span class="dot"></span> Inventory engine connected · rules pending source verification</span></div>
 </div>
 </div>
 </section>
@@ -76,5 +76,12 @@ document.getElementById('helpBtn').onclick=()=>alert(descriptions.overview.help)
 document.getElementById('birthForm').addEventListener('submit',e=>{e.preventDefault();const f=new FormData(e.currentTarget);const date=f.get('birthDate'),time=f.get('birthTime'),place=f.get('place');document.getElementById('birthSummary').textContent=date+' '+time;document.getElementById('message').textContent='Birth details captured in this page. Planetary calculations are not connected yet; no chart has been calculated.';document.getElementById('sectionHint').textContent='Profile entered for '+place+'. '+descriptions.overview.hint;});
 document.getElementById('birthForm').addEventListener('reset',()=>{document.getElementById('message').textContent='';document.getElementById('birthSummary').textContent='Not entered';});
 </script>
+<script src="vendor/astronomy.browser.min.js"></script>
+<script src="js/lalkitab/timezone.js"></script>
+<script src="js/lalkitab/ephemeris.js"></script>
+<script src="js/lalkitab/chart.js"></script>
+<script src="js/lalkitab/ruleSchema.js"></script>
+<script src="js/lalkitab/ruleEngine.js"></script>
+<script src="js/lalkitab/app.js"></script>
 </body>
 </html>
