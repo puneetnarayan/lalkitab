@@ -35,6 +35,10 @@ Example (Python installed):
 
 Then open http://localhost:8000/.
 
+## Receiving external code
+
+See `docs/INTEGRATION.md` for destination folders, the engine interface contract and the acceptance checklist. Run `npm test` (or `node tests/run-all.js`).
+
 ## Status
 
 Project scaffold / planning stage. Do not consider the calculation engine integrated until the upstream bridge and WASM files have been copied and tested together.
