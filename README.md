@@ -15,10 +15,10 @@ Browser-based Lal Kitab astrology application. The implementation is designed to
 
 - The browser UI now loads an offline astronomy fallback, timezone conversion, a planet inventory, a provisional chart grid, and guarded rule-evaluation code.
 - The source app's `astronomy.browser.min.js`, `ephemeris.js`, and `timezone.js` were reused. The upstream astronomy bundle retains its MIT header.
-- **Swiss Ephemeris WASM is not bundled in this repository yet.** Current results use the Astronomy Engine fallback and have not been benchmark-validated against Swiss Ephemeris.
+- Swiss Ephemeris wrapper and bridge are now included. Download `swisseph.wasm` and `swisseph.data` by running `scripts/Download-EphemerisAssets.ps1`; see [Swiss Ephemeris setup](docs/SWISSEPH_SETUP.md). The astronomy fallback remains available if initialization fails.
 - The fixed natural-zodiac house mapping is explicitly provisional. Do not treat house-based readings as validated until the selected primary Lal Kitab edition establishes the convention.
 - `data/lalkitab-rules.json` intentionally contains zero active rules. Research concepts are not prediction rules. The rule engine rejects records that lack eligible confidence and pinpoint source references.
-- To test the current pure-JavaScript modules: `node tests/lalkitab-chart.test.js` and `node tests/lalkitab-engine.test.js`.
+- To test the current pure-JavaScript modules: `node tests/lalkitab-chart.test.js` and `node tests/lalkitab-engine.test.js`. GitHub Actions is configured to run these tests on pushes and pull requests.
 
 ## Proposed MVP modules
 
