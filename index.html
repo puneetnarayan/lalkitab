@@ -73,8 +73,8 @@ const tabs=[...document.querySelectorAll('[data-tab]')];
 function activate(key){const d=descriptions[key];tabs.forEach(b=>b.setAttribute('aria-selected',String(b.dataset.tab===key)));document.getElementById('sectionTitle').textContent=d.title;document.getElementById('sectionHint').textContent=d.hint;document.getElementById('tabContent').innerHTML=d.html;document.getElementById('helpBtn').onclick=()=>alert(d.help);}
 tabs.forEach(b=>b.addEventListener('click',()=>activate(b.dataset.tab)));
 document.getElementById('helpBtn').onclick=()=>alert(descriptions.overview.help);
-document.getElementById('birthForm').addEventListener('submit',e=>{e.preventDefault();const f=new FormData(e.currentTarget);const date=f.get('birthDate'),time=f.get('birthTime'),place=f.get('place');document.getElementById('birthSummary').textContent=date+' '+time;document.getElementById('message').textContent='Birth details captured in this page. Planetary calculations are not connected yet; no chart has been calculated.';document.getElementById('sectionHint').textContent='Profile entered for '+place+'. '+descriptions.overview.hint;});
-document.getElementById('birthForm').addEventListener('reset',()=>{document.getElementById('message').textContent='';document.getElementById('birthSummary').textContent='Not entered';});
+document.getElementById('birthForm').addEventListener('submit',e=>{e.preventDefault();const f=new FormData(e.currentTarget);const date=f.get('birthDate'),time=f.get('birthTime'),place=f.get('place');if(document.getElementById('birthSummary'))document.getElementById('birthSummary').textContent=date+' '+time;document.getElementById('message').textContent='Preparing planetary inventory…';document.getElementById('sectionHint').textContent='Profile entered for '+place+'. '+descriptions.overview.hint;});
+document.getElementById('birthForm').addEventListener('reset',()=>{document.getElementById('message').textContent='';if(document.getElementById('birthSummary'))document.getElementById('birthSummary').textContent='Not entered';});
 </script>
 <script src="vendor/astronomy.browser.min.js"></script>
 <script src="js/lalkitab/timezone.js"></script>
